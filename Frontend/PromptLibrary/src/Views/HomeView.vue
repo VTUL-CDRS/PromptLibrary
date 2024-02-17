@@ -1,9 +1,15 @@
 <template>
   <div class = "">
-    <h1 class="">PromptLibrary</h1>
+    <h1 class="header-text">PromptLibrary</h1>
   </div>
-  <form class=".search-bar">
-    <input type="text" /> &nbsp <input type="submit" value="Search" /> <br>
+  <form class="search-bar">
+    <input type="text" /> &nbsp
+  </form>
+  <form class="search-button">
+    <input type="submit" value="Search" />
+  </form>
+  <form class="explore-button">
+    <br>
     <input type="submit" value="Explore" />
   </form>
 </template>
@@ -13,17 +19,30 @@
 
 <style scoped>
 .search-bar {
-  display: flex;
-  flex-direction: row;
-  top: 0;
-  left: 0%;
-  width: 100%;
-  padding-right: 2rem;
-  background-color: var(--header-color);
+  margin-top: 5em;
+  margin-left: 50em;
+  width: 12em;
+  background-color: var(--background-color);
+}
+
+.search-button {
+  margin-top: -1.3em;
+  margin-left: 62em;
+  width: 12em;
+  background-color: var(--background-color);
+}
+
+.explore-button {
+  margin-top: 0em;
+  margin-left: 55em;
+  width: 12em;
+  background-color: var(--background-color);
 }
 
 .header-text {
-  color: var(--white-text);
+  margin-top: 5em;
+  margin-left: 25em;
+  color: var(--black-text);
 }
 
 </style>
