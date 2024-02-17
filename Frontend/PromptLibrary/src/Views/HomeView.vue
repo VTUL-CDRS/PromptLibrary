@@ -1,48 +1,84 @@
-<template>
-  <div class = "">
-    <h1 class="header-text">PromptLibrary</h1>
-  </div>
-  <form class="search-bar">
-    <input type="text" /> &nbsp
-  </form>
-  <form class="search-button">
-    <input type="submit" value="Search" />
-  </form>
-  <form class="explore-button">
-    <br>
-    <input type="submit" value="Explore" />
-  </form>
-</template>
-
 <script setup lang="ts">
 </script>
 
 <style scoped>
-.search-bar {
-  margin-top: 5em;
-  margin-left: 50em;
-  width: 12em;
-  background-color: var(--background-color);
+
+.main-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* this will vertically center your items */
+  justify-content: center; /* this will horizontally center your items */
+  height: 100vh; /* this makes the container take full viewport height */
+  gap: 0.5rem; /* this adds space between your child elements */
 }
 
-.search-button {
-  margin-top: -1.3em;
-  margin-left: 62em;
-  width: 12em;
-  background-color: var(--background-color);
+form {
+  display: flex;
+  justify-content: center; /* This centers the form content horizontally */
+  align-items: center; /* This centers the form content vertically */
+  width: 100%; /* Ensure the form takes the full width of its parent container */
 }
 
-.explore-button {
-  margin-top: 0em;
-  margin-left: 55em;
-  width: 12em;
-  background-color: var(--background-color);
+.input-button-search {
+  width: 15rem;
+  height: 3rem;
+  padding: 0.5em;
+  font-size: 1.4rem;
+  margin: 0.5em 0; /* Adds some space above and below each input */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Optional: Rounds the corners of the input fields */
+  background-color: var(--button-color);
+  color: var(--white-text);
+}
+
+.input-button-explore {
+  width: 15rem;
+  height: 3rem;
+  padding: 0.5em;
+  font-size: 1.4rem;
+  margin: 0.5em 0; /* Adds some space above and below each input */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Optional: Rounds the corners of the input fields */
+  background-color: var(--second-button-color);
+  color: var(--white-text);
+}
+
+.search-bar input[type="text"] {
+  width: 50%; /* Adjust the width as needed */
+  height: 5%;
+  padding: 1em; /* Makes the input taller and the text inside it larger */
+  font-size: 1.2em; /* Increase the font size for better readability */
+  border: 2px solid #aaa; /* Solid border with a light grey color */
+  border-radius: 25px; /* Rounded corners for the border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition for effects on focus */
+  text-align: center;
 }
 
 .header-text {
-  margin-top: 5em;
-  margin-left: 25em;
-  color: var(--black-text);
+  font-size: 45px;
 }
 
 </style>
+
+
+<template>
+  <div class = "main-page-container">
+    <div class = "">
+      <h1 class="header-text">PromptLibrary</h1>
+    </div>
+    <form class="search-bar">
+      <input type="text" placeholder="Enter a prompt to search"/>
+    </form>
+    <div>
+      <form class="search-button">
+        <input class="input-button-search" type="submit" value="Search" />
+      </form>
+      <form class="explore-button">
+        <input class="input-button-explore" type="submit" value="Explore" />
+      </form>
+    </div>
+  </div>
+</template>
+
+
