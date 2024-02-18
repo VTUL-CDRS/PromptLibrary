@@ -10,16 +10,10 @@ footer {
   flex-direction: row;
   padding: 1rem;
   justify-content: space-between;
-  position: fixed; /* or absolute */
-  bottom: 0%;
-  left: 0%;
+  bottom: 0;
+  left: 0;
   width: 100%;
   background-color: var(--footer-color);
-}
-
-
-.header-text {
-  color: var(--white-text);
 }
 
 </style>

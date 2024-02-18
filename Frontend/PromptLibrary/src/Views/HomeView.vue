@@ -71,12 +71,16 @@ form {
       <input type="text" placeholder="Enter a prompt to search"/>
     </form>
     <div>
-      <form class="search-button">
-        <input class="input-button-search" type="submit" value="Search" />
-      </form>
-      <form class="explore-button">
-        <input class="input-button-explore" type="submit" value="Explore" />
-      </form>
+      <router-link to="/database">
+        <form class="search-button">
+          <input class="input-button-search" type="submit" value="Search" />
+        </form>
+      </router-link>
+      <router-link to="/database">
+        <form class="explore-button">
+          <input class="input-button-explore" type="submit" value="Explore" />
+        </form>
+      </router-link>
     </div>
   </div>
 </template>

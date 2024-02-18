@@ -9,9 +9,8 @@ header {
   flex-direction: row;
   padding: 1rem;
   justify-content: space-between;
-  position: fixed; /* or absolute */
   top: 0;
-  left: 0%;
+  left: 0;
   width: 100%;
   padding-right: 2rem;
   background-color: var(--header-color);
