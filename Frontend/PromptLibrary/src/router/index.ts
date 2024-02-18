@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../Views/HomeView.vue";
 import LoginView from "../Views/LoginView.vue";
 import DatabaseView from "../Views/DatabaseView.vue";
+import PromptSubmissionView from "../Views/PromptSubmissionView.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +24,11 @@ const router = createRouter({
             name: "database",
             component: DatabaseView,
         },
+        {
+            path: "/submit",
+            name: "submit",
+            component: PromptSubmissionView,
+        }
     ],
 });
 

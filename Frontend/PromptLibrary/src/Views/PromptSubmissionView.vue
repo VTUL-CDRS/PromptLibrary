@@ -1,20 +1,26 @@
 <template>
   <div class="database-view-container">
-    <aside class="filter-sidebar">
-      <h2>Filter By...</h2>
-      <!-- Filter options go here -->
-    </aside>
     <section class="prompts-container">
       <!-- Hardcoded prompts for demonstration -->
-      <div class="prompt" v-for="n in 4" :key="n">
-        <h3>Category Here</h3>
-        <p>xxxxxxxxxxxxxxxxxxxxxxxx</p>
-        <a href="#">See sample here</a>
+      <div class="prompt">
+        <form class="database-form">
+          <h1>Submit a prompt</h1>
+          <h3>Category: </h3>
+          <input type="text" placeholder="Category" />
+          <h3>Context: </h3>
+          <input type="text" placeholder="Context" />
+          <h3>Instruction: </h3>
+          <input type="text" placeholder="Instruction" />
+          <h3>Task: </h3>
+          <input type="text" placeholder="Task" />
+          <h3>Refinement: </h3>
+          <input type="text" placeholder="Refinement" />
+          <h3>Language Model: </h3>
+          <input type="drop-down" placeholder="Category" />
+          <input class="submit-button" type="submit" value="Submit" />
+        </form>
       </div>
     </section>
-  </div>
-  <div>
-    <input class="submit-button" type="submit" value="Log in to submit a prompt" />
   </div>
 
 </template>
@@ -24,26 +30,26 @@
 </script>
 
 <style scoped>
+
+.database-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+
 .database-view-container {
   display: flex;
   height: 100vh; /* Adjust height as needed, considering the header height */
 }
 
-.filter-sidebar {
-  width: 250px; /* or whatever width you prefer */
-  background-color: #e0e0e0; /* your grey background */
-  padding: 20px;
-  box-sizing: border-box; /* Include padding in width */
-  overflow-y: auto; /* In case filters exceed the height */
-}
-
 .prompts-container {
   flex-grow: 1;
-  padding: 20px;
+  padding: 200px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  max-height: 45rem;
+  max-height: 60rem;
   max-width: 200rem;
   overflow-y: auto; /* In case prompts exceed the height */
 }
@@ -72,6 +78,7 @@
   background-color: white;
   color: var(--black-text);
   cursor: pointer;
+
 }
 
 /* Style the prompt content, like category titles, paragraphs, and links, as needed */
