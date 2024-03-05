@@ -3,20 +3,34 @@
     <section class="prompts-container">
       <!-- Hardcoded prompts for demonstration -->
       <div class="prompt">
+        <h1 class="header-text">Submit a prompt</h1>
+        <h3>Instructions go here: Ideas: leave blanks if not needed</h3>
         <form class="database-form">
-          <h1>Submit a prompt</h1>
-          <h3>Category: </h3>
-          <input type="text" placeholder="Category" />
+<!--          Split all into individual forms .input_box-->
+          <h3>Tags: </h3>
+          <input type="text" placeholder="Include tags as comma separated values" />
           <h3>Context: </h3>
           <input type="text" placeholder="Context" />
           <h3>Instruction: </h3>
           <input type="text" placeholder="Instruction" />
           <h3>Task: </h3>
           <input type="text" placeholder="Task" />
+          <h3>Output: </h3>
+          <input type="text" placeholder="Output" />
           <h3>Refinement: </h3>
           <input type="text" placeholder="Refinement" />
+          <h3>Refined Output: </h3>
+          <input type="text" placeholder="Refined Output" />
           <h3>Language Model: </h3>
-          <input type="drop-down" placeholder="Category" />
+<!--          <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">-->
+<!--            <b-dropdown-item>First Action</b-dropdown-item>-->
+<!--            <b-dropdown-item>Second Action</b-dropdown-item>-->
+<!--            <b-dropdown-item>Third Action</b-dropdown-item>-->
+<!--            <b-dropdown-divider></b-dropdown-divider>-->
+<!--            <b-dropdown-item active>Active action</b-dropdown-item>-->
+<!--            <b-dropdown-item disabled>Disabled action</b-dropdown-item>-->
+<!--          </b-dropdown>-->
+          <input type="drop-down" placeholder="placeholder dropdown for llm" />
           <input class="submit-button" type="submit" value="Submit" />
         </form>
       </div>
@@ -26,6 +40,8 @@
 </template>
 
 <script setup>
+// import { BDropdown } from 'bootstrap-vue'
+// Vue.component('b-dropdown', BDropdown)
 // Vue script setup logic will go here
 </script>
 
@@ -37,6 +53,16 @@
   gap: 0.5rem;
 }
 
+.database-form input[type="text"] {
+  /*width: 90rem; !* Adjust as needed *!*/
+  height: 10rem;
+  padding: 1em;
+  font-size: 1.2em;
+  border: 2px solid #aaa;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 .database-view-container {
   display: flex;
@@ -45,7 +71,7 @@
 
 .prompts-container {
   flex-grow: 1;
-  padding: 200px;
+  padding: 150px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -80,6 +106,8 @@
   cursor: pointer;
 
 }
+
+
 
 /* Style the prompt content, like category titles, paragraphs, and links, as needed */
 </style>

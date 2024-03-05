@@ -14,7 +14,7 @@
     </section>
   </div>
   <div>
-    <input class="submit-button" type="login" value="Log in to submit a prompt" />
+    <input class="submit-button" type="submit" value="Submit a prompt" />
   </div>
 
 </template>
