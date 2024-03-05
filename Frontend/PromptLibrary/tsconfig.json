@@ -24,7 +24,7 @@
     "baseUrl": "../../",
     "paths": {
       "@/*": ["Frontend/PromptLibrary/src/*"],
-      "@/api": ["Backend/api"]
+      "@/api": ["../../Backend/api"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
