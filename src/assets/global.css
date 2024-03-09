@@ -1,0 +1,60 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css?family=Proza+Libre");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --title-font-family: "Proza Libre", serif;
+    --default-font-family: "Roboto";
+
+    --default-font-size: 16px;
+    --header-color: #861F41;
+    --footer-color: #75787b;
+
+    --white-text: #FFFFFF;
+    --black-text: #000000;
+    --background-color: #E5E1E6;
+
+    --button-color: #c95700;
+    --second-button-color: #CE0058;
+    --button-highlight: #fcac6f;
+}
+
+/*
+  Giving various sections of your page this utility class
+  will ensure a nice padding around the contents.
+*/
+.container {
+    padding: 1rem;
+}
+
+/* These global font properties with be inherited by child elements. */
+body {
+    /* font properties (inherited) */
+    background: var(--background-color);
+    color: var(--black-text);
+    font-family: var(--default-font-family);
+    font-size: var(--default-font-size);
+
+    /* layout properties (not inherited) */
+    margin: 0 auto;
+}
+
+.button,
+.button:visited {
+    display: inline-block;
+    background: var(--button-color);
+    color: var(--white-text);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+    background: var(--button-highlight);
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
