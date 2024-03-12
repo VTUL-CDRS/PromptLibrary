@@ -39,11 +39,13 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 // import { BDropdown } from 'bootstrap-vue'
 // Vue.component('b-dropdown', BDropdown)
 // Vue script setup logic will go here
 </script>
+
+
 
 <style scoped>
 

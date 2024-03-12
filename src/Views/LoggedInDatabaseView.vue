@@ -1,3 +1,6 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <div class="database-view-container">
     <aside class="filter-sidebar">
@@ -19,9 +22,7 @@
 
 </template>
 
-<script setup>
-// Vue script setup logic will go here
-</script>
+
 
 <style scoped>
 .database-view-container {

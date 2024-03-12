@@ -1,9 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../Views/HomeView.vue";
 import LoginView from "../Views/LoginView.vue";
+
 import DatabaseView from "../Views/DatabaseView.vue";
+
 import PromptSubmissionView from "../Views/PromptSubmissionView.vue";
+
 import LoggedInDatabaseView from "../Views/LoggedInDatabaseView.vue";
+
 import PromptView from "../Views/PromptView.vue";
 
 const router = createRouter({

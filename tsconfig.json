@@ -7,7 +7,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -24,7 +24,8 @@
     "baseUrl": "../../",
     "paths": {
       "@/*": ["Frontend/PromptLibrary/src/*"],
-      "@/api": ["../../Backend/api"]
+      "@/api": ["../../Backend/api"],
+      "@/views": ["../../src/Views"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "lib/prisma.ts"],

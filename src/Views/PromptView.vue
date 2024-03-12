@@ -1,5 +1,4 @@
-<script>
-//This will be a pop up instead of a separate page.
+<script setup lang="ts">
 </script>
 
 <template>

@@ -19,8 +19,7 @@
 
 </template>
 
-<script setup>
-// Vue script setup logic will go here
+<script setup lang="ts">
 </script>
 
 <style scoped>
