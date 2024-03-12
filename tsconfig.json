@@ -27,6 +27,6 @@
       "@/api": ["../../Backend/api"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "lib/prisma.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
