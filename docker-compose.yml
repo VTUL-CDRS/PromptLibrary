@@ -3,13 +3,17 @@ services:
   web:
     build: .
     ports:
-      - "8080:8080"
-  db:
-    image: "postgresql"
+      - "5432:5432"
+  postgres_db:
+    image: postgres:latest
     environment:
-      POSTGRESQL_PASSWORD: SomethingHere
+      - POSTGRES_USER=postgres
+      - POSTGRESQL_PASSWORD=DanielDBPassword
+    ports:
+      - "8080:8080"
     volumes:
-      - db-data:/foo
+      - postgres_db:/var/lib/postgresql/data
   
-  volumes:
-    db-data:
+volumes:
+  postgres_db:
+    driver: local
