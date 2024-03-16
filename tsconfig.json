@@ -21,11 +21,12 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Path Alias */
-    "baseUrl": "../../",
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["Frontend/PromptLibrary/src/*"],
-      "@/api": ["../../Backend/api"],
-      "@/views": ["../../src/Views"]
+      "@/*": ["./*"],
+      "@/api": ["./api"],
+      "@/views": ["./Views"],
+      "@/lib": ["./lib"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "lib/prisma.ts"],
