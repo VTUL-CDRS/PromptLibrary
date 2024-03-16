@@ -4,16 +4,14 @@ services:
     build: .
     ports:
       - "5432:5432"
-  postgres_db:
-    image: postgres:latest
+  db:
+    image: postgres
+    restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRESQL_PASSWORD=DanielDBPassword
-    ports:
-      - "8080:8080"
+      POSTGRES_PASSWORD: DanielDBPassword
     volumes:
-      - postgres_db:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
   
 volumes:
-  postgres_db:
-    driver: local
+  pgdata:
+  
