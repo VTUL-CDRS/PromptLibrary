@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
+    /* For using TypeScript with Node.js and Express.js */
+    "outDir": "./dist",
+
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true, // For express.js import
 
     /* Bundler mode */
     "moduleResolution": "node",
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false, // Changed to false for express
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false, // Changed to false for express
     "jsx": "preserve",
 
     /* Linting */
@@ -29,6 +33,6 @@
       "@/lib": ["./lib"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "lib/prisma.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "lib/prisma.ts", "src/server.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
