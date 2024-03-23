@@ -28,11 +28,16 @@
     "baseUrl": "src",
     "paths": {
       "@/*": ["./*"],
-      "@/api": ["./api"],
       "@/views": ["./Views"],
       "@/lib": ["./lib"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "lib/prisma.ts", "src/server.js"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "lib/prisma.ts",
+    "src/server.js"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
