@@ -7,8 +7,8 @@ const router = express.Router()
 // Get Request
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const tags = await prisma.tag.findMany();
-    res.json(tags);
+    const accounts = await prisma.account.findMany();
+    res.json(accounts);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch users' });
   }

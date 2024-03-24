@@ -8,7 +8,7 @@
     "esModuleInterop": true,
     "paths": {
       "@/*": ["./*"],
-      "@/prisma/*": ["./prisma/*"]
+      "@/lib/*": ["./lib/*"]
     }
   }
 }
