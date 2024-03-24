@@ -3,7 +3,6 @@ import HomeView from "../Views/HomeView.vue";
 import LoginView from "../Views/LoginView.vue";
 import DatabaseView from "../Views/DatabaseView.vue";
 import PromptSubmissionView from "../Views/PromptSubmissionView.vue";
-import LoggedInDatabaseView from "../Views/LoggedInDatabaseView.vue";
 import PromptDetail from "../Views/PromptDetail.vue";
 import NotFoundView from "../Views/NotFoundView.vue";
 
@@ -31,11 +30,6 @@ const router = createRouter({
       path: "/submit",
       name: "submit",
       component: PromptSubmissionView,
-    },
-    {
-      path: "/secured",
-      name: "loggedin",
-      component: LoggedInDatabaseView,
     },
     {
       path: '/prompt/:id',

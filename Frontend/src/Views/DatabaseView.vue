@@ -68,44 +68,71 @@ export default {
 </script>
 
 <style scoped>
+#prompt-library {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the filters container */
+  justify-content: center;
+  min-height: 70vh; /* Ensures the library takes full height of the viewport */
+  padding: 20px;
+  box-sizing: border-box; /* Ensures padding does not add to the width */
+}
+
 .filters {
   display: flex;
-  justify-content: center;
+  justify-content: space-around; /* Spaces out the children elements evenly */
   align-items: center;
-  gap: 20px;
-  padding: 20px 0;
+  width: 80%; /* Adjust this as necessary to control the width of the filters area */
+  max-width: 600px; /* Adjust this as necessary */
+  margin: auto; /* Centers the filters area horizontally */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
+  border-radius: 10px; /* Optional border radius for rounded corners */
+  background-color: #fff; /* Optional background color */
 }
 
-.filters label {
-  margin-right: 8px;
+.rating-range-container,
+.tag-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.filters select {
+.rating-range-container select,
+.tag-selector-container select,
+.filters button {
   padding: 10px;
-  margin-right: 8px;
+  margin: 5px 0; /* Adds margin to the top and bottom for spacing */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.tag-selector-container select {
+  width: 100%; /* Ensures the tag selector takes up the full width */
 }
 
 .filters button {
-  padding: 10px 20px;
   background-color: var(--button-color);
-  border: none;
   color: var(--white-text);
+  border: none;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 .filters button:hover {
   background-color: var(--button-highlight);
 }
 
-.tag-selector-container select {
-  width: 150px; /* Adjust width as necessary */
-}
-
-/* Add responsive design as needed */
 @media (max-width: 768px) {
   .filters {
     flex-direction: column;
+    width: 95%; /* Allows for a small margin on small screens */
+  }
+
+  .rating-range-container select,
+  .tag-selector-container select,
+  .filters button {
+    width: auto; /* Allows the elements to fit the content on small screens */
   }
 }
 </style>
