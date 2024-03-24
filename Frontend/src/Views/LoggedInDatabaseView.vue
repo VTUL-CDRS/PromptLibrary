@@ -1,79 +1,134 @@
-<script setup lang="ts">
+<script>
+import { ref, onMounted, computed } from 'vue';
+import axios from 'axios';
+
+export default {
+  setup() {
+    const selectedRating = ref('');
+    const selectedTag = ref('');
+    const tags = ref([]);
+    const prompts = ref([]);
+
+    onMounted(async () => {
+      tags.value = await fetchTags();
+      prompts.value = await fetchPrompts();
+    });
+
+    const fetchTags = async () => {
+      const response = await axios.get('/api/tags');
+      return response.data;
+    };
+
+    const fetchPrompts = async (rating = '', tag = '') => {
+      const response = await axios.get('/api/prompts', {
+        params: { rating, tag },
+      });
+      return response.data;
+    };
+
+    const filterPrompts = async () => {
+      prompts.value = await fetchPrompts(selectedRating.value, selectedTag.value);
+    };
+
+    const filteredPrompts = computed(() => prompts.value);
+
+    return {
+      selectedRating,
+      selectedTag,
+      tags,
+      filterPrompts,
+      filteredPrompts,
+    };
+  },
+};
 </script>
 
 <template>
-  <div class="database-view-container">
-    <aside class="filter-sidebar">
-      <h2>Filter By...</h2>
-      <!-- Filter options go here -->
-    </aside>
-    <section class="prompts-container">
-      <!-- Hardcoded prompts for demonstration -->
-      <div class="prompt" v-for="n in 4" :key="n">
-        <h3>Category Here</h3>
-        <p>xxxxxxxxxxxxxxxxxxxxxxxx</p>
-        <a href="#">See sample here</a>
-      </div>
-    </section>
-  </div>
-  <div>
-    <input class="submit-button" type="submit" value="Submit a prompt" />
-  </div>
+  <div id="prompt-library">
+    <!-- Add dropdown for ratings -->
+    <select v-model="selectedRating">
+      <option value="">Select Rating</option>
+      <option value="1">1 Star</option>
+      <!-- Add options for other star ratings -->
+    </select>
 
+    <!-- Add dropdown for tags -->
+    <select v-model="selectedTag">
+      <option value="">Select Tag</option>
+      <option v-for="tag in tags" :key="tag.name" :value="tag.name">{{ tag.name }}</option>
+    </select>
+
+    <button @click="filterPrompts">Filter</button>
+
+    <!-- List prompts -->
+    <div v-for="prompt in filteredPrompts" :key="prompt.id">
+      <!-- Display prompt information -->
+    </div>
+  </div>
 </template>
 
 
 
 <style scoped>
-.database-view-container {
+#prompt-library .filters {
   display: flex;
-  height: 100vh; /* Adjust height as needed, considering the header height */
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Adjust the space between elements */
+  margin-top: 20px; /* Add some space at the top */
 }
 
-.filter-sidebar {
-  width: 250px; /* or whatever width you prefer */
-  background-color: #e0e0e0; /* your grey background */
-  padding: 20px;
-  box-sizing: border-box; /* Include padding in width */
-  overflow-y: auto; /* In case filters exceed the height */
-}
-
-.prompts-container {
-  flex-grow: 1;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-height: 45rem;
-  max-width: 200rem;
-  overflow-y: auto; /* In case prompts exceed the height */
-}
-
-.prompt {
-  background-color: #f0f0f0; /* your prompt box background */
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border-radius: 4px;
-  transition: box-shadow 0.3s ease;
-}
-
-.prompt:hover {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.submit-button {
-  width: 20rem; /* Adjust as needed */
-  height: 3rem;
-  padding: 0.5em;
-  font-size: 1.4rem;
-  margin-top: 1em; /* Adjust space above the button */
-  margin-bottom: 1em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
+#prompt-library select {
+  padding: 10px 30px; /* Larger padding for a larger dropdown */
+  font-size: 1rem; /* Match the font size in global.css */
+  border: 2px solid var(--second-button-color); /* Use color from global.css */
+  border-radius: 20px; /* Rounded borders for style */
+  background-color: var(--background-color);
   color: var(--black-text);
   cursor: pointer;
 }
 
-/* Style the prompt content, like category titles, paragraphs, and links, as needed */
+#prompt-library button {
+  padding: 10px 30px;
+  font-size: 1rem;
+  background-color: var(--second-button-color); /* Match button color */
+  color: var(--white-text);
+  border: none; /* No border for button */
+  border-radius: 20px; /* Rounded borders to match the selects */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+#prompt-library button:hover {
+  background-color: var(--button-highlight); /* Color for hover state */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+  transform: translateY(-2px); /* Lift button on hover */
+}
+
+/* Container to center .filters horizontally and vertically */
+#prompt-library {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh; /* Use the full height of the viewport */
+}
+
+/* Ensure the .filters div is as wide as it needs to be while centered */
+#prompt-library .filters {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  #prompt-library .filters {
+    flex-direction: column;
+  }
+
+  #prompt-library select,
+  #prompt-library button {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
 </style>
+

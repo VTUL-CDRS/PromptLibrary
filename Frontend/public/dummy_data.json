@@ -1,0 +1,160 @@
+{
+    "prompts": [
+        {
+            "id": "f3c2a3d1-9c8a-42d5-9c8b-fda3k9d85a6a",
+            "prompt": "What is the capital of France?",
+            "response": "The capital of France is Paris.",
+            "image": "paris_image_url",
+            "rating": 4.5,
+            "approved": true,
+            "llmName": "gpt-3.5",
+            "createdAt": "2024-03-20T12:00:00Z",
+            "hasTag": [
+                {
+                    "tagName": "geography"
+                },
+                {
+                    "tagName": "europe"
+                }
+            ],
+            "BookMarked": [
+                {
+                    "accountID": "user_123"
+                },
+                {
+                    "accountID": "user_456"
+                }
+            ]
+        },
+        {
+            "id": "a4b5d6e7-8f9a-1b2c-3d4e-5f6g7h8i9j0k",
+            "prompt": "Explain Einstein's theory of relativity.",
+            "response": "Einstein's theory of relativity is based on two main ideas.",
+            "image": "relativity_theory_image_url",
+            "rating": 4.7,
+            "approved": false,
+            "llmName": "gpt-4",
+            "createdAt": "2024-03-21T15:45:00Z",
+            "hasTag": [
+                {
+                    "tagName": "science"
+                },
+                {
+                    "tagName": "physics"
+                }
+            ],
+            "BookMarked": [
+                {
+                    "accountID": "user_789"
+                },
+                {
+                    "accountID": "user_101"
+                }
+            ]
+        },
+        {
+            "id": "01f7c8d2-ee57-45e8-b8c9-f200a1e57ab1",
+            "prompt": "What is the largest animal in the world?",
+            "response": "The largest animal in the world is the blue whale.",
+            "image": "blue_whale_image_url",
+            "rating": 4.9,
+            "approved": true,
+            "llmName": "gpt-3",
+            "createdAt": "2024-03-22T09:30:00Z",
+            "hasTag": [
+                {
+                    "tagName": "animals"
+                },
+                {
+                    "tagName": "marine life"
+                }
+            ],
+            "BookMarked": [
+                {
+                    "accountID": "user_112"
+                },
+                {
+                    "accountID": "user_223"
+                }
+            ]
+        },
+        {
+            "id": "02e8d3c4-f561-47a2-832d-3344b5e6c7a8",
+            "prompt": "How does photosynthesis work?",
+            "response": "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize foods.",
+            "image": "photosynthesis_image_url",
+            "rating": 4.8,
+            "approved": false,
+            "llmName": "gpt-3.5",
+            "createdAt": "2024-03-23T11:20:00Z",
+            "hasTag": [
+                {
+                    "tagName": "biology"
+                },
+                {
+                    "tagName": "plants"
+                }
+            ],
+            "BookMarked": [
+                {
+                    "accountID": "user_334"
+                },
+                {
+                    "accountID": "user_445"
+                }
+            ]
+        },
+        {
+            "id": "03f9d4c5-b672-48d3-9acd-5567e6f7d8a9",
+            "prompt": "Give me a brief history of the Roman Empire.",
+            "response": "The Roman Empire was the post-Republican period of ancient Rome.",
+            "image": "roman_empire_image_url",
+            "rating": 4.6,
+            "approved": true,
+            "llmName": "gpt-4",
+            "createdAt": "2024-03-24T14:10:00Z",
+            "hasTag": [
+                {
+                    "tagName": "history"
+                },
+                {
+                    "tagName": "empires"
+                }
+            ],
+            "BookMarked": [
+                {
+                    "accountID": "user_556"
+                },
+                {
+                    "accountID": "user_667"
+                }
+            ]
+        },
+        {
+            "id": "04g0e1d6-c783-49f4-8aed-6678f9g0a1b2",
+            "prompt": "How do black holes form?",
+            "response": "Black holes are formed from the remnants of a large star that dies in a supernova explosion.",
+            "image": "black_hole_image_url",
+            "rating": 5.0,
+            "approved": true,
+            "llmName": "gpt-3",
+            "createdAt": "2024-03-25T16:55:00Z",
+            "hasTag": [
+                {
+                    "tagName": "astronomy"
+                },
+                {
+                    "tagName": "cosmology"
+                }
+            ],
+            "BookMarked": [
+                {
+                    "accountID": "user_778"
+                },
+                {
+                    "accountID": "user_889"
+                }
+            ]
+        }
+    ]
+}
