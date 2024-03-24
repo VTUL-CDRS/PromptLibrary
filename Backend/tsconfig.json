@@ -5,6 +5,10 @@
     "strict": true,
     "lib": ["esnext"],
     "module": "commonjs",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "@/*": ["./*"],
+      "@/prisma/*": ["./prisma/*"]
+    }
   }
 }
