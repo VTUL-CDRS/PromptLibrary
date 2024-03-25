@@ -9,6 +9,8 @@ const tagRoute = require("./routes/tag");
 app.use('/tag', tagRoute);
 const accountRoute = require("./routes/account");
 app.use('/account', accountRoute);
+const searchRoute = require("./routes/search");
+app.use('/search', accountRoute);
 
 // Basic get
 app.get("/", (_: Request, res: Response) => {
