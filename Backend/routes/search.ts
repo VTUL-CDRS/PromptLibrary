@@ -1,3 +1,4 @@
+import { searchPrompts } from "@/controllers/prompts";
 import { prisma } from "../lib/prisma";
 import express, {Request, Response} from 'express';
 
@@ -5,7 +6,7 @@ import express, {Request, Response} from 'express';
 const router = express.Router()
 
 // Get Request
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', searchPrompts, async (req: Request, res: Response) => {
   try {
     const tags = await prisma.tag.findMany();
     res.json(tags);
