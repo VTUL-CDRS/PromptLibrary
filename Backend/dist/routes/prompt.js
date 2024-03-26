@@ -63,6 +63,37 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); });
+// Get Request
+router.get('/tagsearch', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tags, prompts, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                tags = req.body.tags;
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        where: {
+                            hasTag: {
+                                some: {
+                                    tagName: {
+                                        in: tags
+                                    }
+                                }
+                            }
+                        }
+                    })];
+            case 1:
+                prompts = _a.sent();
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                res.status(500).json({ error: 'Failed to fetch users' });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 // Export Route
 module.exports = router;
 //# sourceMappingURL=prompt.js.map

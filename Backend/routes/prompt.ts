@@ -15,7 +15,7 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 // Get Request
-router.get('/', async (req: Request, res: Response) => {
+router.get('/tagsearch', async (req: Request, res: Response) => {
   try {
     const { tags } = req.body; // Grab the tags from the request body
     const prompts = await prisma.prompt.findMany({

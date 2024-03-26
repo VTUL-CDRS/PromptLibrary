@@ -14,6 +14,8 @@ var accountRoute = require("./routes/account");
 app.use('/account', accountRoute);
 var searchRoute = require("./routes/search");
 app.use('/search', accountRoute);
+var prompt = require("./routes/search");
+app.use('/prompt', accountRoute);
 // Basic get
 app.get("/", function (_, res) {
     res.send("HELLO");

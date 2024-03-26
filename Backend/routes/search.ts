@@ -1,4 +1,4 @@
-import { searchPrompts } from "@/controllers/prompts";
+import { searchPrompts } from "../controllers/prompts";
 import { prisma } from "../lib/prisma";
 import express, {Request, Response} from 'express';
 
