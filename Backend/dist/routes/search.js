@@ -40,21 +40,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var prompts_1 = require("../controllers/prompts");
-var prisma_1 = require("../lib/prisma");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
 // Get Request
-router.get('/', prompts_1.searchPrompts, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tags, error_1;
+router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prompts, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma_1.prisma.tag.findMany()];
+                return [4 /*yield*/, (0, prompts_1.searchPrompts)(req, res)];
             case 1:
-                tags = _a.sent();
-                res.json(tags);
+                prompts = _a.sent();
+                res.json(prompts);
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();

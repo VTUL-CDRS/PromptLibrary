@@ -6,10 +6,10 @@ import express, {Request, Response} from 'express';
 const router = express.Router()
 
 // Get Request
-router.get('/', searchPrompts, async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
-    const tags = await prisma.tag.findMany();
-    res.json(tags);
+    const prompts = await searchPrompts(req, res);
+    res.json(prompts);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch users' });
   }

@@ -13,9 +13,9 @@ app.use('/tag', tagRoute);
 var accountRoute = require("./routes/account");
 app.use('/account', accountRoute);
 var searchRoute = require("./routes/search");
-app.use('/search', accountRoute);
-var prompt = require("./routes/search");
-app.use('/prompt', accountRoute);
+app.use('/search', searchRoute);
+var promptRoute = require("./routes/prompt");
+app.use('/prompt', promptRoute);
 // Basic get
 app.get("/", function (_, res) {
     res.send("HELLO");
