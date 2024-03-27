@@ -9,10 +9,10 @@ const router = express.Router()
  */
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const tags = await prisma.tag.findMany();
+    const tags = await prisma.lLM.findMany();
     res.json(tags);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch tags' });
+    res.status(500).json({ error: 'Failed to fetch llms' });
   }
 });
 
@@ -24,10 +24,10 @@ router.get('/', async (req: Request, res: Response) => {
 router.post('/', async (req: Request, res: Response) => {
   // Need body
   try {
-    const newTag = await prisma.tag.create({data: req.body})
+    const newTag = await prisma.lLM.create({data: req.body})
     res.json(newTag);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to post tags' });
+    res.status(500).json({ error: 'Failed to post llms' });
   }
 });
 

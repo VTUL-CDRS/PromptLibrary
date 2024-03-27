@@ -40,20 +40,24 @@ exports.searchPrompts = void 0;
 var prisma_1 = require("../lib/prisma");
 var searchPrompts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts;
-    var _a, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
-            case 0:
-                console.log((_a = req.query.q) === null || _a === void 0 ? void 0 : _a.toString());
-                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
-                        where: {
-                            prompt: {
-                                search: (_b = req.query.q) === null || _b === void 0 ? void 0 : _b.toString()
-                            }
+    var _a, _b, _c;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
+            case 0: return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                    where: {
+                        prompt: {
+                            search: (_a = req.query.q) === null || _a === void 0 ? void 0 : _a.toString()
+                        },
+                        response: {
+                            search: (_b = req.query.q) === null || _b === void 0 ? void 0 : _b.toString()
+                        },
+                        llmName: {
+                            search: (_c = req.query.q) === null || _c === void 0 ? void 0 : _c.toString()
                         }
-                    })];
+                    }
+                })];
             case 1:
-                prompts = _c.sent();
+                prompts = _d.sent();
                 res.json(prompts);
                 return [2 /*return*/];
         }

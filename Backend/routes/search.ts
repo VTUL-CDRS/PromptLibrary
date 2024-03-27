@@ -4,7 +4,11 @@ import express, {Request, Response} from 'express';
 // Create the router object
 const router = express.Router()
 
-// Get Request
+/**
+ * Get request. Executes searchPrompts controller function.
+ * Prisma implemented Full Text Search
+ * Takes query from /search?q=
+ */
 router.get('/', async (req: Request, res: Response) => {
   try {
     const prompts = await searchPrompts(req, res);
