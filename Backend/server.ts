@@ -11,8 +11,8 @@ const accountRoute = require("./routes/account");
 app.use('/account', accountRoute);
 const searchRoute = require("./routes/search");
 app.use('/search', accountRoute);
-const prompt = require("./routes/search");
-app.use('/prompt', accountRoute);
+const promptRoute = require("./routes/prompt");
+app.use('/prompt', promptRoute);
 
 // Basic get
 app.get("/", (_: Request, res: Response) => {
