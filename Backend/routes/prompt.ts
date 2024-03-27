@@ -17,21 +17,27 @@ router.get('/', async (req: Request, res: Response) => {
 // Get Request
 router.get('/tagsearch', async (req: Request, res: Response) => {
   try {
-    const { tags } = req.body; // Grab the tags from the request body
-    const prompts = await prisma.prompt.findMany({
-      where: {
-        hasTag: {
-          some: {
-            tagName: {
-              in: tags
+    const { tags } = req.query; 
+    console.log(tags);
+    if (typeof tags === 'string') {
+      const tagArray = tags.split(',');
+      const prompts = await prisma.prompt.findMany({
+        where: {
+          hasTag: {
+            some: {
+              tagName: {
+                in: tagArray
+              }
             }
           }
         }
-      }
-    });
-    res.json(prompts);
+      });
+      res.json(prompts);
+    } else {
+      throw new Error('Tags must be provided as a comma-separated list');
+    }
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch users' });
+    res.status(500).json({ error: 'Failed to fetch prompts' });
   }
 });
 
