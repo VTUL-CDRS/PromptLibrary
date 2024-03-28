@@ -6,9 +6,12 @@
     "lib": ["esnext"],
     "module": "commonjs",
     "esModuleInterop": true,
+
+    /* Path Alias */
+    "baseUrl": "./",
     "paths": {
       "@/*": ["./*"],
-      "@/lib/*": ["./lib/*"],
+      "@/lib": ["./lib"]
     }
   }
 }

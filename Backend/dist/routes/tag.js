@@ -43,7 +43,9 @@ var prisma_1 = require("../lib/prisma");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
-// Get Request
+/**
+ * Get function. Not id specific
+ */
 router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tags, error_1;
     return __generator(this, function (_a) {
@@ -57,7 +59,63 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch users' });
+                res.status(500).json({ error: 'Failed to fetch tags' });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+/**
+ * Post function. Just pushes a tag name
+ *
+ * The tag specics are: just the string name.
+ */
+router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var newTag, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, prisma_1.prisma.tag.create({ data: req.body })];
+            case 1:
+                newTag = _a.sent();
+                res.json(newTag);
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                res.status(500).json({ error: 'Failed to post tags' });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+/**
+ * Get function. Id specific
+ */
+router.get('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tagId, tag, error_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                tagId = req.params.id;
+                console.log(tagId);
+                return [4 /*yield*/, prisma_1.prisma.tag.findUnique({
+                        where: { name: tagId }
+                    })];
+            case 1:
+                tag = _a.sent();
+                // Check if the tag exists
+                if (tag) {
+                    res.json(tag);
+                }
+                else {
+                    res.status(404).json({ error: 'Tag not found' });
+                }
+                return [3 /*break*/, 3];
+            case 2:
+                error_3 = _a.sent();
+                res.status(500).json({ error: 'Failed to fetch tags' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

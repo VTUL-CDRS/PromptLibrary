@@ -13,6 +13,8 @@ const searchRoute = require("./routes/search");
 app.use('/search', searchRoute);
 const promptRoute = require("./routes/prompt");
 app.use('/prompt', promptRoute);
+const llmRoute = require("./routes/llm");
+app.use('/llm', llmRoute);
 
 // Basic get
 app.get("/", (_: Request, res: Response) => {

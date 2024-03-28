@@ -39,34 +39,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var prompts_1 = require("../controllers/prompts");
+var prisma_1 = require("@/lib/prisma");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
 /**
- * Get request. Executes searchPrompts controller function.
- * Prisma implemented Full Text Search
- * Takes query from /search?q=
+ * Get function. Id specific
  */
-router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var prompts, error_1;
+router.get('/tags/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tagId, tag, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, prompts_1.searchPrompts)(req, res)];
+                tagId = req.params.id;
+                console.log(tagId);
+                return [4 /*yield*/, prisma_1.prisma.tag.findUnique({
+                        where: { name: tagId }
+                    })];
             case 1:
-                prompts = _a.sent();
-                res.json(prompts);
+                tag = _a.sent();
+                // Check if the tag exists
+                if (tag) {
+                    res.json(tag);
+                }
+                else {
+                    res.status(404).json({ error: 'Tag not found' });
+                }
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch users' });
+                res.status(500).json({ error: 'Failed to fetch tags' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); });
-// Export Route
-module.exports = router;
-//# sourceMappingURL=search.js.map
+//# sourceMappingURL=tag.js.map
