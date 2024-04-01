@@ -20,7 +20,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 75vh;
   text-align: center;
   background-color: var(--background-color);
 }

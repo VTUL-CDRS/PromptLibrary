@@ -1,29 +1,18 @@
 <template>
   <div id="prompt-library">
     <div class="filters">
-      <!-- Dropdowns for Rating Range -->
-      <div class="rating-range-container">
-        <label for="rating-lower">Rating From:</label>
-        <select id="rating-lower" v-model="ratingRange.lower">
-          <option v-for="n in 10" :key="n" :value="n / 2">{{ n / 2 }}</option>
-        </select>
-
-        <label for="rating-upper">Rating To:</label>
-        <select id="rating-upper" v-model="ratingRange.upper">
-          <option v-for="n in 10" :key="n" :value="n / 2">{{ n / 2 }}</option>
-        </select>
-      </div>
-
-      <!-- Multi-select Dropdown for Tags -->
-      <div class="tag-selector-container">
-        <label for="tag-select">Select Tags:</label>
-        <select id="tag-select" v-model="selectedTags" multiple>
-          <option v-for="tag in tags" :key="tag" :value="tag">{{ tag }}</option>
-        </select>
-      </div>
+      Search:
+      <form class="search-bar">
+        <input type="text" placeholder="Enter key words to search"/>
+      </form>
+      Tags:
+      <form class="search-bar">
+        <input type="text" placeholder="Enter tags to search"/>
+        example: +code +vue_js -real
+      </form>
 
       <!-- Filter Button -->
-      <button @click="filterPrompts">Filter</button>
+      <button @click="filterPrompts" class ="filter-button">Filter</button>
     </div>
 
     <!-- List of Prompts will be rendered here -->
@@ -78,12 +67,34 @@ export default {
   box-sizing: border-box; /* Ensures padding does not add to the width */
 }
 
+.search-bar input[type="text"] {
+  width: 90%; /* Adjust the width as needed */
+  height: 5%;
+  padding: 0.5em; /* Makes the input taller and the text inside it larger */
+  font-size: 1em; /* Increase the font size for better readability */
+  border: 2px solid #aaa; /* Solid border with a light grey color */
+  border-radius: 25px; /* Rounded corners for the border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition for effects on focus */
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.filter-button {
+  width: 160px; /* Adjust as needed */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: var(--black-text);
+  cursor: pointer;
+}
+
 .filters {
-  display: flex;
-  justify-content: space-around; /* Spaces out the children elements evenly */
-  align-items: center;
-  width: 80%; /* Adjust this as necessary to control the width of the filters area */
-  max-width: 600px; /* Adjust this as necessary */
+  position: absolute;
+  float: left;
+  width: 25%; /* Adjust this as necessary to control the width of the filters area */
+  min-height: 20%;
   margin: auto; /* Centers the filters area horizontally */
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */

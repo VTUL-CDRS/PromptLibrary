@@ -25,19 +25,19 @@ function gmailLogIn(){
       </router-link>
     </div>
     <div v-if="!isLoggedIn()" class="">
-      <h2 @click="toggleDropdown" class="sign-in-container">Sign in</h2>
+      <h2 @click="toggleDropdown()" class="sign-in-container">Sign in</h2>
       <div v-if="dropdown" class="sign-in-dropdown">
 
         <button @click="gmailLogIn" class="input-button-google">Sign in with Gmail</button>
 
         <router-link to="/login" style="">
-          <button class="input-button-google">Sign in as Administrator</button>
+          <button class="input-button-google" @click="toggleDropdown()">Sign in as Administrator</button>
         </router-link>
 
       </div>
     </div>
     <div v-else class="">
-      <h2 @click="toggleDropdown" class="sign-in-container">Log out</h2>
+      <h2 @click="toggleDropdown()" class="sign-in-container">Log out</h2>
 
     </div>
   </header>

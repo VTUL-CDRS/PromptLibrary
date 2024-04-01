@@ -5,7 +5,6 @@
       <input type="text" placeholder="Username" />
       <input type="password" placeholder="Password" />
       <input class="input-button-login" type="submit" value="Login" />
-      <input class="input-button-google" type="submit" value="Log in with Gmail" />
     </form>
   </div>
 </template>
@@ -19,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 75vh;
 }
 
 .login-form {

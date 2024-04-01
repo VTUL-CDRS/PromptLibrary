@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Fixed footer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/NotFoundView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/NotFoundView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +55,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "9aea0ea0",
+    "git-widget-placeholder": "frontend-grind-flex",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
