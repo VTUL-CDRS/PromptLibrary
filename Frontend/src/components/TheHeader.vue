@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import "../assets/global.css";
+import {ref} from "vue";
 
-let dropdown = false;
+const dropdown = ref(false);
 function toggleDropdown() {
-  if (dropdown) {
-    dropdown = false;
-  }
-  else (dropdown = true);
+  dropdown.value = !dropdown.value
 }
 
 function isLoggedIn() {
-  return false;
+  return false; //make this true for now testing now.
 }
 
 function gmailLogIn(){
@@ -26,8 +24,8 @@ function gmailLogIn(){
         <h2 class="header-text">PromptLibrary</h2>
       </router-link>
     </div>
-    <div v-if="isLoggedIn" class="">
-      <button @click="toggleDropdown" class="sign-in-container">Sign in</button>
+    <div v-if="!isLoggedIn()" class="">
+      <h2 @click="toggleDropdown" class="sign-in-container">Sign in</h2>
       <div v-if="dropdown" class="sign-in-dropdown">
 
         <button @click="gmailLogIn" class="input-button-google">Sign in with Gmail</button>
@@ -38,7 +36,10 @@ function gmailLogIn(){
 
       </div>
     </div>
-    <div v-else class=""></div>
+    <div v-else class="">
+      <h2 @click="toggleDropdown" class="sign-in-container">Log out</h2>
+
+    </div>
   </header>
 </template>
 
