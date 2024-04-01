@@ -4,7 +4,7 @@ import "../assets/global.css";
 
 <style scoped>
 footer {
-  display: flex;
+  position: fixed;
   flex-direction: row;
   padding: 1rem;
   justify-content: space-between;

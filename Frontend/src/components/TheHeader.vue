@@ -19,6 +19,29 @@ function gmailLogIn(){
 
 </script>
 
+<template>
+  <header class="container">
+    <div class="">
+      <router-link to="/" style="">
+        <h2 class="header-text">PromptLibrary</h2>
+      </router-link>
+    </div>
+    <div v-if="isLoggedIn" class="">
+      <button @click="toggleDropdown" class="sign-in-container">Sign in</button>
+      <div v-if="dropdown" class="sign-in-dropdown">
+
+        <button @click="gmailLogIn" class="input-button-google">Sign in with Gmail</button>
+
+        <router-link to="/login" style="">
+          <button class="input-button-google">Sign in as Administrator</button>
+        </router-link>
+
+      </div>
+    </div>
+    <div v-else class=""></div>
+  </header>
+</template>
+
 <style scoped>
 header {
   display: flex;
@@ -71,25 +94,4 @@ header {
 
 </style>
 
-<template>
-  <header class="container">
-    <div class="">
-      <router-link to="/" style="">
-        <h2 class="header-text">PromptLibrary</h2>
-      </router-link>
-    </div>
-    <div v-if="isLoggedIn" class="">
-        <h2 @click="toggleDropdown" class="sign-in-container">Sign in</h2>
-        <div v-if="dropdown" class="sign-in-dropdown">
 
-          <button @click="gmailLogIn" class="input-button-google">Sign in with Gmail</button>
-
-          <router-link to="/login" style="">
-            <button class="input-button-google">Sign in as Administrator</button>
-          </router-link>
-
-        </div>
-    </div>
-    <div v-else class=""></div>
-  </header>
-</template>
