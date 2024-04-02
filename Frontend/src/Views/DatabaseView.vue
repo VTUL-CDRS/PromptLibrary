@@ -16,13 +16,23 @@
     </div>
 
     <!-- List of Prompts will be rendered here -->
-    <div v-for="prompt in filteredPrompts" :key="prompt.id">
+    <div class = "prompt-container"> <!--v-for="prompt in filteredPrompts" :key="prompt.id"-->
       <!-- Prompt details -->
+      <div class = "prompt-card">Sample card</div>
+      <div class = "prompt-card">Sample card</div>
+      <div class = "prompt-card">Sample card</div>
+      <div class = "prompt-card">Sample card</div>
+    </div>
+    <div>
+    <router-link to="/submit" style="">
+      <button class="submit-button">Submit a prompt</button> <!-- v-if = "true"-->
+    </router-link>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -92,7 +102,8 @@ export default {
 
 .filters {
   position: absolute;
-  float: left;
+  left: 2%;
+  top: 15%;
   width: 25%; /* Adjust this as necessary to control the width of the filters area */
   min-height: 20%;
   margin: auto; /* Centers the filters area horizontally */
@@ -100,6 +111,47 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
   border-radius: 10px; /* Optional border radius for rounded corners */
   background-color: #fff; /* Optional background color */
+}
+
+.submit-button {
+  position: absolute;
+  left: 3%;
+  bottom: 10%;
+  width: 25rem; /* Adjust as needed */
+  height: 3rem;
+  padding: 0.5em;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.prompt-container {
+  position: absolute;
+  left: 28%;
+  top: 15%;
+  width: 70%; /* Adjust this as necessary to control the width of the filters area */
+  min-height: 75%;
+  margin: auto; /* Centers the filters area horizontally */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
+  border-radius: 10px; /* Optional border radius for rounded corners */
+  background-color: #fff; /* Optional background color */
+}
+
+.prompt-card {
+  position: relative;
+  display: inline-block;
+  margin: 6px;
+  width: 24%; /* Adjust this as necessary to control the width of the filters area */
+  min-height: 170px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
+  border-radius: 10px; /* Optional border radius for rounded corners */
+  background-color: #ccc; /* Optional background color */
+  cursor: pointer;
 }
 
 .rating-range-container,

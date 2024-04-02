@@ -1,6 +1,6 @@
 <template>
   <div class="login-page-container">
-    <h1 class="header-text">Log In</h1>
+    <h1 class="header-text">Sign In</h1>
     <form class="login-form">
       <input type="text" placeholder="Username" />
       <input type="password" placeholder="Password" />
@@ -49,19 +49,6 @@
   border-radius: 4px;
   background-color: var(--button-color);
   color: var(--white-text);
-  cursor: pointer;
-}
-
-.input-button-google {
-  width: 20rem; /* Adjust as needed */
-  height: 3rem;
-  padding: 0.5em;
-  font-size: 1.4rem;
-  margin-top: 1em; /* Adjust space above the button */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  color: var(--black-text);
   cursor: pointer;
 }
 
