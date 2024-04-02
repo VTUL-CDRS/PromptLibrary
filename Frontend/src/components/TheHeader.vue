@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import "../assets/global.css";
 import {ref} from "vue";
+import { vOnClickOutside } from "@vueuse/components"
 
 const dropdown = ref(false);
 function toggleDropdown() {
   dropdown.value = !dropdown.value
+}
+
+function closeDropdown() {
+  if (dropdown) {
+    dropdown.value = false
+  }
 }
 
 function isLoggedIn() {
@@ -25,19 +32,19 @@ function gmailLogIn(){
       </router-link>
     </div>
     <div v-if="!isLoggedIn()" class="">
-      <h2 @click="toggleDropdown" class="sign-in-container">Sign in</h2>
-      <div v-if="dropdown" class="sign-in-dropdown">
+      <h2 @click="toggleDropdown()" class="sign-in-container">Sign in</h2>
+      <div v-if="dropdown" v-on-click-outside="closeDropdown" class="sign-in-dropdown">
 
-        <button @click="gmailLogIn" class="input-button-google">Sign in with Gmail</button>
+        <button @click="gmailLogIn; toggleDropdown()" class="google-button">Sign in with Gmail</button>
 
         <router-link to="/login" style="">
-          <button class="input-button-google">Sign in as Administrator</button>
+          <button class="button-not-google" @click="toggleDropdown()">Sign in as Administrator</button>
         </router-link>
 
       </div>
     </div>
     <div v-else class="">
-      <h2 @click="toggleDropdown" class="sign-in-container">Log out</h2>
+      <h2 @click="toggleDropdown()" class="sign-in-container">Log out</h2>
 
     </div>
   </header>
@@ -57,6 +64,7 @@ header {
 }
 
 .header-text {
+  margin-left:10px;
   color: var(--white-text);
 }
 
@@ -64,15 +72,40 @@ header {
   /*NOTE: This style will eventually need to be changed to meet Google's styling guidelines, which we can
   gank from their website.*/
   color: dodgerblue;
-  padding: 8px;
-  width: 160px;
   margin: 10px;
+  width: 160px; /* Adjust as needed */
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  display: block;
+  z-index: 3;
 }
+
+.button-not-google {
+   /*NOTE: This style will eventually need to be changed to meet Google's styling guidelines, which we can
+   gank from their website.*/
+   color: dodgerblue;
+   margin: 10px;
+   width: 160px; /* Adjust as needed */
+   padding: 8px;
+   border: 1px solid black;
+   border-radius: 4px;
+   background-color: white;
+   cursor: pointer;
+   display: block;
+  z-index: 3;
+ }
 
 .sign-in-dropdown {
   color: #ffffff;
-  background-color: var(--background-color);
+  background-color: white;
   position: absolute;
+  right: 42px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  z-index: 2;
+
 }
 
 .sign-in-container {
@@ -80,17 +113,7 @@ header {
   color: white;
   padding: 8px;
   margin: 10px;
-  cursor: pointer;
-}
-
-.input-button-google {
-  width: 160px; /* Adjust as needed */
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  color: var(--black-text);
-  cursor: pointer;
+  cursor: pointer
 }
 
 </style>
