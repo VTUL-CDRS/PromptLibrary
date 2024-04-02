@@ -9,9 +9,9 @@ router.get("/", async (req: Request, res: Response) => {
   try {
     const { ids } = req.query;
     if (typeof ids === "string") {
-      const idArray = ids.split("+").map(function(item) {
+      const idArray = ids.split("+").map(function (item) {
         return parseInt(item, 10);
-      })
+      });
       const prompts = await prisma.prompt.findMany({
         where: {
           id: {
