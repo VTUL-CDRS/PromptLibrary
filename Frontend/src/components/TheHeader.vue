@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import "../assets/global.css";
-import {ref} from "vue";
+import {ref, onMounted} from "vue";
 import { vOnClickOutside } from "@vueuse/components"
-import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged} from "firebase/auth";
+import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut} from "firebase/auth";
 import {useRouter} from 'vue-router';
 
 // const router = useRouter();
 const auth = getAuth();
-const user = auth.currentUser;
+const userState = ref(null);  // Use a ref to reactively store the user's state
+onMounted(() => {
+  onAuthStateChanged(auth, (user) => {
+    userState.value = user ? user : null;
+  });
+});
 
 const dropdown = ref(false);
 function toggleDropdown() {
@@ -18,19 +23,6 @@ function closeDropdown() {
   if (dropdown) {
     dropdown.value = false
   }
-}
-
-const isLoggedIn = () => {
-  console.log("checking if the user is logged in")
-  onAuthStateChanged(getAuth(), (user) => {
-    if (user) {
-      console.log("user logged in", user)
-      return true
-    } else {
-      console.log("user not logged in")
-      return false
-    }
-  });
 }
 
 const signInWithGoogle = () => {
@@ -45,6 +37,14 @@ const signInWithGoogle = () => {
       })
 }
 
+const signOutUser = () => {
+  signOut(auth).then(() => {
+    console.log("user signed out");
+  }).catch((error) => {
+    console.log("Error when signing out", error);
+  });
+};
+
 </script>
 
 <template>
@@ -54,7 +54,7 @@ const signInWithGoogle = () => {
         <h2 class="header-text">PromptLibrary</h2>
       </router-link>
     </div>
-    <div v-if="!isLoggedIn()" class="">
+    <div v-if="!userState" class="">
       <h2 @click="toggleDropdown()" class="sign-in-container">Sign in</h2>
       <div v-if="dropdown" v-on-click-outside="closeDropdown" class="sign-in-dropdown">
 
@@ -67,8 +67,7 @@ const signInWithGoogle = () => {
       </div>
     </div>
     <div v-else class="">
-      <h2 @click="toggleDropdown();" class="sign-in-container">Log out</h2>
-
+      <h2 @click="toggleDropdown(); signOutUser()" class="sign-in-container">Log out</h2>
     </div>
   </header>
 </template>
