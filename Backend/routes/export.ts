@@ -6,11 +6,12 @@ const router = express.Router();
 
 // Search for and return a JSON object of prompts with the id
 router.get("/", async (req: Request, res: Response) => {
-  /*
   try {
     const { ids } = req.query;
     if (typeof ids === "string") {
-      const idArray = ids.split("+");
+      const idArray = ids.split("+").map(function(item) {
+        return parseInt(item, 10);
+      })
       const prompts = await prisma.prompt.findMany({
         where: {
           id: {
@@ -24,7 +25,7 @@ router.get("/", async (req: Request, res: Response) => {
     }
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
-  }*/
+  }
 });
 
 // Export Route
