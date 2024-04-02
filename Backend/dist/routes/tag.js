@@ -99,7 +99,6 @@ router.get('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 tagId = req.params.id;
-                console.log(tagId);
                 return [4 /*yield*/, prisma_1.prisma.tag.findUnique({
                         where: { name: tagId }
                     })];
@@ -115,6 +114,37 @@ router.get('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0
                 return [3 /*break*/, 3];
             case 2:
                 error_3 = _a.sent();
+                res.status(500).json({ error: 'Failed to fetch tags' });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+/**
+ * Delete function. Id specific
+ */
+router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tagId, tag, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                tagId = req.params.id;
+                return [4 /*yield*/, prisma_1.prisma.tag.delete({
+                        where: { name: tagId }
+                    })];
+            case 1:
+                tag = _a.sent();
+                // Check if the tag exists
+                if (tag) {
+                    res.json(tag);
+                }
+                else {
+                    res.status(404).json({ error: 'Tag not found' });
+                }
+                return [3 /*break*/, 3];
+            case 2:
+                error_4 = _a.sent();
                 res.status(500).json({ error: 'Failed to fetch tags' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

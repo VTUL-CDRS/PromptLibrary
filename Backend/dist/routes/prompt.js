@@ -44,7 +44,7 @@ var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
 // Get Request
-router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tags, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -57,14 +57,16 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch users' });
+                res.status(500).json({ error: "Failed to fetch users" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); });
-// Get Request
-router.get('/tagsearch', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+/**
+ * Tag search. Filter by however many tags are inputted.
+ */
+router.get("/tagsearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tags, tagArray, prompts, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -72,30 +74,92 @@ router.get('/tagsearch', function (req, res) { return __awaiter(void 0, void 0, 
                 _a.trys.push([0, 4, , 5]);
                 tags = req.query.tags;
                 console.log(tags);
-                if (!(typeof tags === 'string')) return [3 /*break*/, 2];
-                tagArray = tags.split('+');
+                if (!(typeof tags === "string")) return [3 /*break*/, 2];
+                tagArray = tags.split("+");
                 return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
                         where: {
                             hasTag: {
                                 some: {
                                     tagName: {
-                                        in: tagArray
-                                    }
-                                }
-                            }
-                        }
+                                        in: tagArray,
+                                    },
+                                },
+                            },
+                        },
                     })];
             case 1:
                 prompts = _a.sent();
                 res.json(prompts);
                 return [3 /*break*/, 3];
-            case 2: throw new Error('Tags must be provided as a comma-separated list');
+            case 2: throw new Error("Tags must be provided as a comma-separated list");
             case 3: return [3 /*break*/, 5];
             case 4:
                 error_2 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch prompts' });
+                res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 5];
             case 5: return [2 /*return*/];
+        }
+    });
+}); });
+/**
+ * Get function. Id specific
+ */
+router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tagId, tag, error_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                tagId = req.params.id;
+                return [4 /*yield*/, prisma_1.prisma.prompt.findUnique({
+                        where: { id: parseInt(tagId) },
+                    })];
+            case 1:
+                tag = _a.sent();
+                // Check if the tag exists
+                if (tag) {
+                    res.json(tag);
+                }
+                else {
+                    res.status(404).json({ error: "Tag not found" });
+                }
+                return [3 /*break*/, 3];
+            case 2:
+                error_3 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch tags" });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+/**
+ * Delete function. Id specific
+ */
+router.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tagId, tag, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                tagId = req.params.id;
+                return [4 /*yield*/, prisma_1.prisma.prompt.delete({
+                        where: { id: parseInt(tagId) },
+                    })];
+            case 1:
+                tag = _a.sent();
+                // Check if the tag exists
+                if (tag) {
+                    res.json(tag);
+                }
+                else {
+                    res.status(404).json({ error: "Tag not found" });
+                }
+                return [3 /*break*/, 3];
+            case 2:
+                error_4 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch tags" });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); });
