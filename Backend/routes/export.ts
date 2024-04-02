@@ -7,7 +7,7 @@ const router = express.Router();
 // Search for and return a JSON object of prompts with the id
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const { ids } = req.query;
+    const ids = req.query.ids;
     if (typeof ids === "string") {
       const idArray = ids.split("+").map(function (item) {
         return parseInt(item, 10);
