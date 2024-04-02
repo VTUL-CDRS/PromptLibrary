@@ -16,6 +16,7 @@ router.get("/", async (req: Request, res: Response) => {
 
 /**
  * Tag search. Filter by however many tags are inputted.
+ * /prompt/tagsearch?tags=Cooking
  */
 router.get("/tagsearch", async (req: Request, res: Response) => {
   try {
