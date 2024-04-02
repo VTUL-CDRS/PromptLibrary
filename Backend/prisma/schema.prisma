@@ -15,7 +15,7 @@ datasource db {
 //---------------------------------------------
 // Prisma supports JSON objects if we want to use that
 model Prompt {
-  id         String       @id @default(uuid())
+  id         Int       @id @default(autoincrement())
   prompt     String
   response   String
   image      String
@@ -24,14 +24,12 @@ model Prompt {
   llmName    String
   createdAt  DateTime     @updatedAt
   hasTag     HasTag[]
-  BookMarked BookMarked[]
   llm        LLM          @relation(fields: [llmName], references: [llmName])
 }
 
 model Account {
   id          String       @id @default(uuid())
   isModerator Boolean
-  bookMarked  BookMarked[]
 }
 
 model Tag {
@@ -44,16 +42,9 @@ model LLM {
   Prompt  Prompt[]
 }
 
-model BookMarked {
-  accountID String  @id
-  promptID  String
-  account   Account @relation(fields: [accountID], references: [id]) // 1-many
-  prompt    Prompt  @relation(fields: [promptID], references: [id]) // 1-many
-}
-
 model HasTag {
   tagName  String @id
-  promptID String
+  promptID Int
   prompt   Prompt @relation(fields: [promptID], references: [id]) // 1-Many
   tag      Tag    @relation(fields: [tagName], references: [name]) // 1-Many
 }
