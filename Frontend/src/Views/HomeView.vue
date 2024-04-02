@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center; /* this will vertically center your items */
   justify-content: center; /* this will horizontally center your items */
-  height: 75vh; /* this makes the container take full viewport height */
+  min-height: 75vh; /* this makes the container take full viewport height */
   gap: 0.5rem; /* this adds space between your child elements */
 }
 

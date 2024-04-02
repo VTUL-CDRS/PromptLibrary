@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Moved dropdown buttons to make sense, installed vueuse and vueuse/component to make dropdown disappear on click outside box.">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Add global gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheFooter.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711933788496</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add global gitignore">
+      <created>1712067147721</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712067147721</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +171,7 @@
     <MESSAGE value="Fixed footer" />
     <MESSAGE value="Fixed another footer, removed gmail button from admin login, redid databaseview. TODO: CSS for all&#10;&#10;For database view: Move filter box to top left corner, make another container for prompt cards and put them in a vertical box." />
     <MESSAGE value="Moved dropdown buttons to make sense, installed vueuse and vueuse/component to make dropdown disappear on click outside box." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved dropdown buttons to make sense, installed vueuse and vueuse/component to make dropdown disappear on click outside box." />
+    <MESSAGE value="Add global gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add global gitignore" />
   </component>
 </project>
