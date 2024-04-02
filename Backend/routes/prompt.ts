@@ -14,7 +14,9 @@ router.get('/', async (req: Request, res: Response) => {
   }
 });
 
-// Get Request
+/**
+ * Tag search. Filter by however many tags are inputted.
+ */
 router.get('/tagsearch', async (req: Request, res: Response) => {
   try {
     const { tags } = req.query; 
