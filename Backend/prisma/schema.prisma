@@ -15,7 +15,7 @@ datasource db {
 //---------------------------------------------
 // Prisma supports JSON objects if we want to use that
 model Prompt {
-  id         String       @id @default(uuid())
+  id         Int       @id @default(autoincrement())
   prompt     String
   response   String
   image      String
@@ -44,7 +44,7 @@ model LLM {
 
 model HasTag {
   tagName  String @id
-  promptID String
+  promptID Int
   prompt   Prompt @relation(fields: [promptID], references: [id]) // 1-Many
   tag      Tag    @relation(fields: [tagName], references: [name]) // 1-Many
 }
