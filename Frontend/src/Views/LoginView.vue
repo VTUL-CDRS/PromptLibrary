@@ -2,15 +2,32 @@
   <div class="login-page-container">
     <h1 class="header-text">Log In</h1>
     <form class="login-form">
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
+      <input type="text" placeholder="Username"/>
+      <input type="password" placeholder="Password"/>
       <input class="input-button-login" type="submit" value="Login" />
-      <input class="input-button-google" type="submit" value="Log in with Gmail" />
     </form>
+    <button class="input-button-google" @click="signInWithGoogle">Log on with Gmail</button>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
+import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import {useRouter} from 'vue-router';
+
+const router = useRouter();
+
+const signInWithGoogle = () => {
+  console.log("clicked sign in with gmail");
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(getAuth(), provider)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log("Error logging in with google", error);
+      })
+}
+
 </script>
 
 <style scoped>
