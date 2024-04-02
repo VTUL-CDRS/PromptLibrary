@@ -25,7 +25,6 @@ initializeApp(firebaseConfig);
 const app = createApp(App);
 // const auth = getAuth(app);
 
-
 app.use(router);
 
 app.mount("#app");

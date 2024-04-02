@@ -24,7 +24,7 @@ const isLoggedIn = () => {
   console.log("checking if the user is logged in")
   onAuthStateChanged(getAuth(), (user) => {
     if (user) {
-      console.log("user logged in")
+      console.log("user logged in", user)
       return true
     } else {
       console.log("user not logged in")
@@ -58,7 +58,7 @@ const signInWithGoogle = () => {
       <h2 @click="toggleDropdown()" class="sign-in-container">Sign in</h2>
       <div v-if="dropdown" v-on-click-outside="closeDropdown" class="sign-in-dropdown">
 
-        <button @click="signInWithGoogle(); toggleDropdown(); !isLoggedIn" class="google-button">Sign in with Gmail</button>
+        <button @click="signInWithGoogle(); toggleDropdown(); " class="google-button">Sign in with Gmail</button>
 
         <router-link to="/login" style="">
           <button class="button-not-google" @click="toggleDropdown()">Sign in as Administrator</button>
@@ -67,7 +67,7 @@ const signInWithGoogle = () => {
       </div>
     </div>
     <div v-else class="">
-      <h2 @click="toggleDropdown(); isLoggedIn" class="sign-in-container">Log out</h2>
+      <h2 @click="toggleDropdown();" class="sign-in-container">Log out</h2>
 
     </div>
   </header>
