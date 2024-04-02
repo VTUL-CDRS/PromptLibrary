@@ -23,7 +23,7 @@ router.get('/', async (req: Request, res: Response) => {
  * Exact same req body requirements as tag searching.
  *  Must be an array of strings. Each tag is split by '+'
  */
-router.get('/', async (req: Request, res: Response) => {
+router.get('/tagSearch', async (req: Request, res: Response) => {
   try {
     const prompts = await searchPromptsTags(req, res);
     res.json(prompts);
