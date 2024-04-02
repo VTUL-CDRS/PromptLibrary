@@ -24,14 +24,12 @@ model Prompt {
   llmName    String
   createdAt  DateTime     @updatedAt
   hasTag     HasTag[]
-  BookMarked BookMarked[]
   llm        LLM          @relation(fields: [llmName], references: [llmName])
 }
 
 model Account {
   id          String       @id @default(uuid())
   isModerator Boolean
-  bookMarked  BookMarked[]
 }
 
 model Tag {
@@ -42,13 +40,6 @@ model Tag {
 model LLM {
   llmName String   @id
   Prompt  Prompt[]
-}
-
-model BookMarked {
-  accountID String  @id
-  promptID  String
-  account   Account @relation(fields: [accountID], references: [id]) // 1-many
-  prompt    Prompt  @relation(fields: [promptID], references: [id]) // 1-many
 }
 
 model HasTag {
