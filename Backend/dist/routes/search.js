@@ -67,6 +67,30 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); });
+/**
+ * Tag Searching AND Full Text Search
+ * Exact same req body requirements as tag searching.
+ *  Must be an array of strings. Each tag is split by '+'
+ */
+router.get('/tagSearch', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prompts, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, (0, prompts_1.searchPromptsTags)(req, res)];
+            case 1:
+                prompts = _a.sent();
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                res.status(500).json({ error: 'Failed to fetch users' });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 // Export Route
 module.exports = router;
 //# sourceMappingURL=search.js.map

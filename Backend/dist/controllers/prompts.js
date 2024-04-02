@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.searchPrompts = void 0;
+exports.searchPromptsTags = exports.searchPrompts = void 0;
 var prisma_1 = require("../lib/prisma");
 var searchPrompts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts;
@@ -64,4 +64,49 @@ var searchPrompts = function (req, res) { return __awaiter(void 0, void 0, void 
     });
 }); };
 exports.searchPrompts = searchPrompts;
+var searchPromptsTags = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tags, tagArray, prompts, error_1;
+    var _a, _b, _c;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
+            case 0:
+                _d.trys.push([0, 4, , 5]);
+                tags = req.query.tags;
+                if (!(typeof tags === 'string')) return [3 /*break*/, 2];
+                tagArray = tags.split('+');
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        where: {
+                            prompt: {
+                                search: (_a = req.query.q) === null || _a === void 0 ? void 0 : _a.toString()
+                            },
+                            response: {
+                                search: (_b = req.query.q) === null || _b === void 0 ? void 0 : _b.toString()
+                            },
+                            llmName: {
+                                search: (_c = req.query.q) === null || _c === void 0 ? void 0 : _c.toString()
+                            },
+                            hasTag: {
+                                some: {
+                                    tagName: {
+                                        in: tagArray
+                                    }
+                                }
+                            }
+                        }
+                    })];
+            case 1:
+                prompts = _d.sent();
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2: throw new Error('Tags must be provided as a comma-separated list');
+            case 3: return [3 /*break*/, 5];
+            case 4:
+                error_1 = _d.sent();
+                res.status(500).json({ error: 'Failed to fetch prompts' });
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
+    });
+}); };
+exports.searchPromptsTags = searchPromptsTags;
 //# sourceMappingURL=prompts.js.map

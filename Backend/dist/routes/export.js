@@ -39,87 +39,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var prisma_1 = require("../lib/prisma");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
-/**
- * Get function. Not id specific
- */
-router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tags, error_1;
+// Search for and return a JSON object of prompts with the id
+router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma_1.prisma.lLM.findMany()];
-            case 1:
-                tags = _a.sent();
-                res.json(tags);
-                return [3 /*break*/, 3];
-            case 2:
-                error_1 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch llms' });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-/**
- * Post function. Just pushes a tag name
- *
- * The tag specics are: just the string name.
- */
-router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var newTag, error_2;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma_1.prisma.lLM.create({ data: req.body })];
-            case 1:
-                newTag = _a.sent();
-                res.json(newTag);
-                return [3 /*break*/, 3];
-            case 2:
-                error_2 = _a.sent();
-                res.status(500).json({ error: 'Failed to post llms' });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-/**
- * Delete function. Id specific
- */
-router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tagId, tag, error_3;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                tagId = req.params.id;
-                return [4 /*yield*/, prisma_1.prisma.lLM.delete({
-                        where: { llmName: tagId }
-                    })];
-            case 1:
-                tag = _a.sent();
-                // Check if the tag exists
-                if (tag) {
-                    res.json(tag);
-                }
-                else {
-                    res.status(404).json({ error: 'Tag not found' });
-                }
-                return [3 /*break*/, 3];
-            case 2:
-                error_3 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch tags' });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
+        return [2 /*return*/];
     });
 }); });
 // Export Route
 module.exports = router;
-//# sourceMappingURL=llm.js.map
+//# sourceMappingURL=export.js.map
