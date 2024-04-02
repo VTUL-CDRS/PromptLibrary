@@ -45,15 +45,15 @@ var express_1 = __importDefault(require("express"));
 var router = express_1.default.Router();
 // Get Request
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tags, error_1;
+    var prompts, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma_1.prisma.tag.findMany()];
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany()];
             case 1:
-                tags = _a.sent();
-                res.json(tags);
+                prompts = _a.sent();
+                res.json(prompts);
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
@@ -73,6 +73,7 @@ router.get("/tagsearch", function (req, res) { return __awaiter(void 0, void 0, 
             case 0:
                 _a.trys.push([0, 4, , 5]);
                 tags = req.query.tags;
+                //const { tags } = req.query;
                 console.log(tags);
                 if (!(typeof tags === "string")) return [3 /*break*/, 2];
                 tagArray = tags.split("+");

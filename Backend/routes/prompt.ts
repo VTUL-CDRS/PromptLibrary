@@ -7,8 +7,8 @@ const router = express.Router();
 // Get Request
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const tags = await prisma.tag.findMany();
-    res.json(tags);
+    const prompts = await prisma.prompt.findMany();
+    res.json(prompts);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch users" });
   }
@@ -16,10 +16,12 @@ router.get("/", async (req: Request, res: Response) => {
 
 /**
  * Tag search. Filter by however many tags are inputted.
+ * /prompt/tagsearch?tags=Cooking
  */
 router.get("/tagsearch", async (req: Request, res: Response) => {
   try {
-    const { tags } = req.query;
+    const tags = req.query.tags;
+    //const { tags } = req.query;
     console.log(tags);
     if (typeof tags === "string") {
       const tagArray = tags.split("+");
