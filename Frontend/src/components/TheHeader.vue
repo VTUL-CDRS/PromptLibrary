@@ -2,6 +2,12 @@
 import "../assets/global.css";
 import {ref} from "vue";
 import { vOnClickOutside } from "@vueuse/components"
+import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged} from "firebase/auth";
+import {useRouter} from 'vue-router';
+
+// const router = useRouter();
+const auth = getAuth();
+const user = auth.currentUser;
 
 const dropdown = ref(false);
 function toggleDropdown() {
@@ -14,12 +20,29 @@ function closeDropdown() {
   }
 }
 
-function isLoggedIn() {
-  return false; //make this true for now testing now.
+const isLoggedIn = () => {
+  console.log("checking if the user is logged in")
+  onAuthStateChanged(getAuth(), (user) => {
+    if (user) {
+      console.log("user logged in")
+      return true
+    } else {
+      console.log("user not logged in")
+      return false
+    }
+  });
 }
 
-function gmailLogIn(){
-
+const signInWithGoogle = () => {
+  console.log("clicked sign in with gmail");
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(getAuth(), provider)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log("Error logging in with google", error);
+      })
 }
 
 </script>
@@ -35,7 +58,7 @@ function gmailLogIn(){
       <h2 @click="toggleDropdown()" class="sign-in-container">Sign in</h2>
       <div v-if="dropdown" v-on-click-outside="closeDropdown" class="sign-in-dropdown">
 
-        <button @click="gmailLogIn; toggleDropdown()" class="google-button">Sign in with Gmail</button>
+        <button @click="signInWithGoogle(); toggleDropdown(); !isLoggedIn" class="google-button">Sign in with Gmail</button>
 
         <router-link to="/login" style="">
           <button class="button-not-google" @click="toggleDropdown()">Sign in as Administrator</button>
@@ -44,7 +67,7 @@ function gmailLogIn(){
       </div>
     </div>
     <div v-else class="">
-      <h2 @click="toggleDropdown()" class="sign-in-container">Log out</h2>
+      <h2 @click="toggleDropdown(); isLoggedIn" class="sign-in-container">Log out</h2>
 
     </div>
   </header>
