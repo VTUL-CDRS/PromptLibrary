@@ -29,7 +29,7 @@ router.get("/tagsearch", async (req: Request, res: Response) => {
         where: {
           hasTag: {
             some: {
-              tagName: {
+              tagId: {
                 in: tagArray,
               },
             },
