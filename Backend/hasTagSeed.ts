@@ -1,10 +1,10 @@
 export const hasTags = [
-    {tagName: "Science", promptID: 1},
-    {tagName: "History", promptID: 1},
-    {tagName: "Science", promptID: 2},
-    {tagName: "Literature", promptID: 2},
-    {tagName: "Art", promptID: 3},
-    {tagName: "History", promptID: 4},
-    {tagName: "Technology", promptID: 4},
-    {tagName: "Literature", promptID: 5}
+  { promptId: 1, tagId: "Science" },
+  { promptId: 1, tagId: "History" },
+  { promptId: 2, tagId: "Science" },
+  { promptId: 2, tagId: "Literature" },
+  { promptId: 3, tagId: "Art" },
+  { promptId: 4, tagId: "History" },
+  { promptId: 4, tagId: "Technology" },
+  { promptId: 5, tagId: "Literature" }
   ]
