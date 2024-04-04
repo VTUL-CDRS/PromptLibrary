@@ -15,6 +15,8 @@ const promptRoute = require("./routes/prompt");
 app.use('/prompt', promptRoute);
 const llmRoute = require("./routes/llm");
 app.use('/llm', llmRoute);
+const exportRoute = require("./routes/export");
+app.use('/export', exportRoute);
 
 // Basic get
 app.get("/", (_: Request, res: Response) => {

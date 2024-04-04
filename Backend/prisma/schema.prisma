@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
 }
 
@@ -15,26 +15,26 @@ datasource db {
 //---------------------------------------------
 // Prisma supports JSON objects if we want to use that
 model Prompt {
-  id         Int       @id @default(autoincrement())
-  prompt     String
-  response   String
-  image      String
-  rating     Float
-  approved   Boolean
-  llmName    String
-  createdAt  DateTime     @updatedAt
-  hasTag     HasTag[]
-  llm        LLM          @relation(fields: [llmName], references: [llmName])
+  id        Int      @id @default(autoincrement())
+  prompt    String
+  response  String
+  image     String
+  rating    Float
+  approved  Boolean
+  llmName   String
+  createdAt DateTime @updatedAt
+  hasTag    HasTag[]
+  llm       LLM      @relation(fields: [llmName], references: [llmName])
 }
 
 model Account {
-  id          Int       @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   isModerator Boolean
 }
 
 model Tag {
   name   String   @id
-  HasTag HasTag[]
+  hasTag HasTag[]
 }
 
 model LLM {
@@ -43,8 +43,11 @@ model LLM {
 }
 
 model HasTag {
-  tagName  String @id
-  promptID Int
-  prompt   Prompt @relation(fields: [promptID], references: [id]) // 1-Many
-  tag      Tag    @relation(fields: [tagName], references: [name]) // 1-Many
+  promptId Int
+  prompt   Prompt @relation(fields: [promptId], references: [id]) // 1-Many
+
+  tagId String
+  tag   Tag    @relation(fields: [tagId], references: [name]) // 1-Many
+
+  @@id([promptId, tagId])
 }
