@@ -18,8 +18,25 @@
     <!-- List of Prompts will be rendered here -->
     <div class = "prompt-container"> <!--v-for="prompt in filteredPrompts" :key="prompt.id"-->
       <!-- Prompt details -->
-      <div class = "prompt-card">Sample card</div>
-      <div class = "prompt-card">Sample card</div>
+      <div class = "prompt-card">
+        Title: <br>
+        Prompt summary:<br>
+        Response summary:<br>
+        First 3 tags: <br>
+      </div>
+      <div class = "prompt-card">
+        Sample card<br>
+        These<br>
+        Cards<br>
+        Will<br>
+        Be<br>
+        Scrollable<br>
+        Because<br>
+        Scrollable<br>
+        Cards<br>
+        Are<br>
+        Cool<br>
+      </div>
       <div class = "prompt-card">Sample card</div>
       <div class = "prompt-card">Sample card</div>
     </div>
@@ -72,7 +89,7 @@ export default {
   flex-direction: column;
   align-items: center; /* Centers the filters container */
   justify-content: center;
-  min-height: 70vh; /* Ensures the library takes full height of the viewport */
+  min-height: 75vh; /* Ensures the library takes full height of the viewport */
   padding: 20px;
   box-sizing: border-box; /* Ensures padding does not add to the width */
 }
@@ -104,7 +121,7 @@ export default {
   position: absolute;
   left: 2%;
   top: 15%;
-  width: 25%; /* Adjust this as necessary to control the width of the filters area */
+  max-width: 25%; /* Adjust this as necessary to control the width of the filters area */
   min-height: 20%;
   margin: auto; /* Centers the filters area horizontally */
   padding: 20px;
@@ -115,9 +132,11 @@ export default {
 
 .submit-button {
   position: absolute;
-  left: 3%;
+  flex-shrink: 1;
+  /*font-size-adjust: ;*/
+  left: 4%;
   bottom: 10%;
-  width: 25rem; /* Adjust as needed */
+  width: 20%; /* Adjust as needed */
   height: 3rem;
   padding: 0.5em;
   font-size: 1.4rem;
@@ -130,12 +149,13 @@ export default {
 
 .prompt-container {
   position: absolute;
-  left: 28%;
+  display: table-row;
+  left: 28.5%;
   top: 15%;
   width: 70%; /* Adjust this as necessary to control the width of the filters area */
-  min-height: 75%;
-  margin: auto; /* Centers the filters area horizontally */
+  height: 75%;
   padding: 20px;
+  margin:auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
   border-radius: 10px; /* Optional border radius for rounded corners */
   background-color: #fff; /* Optional background color */
@@ -144,10 +164,14 @@ export default {
 .prompt-card {
   position: relative;
   display: inline-block;
-  margin: 6px;
-  width: 24%; /* Adjust this as necessary to control the width of the filters area */
-  min-height: 170px;
-  padding: 20px;
+  overflow-wrap: break-word;
+  overflow: scroll;
+  float: left;
+  margin: 0.5%;
+  margin-bottom: 1%;
+  width: 32.33%; /* Adjust this as necessary to control the width of the filters area */
+  height: 30%;
+  padding: 1%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
   border-radius: 10px; /* Optional border radius for rounded corners */
   background-color: #ccc; /* Optional background color */

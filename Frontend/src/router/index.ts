@@ -66,7 +66,6 @@ router.beforeEach(async (to, from, next) =>{
       next();
     } else {
       alert("Error: not logged in");
-      next("/");
     }
   } else {
     next();
