@@ -14,6 +14,16 @@ router.get("/", async (req: Request, res: Response) => {
   }
 });
 
+// Get Request
+router.post("/", async (req: Request, res: Response) => {
+  try {
+    const prompts = await prisma.prompt.create(req.body);
+    res.json(prompts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch users" });
+  }
+});
+
 /**
  * Tag search. Filter by however many tags are inputted.
  * /prompt/tagsearch?tags=Cooking
@@ -91,6 +101,8 @@ router.delete("/:id", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Failed to fetch tags" });
   }
 });
+
+
 
 // Export Route
 module.exports = router;
