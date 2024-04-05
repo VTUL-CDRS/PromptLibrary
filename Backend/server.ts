@@ -9,8 +9,6 @@ const tagRoute = require("./routes/tag");
 app.use('/tag', tagRoute);
 const accountRoute = require("./routes/account");
 app.use('/account', accountRoute);
-const searchRoute = require("./routes/search");
-app.use('/search', searchRoute);
 const promptRoute = require("./routes/prompt");
 app.use('/prompt', promptRoute);
 const llmRoute = require("./routes/llm");
