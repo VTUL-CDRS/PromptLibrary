@@ -48,7 +48,7 @@ var router = express_1.default.Router();
  * Prisma implemented Full Text Search
  * Takes query from /search?q=
  */
-router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -61,7 +61,7 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch users' });
+                res.status(500).json({ error: "Failed to fetch users" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -71,8 +71,10 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
  * Tag Searching AND Full Text Search
  * Exact same req body requirements as tag searching.
  *  Must be an array of strings. Each tag is split by '+'
+ *
+ * http://localhost:8000/search/tagsearch?q=Steak&tags=Cooking
  */
-router.get('/tagSearch', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.get("/tagSearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -85,7 +87,7 @@ router.get('/tagSearch', function (req, res) { return __awaiter(void 0, void 0, 
                 return [3 /*break*/, 3];
             case 2:
                 error_2 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch users' });
+                res.status(500).json({ error: "Failed to fetch users" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

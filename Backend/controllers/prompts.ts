@@ -36,7 +36,7 @@ export const searchPromptsTags = async (req: Request, res: Response) => {
                     },
                     hasTag: {
                         some: {
-                        tagName: {
+                        tagId: {
                             in: tagArray
                         }
                         }

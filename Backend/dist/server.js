@@ -18,6 +18,8 @@ var promptRoute = require("./routes/prompt");
 app.use('/prompt', promptRoute);
 var llmRoute = require("./routes/llm");
 app.use('/llm', llmRoute);
+var exportRoute = require("./routes/export");
+app.use('/export', exportRoute);
 // Basic get
 app.get("/", function (_, res) {
     res.send("HELLO");

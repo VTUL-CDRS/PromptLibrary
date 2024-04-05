@@ -39,13 +39,44 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var prisma_1 = require("../lib/prisma");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
-// Search for and return a JSON object of prompts with the id
+/**
+ * Function to export a list of prompt ids. Takes a json array of ids separated by a +.
+ */
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var ids, idArray, prompts, error_1;
     return __generator(this, function (_a) {
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 4, , 5]);
+                ids = req.query.ids;
+                if (!(typeof ids === "string")) return [3 /*break*/, 2];
+                idArray = ids.split("+").map(function (item) {
+                    return parseInt(item, 10);
+                });
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        where: {
+                            id: {
+                                in: idArray,
+                            },
+                        },
+                    })];
+            case 1:
+                prompts = _a.sent();
+                // Return a JSON
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2: throw new Error("IDs must be provided as a plus-separated list");
+            case 3: return [3 /*break*/, 5];
+            case 4:
+                error_1 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
     });
 }); });
 // Export Route
