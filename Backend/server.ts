@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from "express";
-const port = 8000;
+const port = 8080;
 
 // Make the express object
 const app: Express = express();
