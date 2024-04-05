@@ -22,7 +22,6 @@ router.get("/tagsearch", async (req: Request, res: Response) => {
   try {
     const tags = req.query.tags;
     //const { tags } = req.query;
-    console.log(tags);
     if (typeof tags === "string") {
       const tagArray = tags.split("+");
       const prompts = await prisma.prompt.findMany({

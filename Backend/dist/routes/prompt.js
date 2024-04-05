@@ -65,6 +65,7 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
 }); });
 /**
  * Tag search. Filter by however many tags are inputted.
+ * /prompt/tagsearch?tags=Cooking
  */
 router.get("/tagsearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tags, tagArray, prompts, error_2;
@@ -73,15 +74,13 @@ router.get("/tagsearch", function (req, res) { return __awaiter(void 0, void 0, 
             case 0:
                 _a.trys.push([0, 4, , 5]);
                 tags = req.query.tags;
-                //const { tags } = req.query;
-                console.log(tags);
                 if (!(typeof tags === "string")) return [3 /*break*/, 2];
                 tagArray = tags.split("+");
                 return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
                         where: {
                             hasTag: {
                                 some: {
-                                    tagName: {
+                                    tagId: {
                                         in: tagArray,
                                     },
                                 },

@@ -87,7 +87,7 @@ var searchPromptsTags = function (req, res) { return __awaiter(void 0, void 0, v
                             },
                             hasTag: {
                                 some: {
-                                    tagName: {
+                                    tagId: {
                                         in: tagArray
                                     }
                                 }
