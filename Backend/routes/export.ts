@@ -5,31 +5,36 @@ import express, { Request, Response } from "express";
 const router = express.Router();
 
 /** 
- * Function to export a list of prompt ids. Takes a json array of ids separated by a +.
+ * Function to export a list of prompt ids.
+ * 
+ * To use, just use the endpoint but include a body in the request:
+ * 
+ * {
+ *  ids: [...]
+ * }
+ * 
+ * Where ids has a list of integers of ids to output
  */
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const ids = req.query.ids;
-    if (typeof ids === "string") {
-      // Convert to integer array
-      const idArray = ids.split("+").map(function (item) {
-        return parseInt(item, 10);
-      });
-      
+    const stuff = req.body;
+    const ids: any[] = stuff.ids;
       // Find prompts that match the ids provided
       const prompts = await prisma.prompt.findMany({
         where: {
           id: {
-            in: idArray,
+            in: ids,
           },
         },
+        select: {
+          prompt: true,
+          response: true,
+          hasTag: true,
+        }
       });
 
       // Return a JSON
       res.json(prompts);
-    } else {
-      throw new Error("IDs must be provided as a plus-separated list");
-    }
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
   }
