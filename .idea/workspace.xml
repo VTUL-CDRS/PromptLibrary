@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Changed not logged in routing to stay on page&#10;Fixed boxes on database view&#10;&#10;&#10;TODO: Fix collision issues on each page, button text sizing.">
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Changed not logged in routing to stay on page&#10;Merge&#10;&#10;&#10;TODO: Fix collision issues on each page, button text sizing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/router/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +107,7 @@
       <workItem from="1712237603166" duration="48000" />
       <workItem from="1712237656251" duration="13000" />
       <workItem from="1712237674356" duration="4277000" />
-      <workItem from="1712356776283" duration="297000" />
+      <workItem from="1712356776283" duration="1995000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
@@ -166,7 +168,21 @@
       <option name="project" value="LOCAL" />
       <updated>1712241974742</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changed not logged in routing to stay on page&#10;Merge&#10;&#10;&#10;TODO: Fix collision issues on each page, button text sizing.">
+      <created>1712357289148</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712357289148</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Changed not logged in routing to stay on page&#10;Merge&#10;&#10;&#10;TODO: Fix collision issues on each page, button text sizing.">
+      <created>1712357310449</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712357310449</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +221,7 @@
     <MESSAGE value="Add global gitignore" />
     <MESSAGE value="Merge, fixed footer." />
     <MESSAGE value="Changed not logged in routing to stay on page&#10;Fixed boxes on database view&#10;&#10;&#10;TODO: Fix collision issues on each page, button text sizing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed not logged in routing to stay on page&#10;Fixed boxes on database view&#10;&#10;&#10;TODO: Fix collision issues on each page, button text sizing." />
+    <MESSAGE value="Changed not logged in routing to stay on page&#10;Merge&#10;&#10;&#10;TODO: Fix collision issues on each page, button text sizing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed not logged in routing to stay on page&#10;Merge&#10;&#10;&#10;TODO: Fix collision issues on each page, button text sizing." />
   </component>
 </project>
