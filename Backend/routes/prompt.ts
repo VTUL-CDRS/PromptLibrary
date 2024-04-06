@@ -11,17 +11,37 @@ router.get("/", async (req: Request, res: Response) => {
     const prompts = await prisma.prompt.findMany();
     res.json(prompts);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
-// Get Request
+// Post Request
 router.post("/", async (req: Request, res: Response) => {
   try {
     const prompts = await prisma.prompt.create(req.body);
     res.json(prompts);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
+  }
+});
+
+/**
+ * Update Request. Is ID specific
+ */
+router.patch("/:id", async (req: Request, res: Response) => {
+  try {
+    // Grab id from params
+    const promptId = req.params.id
+
+    const prompts = await prisma.prompt.update({
+      where: {
+        id: parseInt(promptId),
+      },
+      data: req.body
+    });
+    res.json(prompts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
@@ -45,7 +65,7 @@ router.get("/:id", async (req: Request, res: Response) => {
       res.status(404).json({ error: "Tag not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch tags" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
@@ -69,7 +89,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
       res.status(404).json({ error: "Tag not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch tags" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
@@ -113,7 +133,7 @@ router.get("/textsearch", async (req: Request, res: Response) => {
     const prompts = await searchPrompts(req, res);
     res.json(prompts);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
@@ -129,7 +149,7 @@ router.get("/fullsearch", async (req: Request, res: Response) => {
     const prompts = await searchPromptsTags(req, res);
     res.json(prompts);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
