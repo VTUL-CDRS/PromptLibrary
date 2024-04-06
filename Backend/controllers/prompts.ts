@@ -13,6 +13,13 @@ export const searchPrompts = async (req: Request, res: Response) => {
             llmName: {
                 search: req.query.q?.toString()
             }
+        },
+        include: {
+            hasTag: {
+              include: {
+                tag: true
+              }
+            }
         }
     })
     res.json(prompts)
@@ -40,6 +47,13 @@ export const searchPromptsTags = async (req: Request, res: Response) => {
                             in: tagArray
                         }
                         }
+                    }
+                },
+                include: {
+                    hasTag: {
+                      include: {
+                        tag: true
+                      }
                     }
                 }
             })

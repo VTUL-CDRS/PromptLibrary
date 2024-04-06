@@ -44,38 +44,46 @@ var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
 /**
- * Function to export a list of prompt ids. Takes a json array of ids separated by a +.
+ * Function to export a list of prompt ids.
+ *
+ * To use, just use the endpoint but include a body in the request:
+ *
+ * {
+ *  ids: [...]
+ * }
+ *
+ * Where ids has a list of integers of ids to output
  */
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var ids, idArray, prompts, error_1;
+    var stuff, ids, prompts, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 4, , 5]);
-                ids = req.query.ids;
-                if (!(typeof ids === "string")) return [3 /*break*/, 2];
-                idArray = ids.split("+").map(function (item) {
-                    return parseInt(item, 10);
-                });
+                _a.trys.push([0, 2, , 3]);
+                stuff = req.body;
+                ids = stuff.ids;
                 return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
                         where: {
                             id: {
-                                in: idArray,
+                                in: ids,
                             },
                         },
+                        select: {
+                            prompt: true,
+                            response: true,
+                            hasTag: true,
+                        }
                     })];
             case 1:
                 prompts = _a.sent();
                 // Return a JSON
                 res.json(prompts);
                 return [3 /*break*/, 3];
-            case 2: throw new Error("IDs must be provided as a plus-separated list");
-            case 3: return [3 /*break*/, 5];
-            case 4:
+            case 2:
                 error_1 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); });

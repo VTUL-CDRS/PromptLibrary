@@ -25,6 +25,13 @@ router.get("/tagSearch", async (req: Request, res: Response) => {
             },
           },
         },
+        include: {
+          hasTag: {
+            include: {
+              tag: true
+            }
+          }
+        }
       });
       res.json(prompts);
     } else {

@@ -8,7 +8,16 @@ const router = express.Router();
 // Get Request
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const prompts = await prisma.prompt.findMany();
+    const prompts = await prisma.prompt.findMany({
+      include: {
+        hasTag: {
+          include: {
+            tag: true
+          }
+        }
+      }
+    });
+
     res.json(prompts);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
@@ -56,6 +65,13 @@ router.get("/:id", async (req: Request, res: Response) => {
     //Normal stuff
     const tag = await prisma.prompt.findUnique({
       where: { id: parseInt(tagId) },
+      include: {
+        hasTag: {
+          include: {
+            tag: true
+          }
+        }
+      }
     });
 
     // Check if the tag exists

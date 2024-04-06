@@ -40,7 +40,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var prisma_1 = require("../lib/prisma");
-var prompts_1 = require("../controllers/prompts");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
@@ -51,7 +50,15 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma_1.prisma.prompt.findMany()];
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        include: {
+                            hasTag: {
+                                include: {
+                                    tag: true
+                                }
+                            }
+                        }
+                    })];
             case 1:
                 prompts = _a.sent();
                 res.json(prompts);
@@ -64,7 +71,7 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); });
-// Get Request
+// Post Request
 router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts, error_2;
     return __generator(this, function (_a) {
@@ -85,27 +92,24 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
     });
 }); });
 /**
- * Get function. Id specific
+ * Update Request. Is ID specific
  */
-router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tagId, tag, error_3;
+router.patch("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var promptId, prompts, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                tagId = req.params.id;
-                return [4 /*yield*/, prisma_1.prisma.prompt.findUnique({
-                        where: { id: parseInt(tagId) },
+                promptId = req.params.id;
+                return [4 /*yield*/, prisma_1.prisma.prompt.update({
+                        where: {
+                            id: parseInt(promptId),
+                        },
+                        data: req.body
                     })];
             case 1:
-                tag = _a.sent();
-                // Check if the tag exists
-                if (tag) {
-                    res.json(tag);
-                }
-                else {
-                    res.status(404).json({ error: "Tag not found" });
-                }
+                prompts = _a.sent();
+                res.json(prompts);
                 return [3 /*break*/, 3];
             case 2:
                 error_3 = _a.sent();
@@ -116,17 +120,24 @@ router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0
     });
 }); });
 /**
- * Delete function. Id specific
+ * Get function. Id specific
  */
-router.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tagId, tag, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 tagId = req.params.id;
-                return [4 /*yield*/, prisma_1.prisma.prompt.delete({
+                return [4 /*yield*/, prisma_1.prisma.prompt.findUnique({
                         where: { id: parseInt(tagId) },
+                        include: {
+                            hasTag: {
+                                include: {
+                                    tag: true
+                                }
+                            }
+                        }
                     })];
             case 1:
                 tag = _a.sent();
@@ -147,87 +158,30 @@ router.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, voi
     });
 }); });
 /**
- * Tag search. Filter by however many tags are inputted.
- * /prompt/tagsearch?tags=Cooking
+ * Delete function. Id specific
  */
-router.get("/tagSearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tags, tagArray, prompts, error_5;
+router.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tagId, tag, error_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 4, , 5]);
-                tags = req.query.tags;
-                if (!(typeof tags === "string")) return [3 /*break*/, 2];
-                tagArray = tags.split("+");
-                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
-                        where: {
-                            hasTag: {
-                                some: {
-                                    tagId: {
-                                        in: tagArray,
-                                    },
-                                },
-                            },
-                        },
+                _a.trys.push([0, 2, , 3]);
+                tagId = req.params.id;
+                return [4 /*yield*/, prisma_1.prisma.prompt.delete({
+                        where: { id: parseInt(tagId) },
                     })];
             case 1:
-                prompts = _a.sent();
-                res.json(prompts);
+                tag = _a.sent();
+                // Check if the tag exists
+                if (tag) {
+                    res.json(tag);
+                }
+                else {
+                    res.status(404).json({ error: "Tag not found" });
+                }
                 return [3 /*break*/, 3];
-            case 2: throw new Error("Tags must be provided as a plus separated list");
-            case 3: return [3 /*break*/, 5];
-            case 4:
+            case 2:
                 error_5 = _a.sent();
-                res.status(500).json({ error: "Failed to fetch prompts" });
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
-        }
-    });
-}); });
-/**
- * Get request. Executes searchPrompts controller function.
- * Prisma implemented Full Text Search
- * Takes query from /search?q=
- */
-router.get("/textsearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var prompts, error_6;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, prompts_1.searchPrompts)(req, res)];
-            case 1:
-                prompts = _a.sent();
-                res.json(prompts);
-                return [3 /*break*/, 3];
-            case 2:
-                error_6 = _a.sent();
-                res.status(500).json({ error: "Failed to fetch prompts" });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-/**
- * Tag Searching AND Full Text Search
- * Exact same req body requirements as tag searching.
- *  Must be an array of strings. Each tag is split by '+'
- *
- * http://localhost:8000/search/fullsearch?q=Steak&tags=Cooking
- */
-router.get("/fullsearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var prompts, error_7;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, prompts_1.searchPromptsTags)(req, res)];
-            case 1:
-                prompts = _a.sent();
-                res.json(prompts);
-                return [3 /*break*/, 3];
-            case 2:
-                error_7 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
