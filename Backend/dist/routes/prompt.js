@@ -133,7 +133,7 @@ router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0
                         where: { id: parseInt(tagId) },
                         include: {
                             hasTag: {
-                                select: {
+                                include: {
                                     tag: true
                                 }
                             }

@@ -11,34 +11,13 @@
         example: +code +vue_js -real
       </form>
 
-      <!-- Filter Button -->
       <button @click="filterPrompts" class ="filter-button">Filter</button>
     </div>
 
-    <!-- List of Prompts will be rendered here -->
-    <div class = "prompt-container"> <!--v-for="prompt in filteredPrompts" :key="prompt.id"-->
-      <!-- Prompt details -->
-      <div class = "prompt-card">
-        Title: <br>
-        Prompt summary:<br>
-        Response summary:<br>
-        First 3 tags: <br>
+    <div class = "prompt-container">
+      <div class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
+        <p>{{prompt.prompt}}</p>
       </div>
-      <div class = "prompt-card">
-        Sample card<br>
-        These<br>
-        Cards<br>
-        Will<br>
-        Be<br>
-        Scrollable<br>
-        Because<br>
-        Scrollable<br>
-        Cards<br>
-        Are<br>
-        Cool<br>
-      </div>
-      <div class = "prompt-card">Sample card</div>
-      <div class = "prompt-card">Sample card</div>
     </div>
     <div>
     <router-link to="/submit" style="">
@@ -49,7 +28,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -58,27 +36,28 @@ export default {
         upper: 5
       },
       selectedTags: [],
-      tags: ['Science', 'History', 'Technology'], // These should come from your backend
+      tags: ['Science', 'History', 'Technology'],
       filteredPrompts: [], // Filtered prompts go here
     };
   },
   methods: {
-    filterPrompts() {
-      // Logic to filter prompts based on the selected rating range and tags
-      // In a real scenario, this would be an API call to your backend
-      this.filteredPrompts = this.getFilteredPrompts();
+    async fetchPrompts() {
+      try {
+        console.log("trying to fetch");
+        const response = await fetch('http://localhost:8080/prompt');
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompts');
+        }
+        const prompts = await response.json();
+        this.filteredPrompts = prompts;
+      } catch (error) {
+        console.error(error);
+      }
     },
-    getFilteredPrompts() {
-      // Replace this with actual filtering logic using the backend data
-      return [
-        // Example filtered prompts
-      ];
-    },
-    // Add other methods if needed
   },
   mounted() {
     // Fetch initial data when component mounts
-    this.filterPrompts();
+    this.fetchPrompts();
   },
 };
 </script>

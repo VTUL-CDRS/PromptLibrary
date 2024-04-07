@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var cors_1 = __importDefault(require("cors"));
 var port = 8080;
 // Make the express object
 var app = (0, express_1.default)();
@@ -11,6 +12,7 @@ var app = (0, express_1.default)();
 // Adds middleware which parses the requests coming in
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+app.use((0, cors_1.default)());
 // Routes
 var tagRoute = require("./routes/tag");
 app.use('/tag', tagRoute);
