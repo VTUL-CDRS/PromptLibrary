@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Merge, fixed footer.">
-      <change afterPath="$PROJECT_DIR$/Frontend/public/local_db_data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/prompt.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/server.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/server.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +63,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

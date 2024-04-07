@@ -15,14 +15,22 @@
     </div>
 
     <div class = "prompt-container">
-      <div class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
-        <p>{{prompt.prompt}}</p>
+      <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
+      <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
+        <p>Prompt: {{prompt.prompt}}</p> <!-- this is a placeholder for prompt summary-->
+        <p>Response: {{prompt.response}}</p>
+        <div v-if="prompt.hasTag.length != 0">Tags:
+          <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
+        </div>
+        <div v-else>Tags: None</div>
       </div>
     </div>
     <div>
+
     <router-link to="/submit" style="">
-      <button class="submit-button">Submit a prompt</button> <!-- v-if = "true"-->
+      <button class="submit-button">Submit a prompt</button>
     </router-link>
+      <button class="export-button">Export selected prompts</button>
     </div>
   </div>
 </template>
@@ -38,6 +46,7 @@ export default {
       selectedTags: [],
       tags: ['Science', 'History', 'Technology'],
       filteredPrompts: [], // Filtered prompts go here
+      promptTags: [],
     };
   },
   methods: {
@@ -96,6 +105,10 @@ export default {
   cursor: pointer;
 }
 
+.tagText {
+  display: inline;
+}
+
 .filters {
   position: absolute;
   left: 2%;
@@ -110,6 +123,23 @@ export default {
 }
 
 .submit-button {
+  position: absolute;
+  flex-shrink: 1;
+  /*font-size-adjust: ;*/
+  left: 4%;
+  bottom: 17%;
+  width: 20%; /* Adjust as needed */
+  height: 3rem;
+  padding: 0.5em;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.export-button {
   position: absolute;
   flex-shrink: 1;
   /*font-size-adjust: ;*/
@@ -129,6 +159,7 @@ export default {
 .prompt-container {
   position: absolute;
   display: table-row;
+  overflow: scroll;
   left: 28.5%;
   top: 15%;
   width: 70%; /* Adjust this as necessary to control the width of the filters area */
