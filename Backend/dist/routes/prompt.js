@@ -50,54 +50,72 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma_1.prisma.prompt.findMany()];
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        include: {
+                            hasTag: {
+                                include: {
+                                    tag: true
+                                }
+                            }
+                        }
+                    })];
             case 1:
                 prompts = _a.sent();
                 res.json(prompts);
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
-                res.status(500).json({ error: "Failed to fetch users" });
+                res.status(500).json({ error: "Failed to fetch prompts" });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+// Post Request
+router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prompts, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, prisma_1.prisma.prompt.create(req.body)];
+            case 1:
+                prompts = _a.sent();
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); });
 /**
- * Tag search. Filter by however many tags are inputted.
- * /prompt/tagsearch?tags=Cooking
+ * Update Request. Is ID specific
  */
-router.get("/tagsearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tags, tagArray, prompts, error_2;
+router.patch("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var promptId, prompts, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 4, , 5]);
-                tags = req.query.tags;
-                if (!(typeof tags === "string")) return [3 /*break*/, 2];
-                tagArray = tags.split("+");
-                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                _a.trys.push([0, 2, , 3]);
+                promptId = req.params.id;
+                return [4 /*yield*/, prisma_1.prisma.prompt.update({
                         where: {
-                            hasTag: {
-                                some: {
-                                    tagId: {
-                                        in: tagArray,
-                                    },
-                                },
-                            },
+                            id: parseInt(promptId),
                         },
+                        data: req.body
                     })];
             case 1:
                 prompts = _a.sent();
                 res.json(prompts);
                 return [3 /*break*/, 3];
-            case 2: throw new Error("Tags must be provided as a comma-separated list");
-            case 3: return [3 /*break*/, 5];
-            case 4:
-                error_2 = _a.sent();
+            case 2:
+                error_3 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); });
@@ -105,7 +123,7 @@ router.get("/tagsearch", function (req, res) { return __awaiter(void 0, void 0, 
  * Get function. Id specific
  */
 router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tagId, tag, error_3;
+    var tagId, tag, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -113,6 +131,13 @@ router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0
                 tagId = req.params.id;
                 return [4 /*yield*/, prisma_1.prisma.prompt.findUnique({
                         where: { id: parseInt(tagId) },
+                        include: {
+                            hasTag: {
+                                select: {
+                                    tag: true
+                                }
+                            }
+                        }
                     })];
             case 1:
                 tag = _a.sent();
@@ -125,8 +150,8 @@ router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0
                 }
                 return [3 /*break*/, 3];
             case 2:
-                error_3 = _a.sent();
-                res.status(500).json({ error: "Failed to fetch tags" });
+                error_4 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -136,7 +161,7 @@ router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0
  * Delete function. Id specific
  */
 router.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tagId, tag, error_4;
+    var tagId, tag, error_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -156,8 +181,8 @@ router.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, voi
                 }
                 return [3 /*break*/, 3];
             case 2:
-                error_4 = _a.sent();
-                res.status(500).json({ error: "Failed to fetch tags" });
+                error_5 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

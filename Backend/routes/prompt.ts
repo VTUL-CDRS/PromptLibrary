@@ -8,20 +8,49 @@ const router = express.Router();
 // Get Request
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const prompts = await prisma.prompt.findMany();
+    const prompts = await prisma.prompt.findMany({
+      include: {
+        hasTag: {
+          include: {
+            tag: true
+          }
+        }
+      }
+    });
+
     res.json(prompts);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
-// Get Request
+// Post Request
 router.post("/", async (req: Request, res: Response) => {
   try {
     const prompts = await prisma.prompt.create(req.body);
     res.json(prompts);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
+  }
+});
+
+/**
+ * Update Request. Is ID specific
+ */
+router.patch("/:id", async (req: Request, res: Response) => {
+  try {
+    // Grab id from params
+    const promptId = req.params.id
+
+    const prompts = await prisma.prompt.update({
+      where: {
+        id: parseInt(promptId),
+      },
+      data: req.body
+    });
+    res.json(prompts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
@@ -36,6 +65,13 @@ router.get("/:id", async (req: Request, res: Response) => {
     //Normal stuff
     const tag = await prisma.prompt.findUnique({
       where: { id: parseInt(tagId) },
+      include: {
+        hasTag: {
+          include: {
+            tag: true
+          }
+        }
+      }
     });
 
     // Check if the tag exists
@@ -45,7 +81,7 @@ router.get("/:id", async (req: Request, res: Response) => {
       res.status(404).json({ error: "Tag not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch tags" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
@@ -69,70 +105,9 @@ router.delete("/:id", async (req: Request, res: Response) => {
       res.status(404).json({ error: "Tag not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch tags" });
-  }
-});
-
-/**
- * Tag search. Filter by however many tags are inputted.
- * /prompt/tagsearch?tags=Cooking
- */
-router.get("/tagSearch", async (req: Request, res: Response) => {
-  try {
-    const tags = req.query.tags;
-    //const { tags } = req.query;
-    if (typeof tags === "string") {
-      const tagArray = tags.split("+");
-      const prompts = await prisma.prompt.findMany({
-        where: {
-          hasTag: {
-            some: {
-              tagId: {
-                in: tagArray,
-              },
-            },
-          },
-        },
-      });
-      res.json(prompts);
-    } else {
-      throw new Error("Tags must be provided as a plus separated list");
-    }
-  } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
-
-/**
- * Get request. Executes searchPrompts controller function.
- * Prisma implemented Full Text Search
- * Takes query from /search?q=
- */
-router.get("/textsearch", async (req: Request, res: Response) => {
-  try {
-    const prompts = await searchPrompts(req, res);
-    res.json(prompts);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
-  }
-});
-
-/**
- * Tag Searching AND Full Text Search
- * Exact same req body requirements as tag searching.
- *  Must be an array of strings. Each tag is split by '+'
- *
- * http://localhost:8000/search/fullsearch?q=Steak&tags=Cooking
- */
-router.get("/fullsearch", async (req: Request, res: Response) => {
-  try {
-    const prompts = await searchPromptsTags(req, res);
-    res.json(prompts);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
-  }
-});
-
 
 
 // Export Route
