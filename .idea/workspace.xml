@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Prompt card content, fixed databaseview clipping. Added export button TODO: Export functionality">
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Export framework. TODO: figure out how to make the file itself download, figure out how to pass selected prompts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
     </list>
@@ -168,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712512975859</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Export framework. TODO: figure out how to make the file itself download, figure out how to pass selected prompts">
+      <created>1712513644686</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712513644686</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +215,7 @@
     <MESSAGE value="Add global gitignore" />
     <MESSAGE value="Merge, fixed footer." />
     <MESSAGE value="Prompt card content, fixed databaseview clipping. Added export button TODO: Export functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prompt card content, fixed databaseview clipping. Added export button TODO: Export functionality" />
+    <MESSAGE value="Export framework. TODO: figure out how to make the file itself download, figure out how to pass selected prompts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Export framework. TODO: figure out how to make the file itself download, figure out how to pass selected prompts" />
   </component>
 </project>

@@ -15,8 +15,14 @@
     </div>
 
     <div class = "prompt-container">
+      Output prompts:
+      <h1 v-for="item in readyToExport"> {{item.prompt}} </h1>
       <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
+
+        <!-- currently does not persist OR actually submit-->
+        <input type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
+
         <p>Prompt: {{prompt.prompt}}</p> <!-- this is a placeholder for prompt summary-->
         <p>Response: {{prompt.response}}</p>
         <div v-if="prompt.hasTag.length != 0">Tags:
@@ -36,8 +42,10 @@
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
   data() {
+    const selectedPrompts = ref([]);
     return {
       ratingRange: {
         lower: 0,
@@ -47,13 +55,14 @@ export default {
       tags: ['Science', 'History', 'Technology'],
       filteredPrompts: [], // Filtered prompts go here
       readyToExport: [],
+      selectedPrompts,
     };
   },
   methods: {
     async fetchPrompts() {
       try {
         console.log("trying to fetch");
-        const response = await fetch('http://localhost:8080/prompt');
+        const response = await fetch('http://localhost:8080/prompt/all');
         if (!response.ok) {
           throw new Error('Failed to fetch prompts');
         }
@@ -66,12 +75,14 @@ export default {
     async exportPrompts() {
       try {
         console.log("trying to export");
-        const response = await fetch("http://localhost:8080/export")
+        const body = this.selectedPrompts;
+        const response = await fetch("http://localhost:8080/export", body);
         if (!response.ok) {
           throw new Error('Failed to fetch prompts to export');
         }
-        window.open("http://localhost:8080/export") //Redirect to the json using url for now.
-        //TODO: use some kind of downloader
+        this.readyToExport = response;
+        console.log(response);
+        // window.open("http://localhost:8080/export") //Redirect to the json using url for now.
       } catch (error) {
         console.error(error);
       }
