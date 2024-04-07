@@ -15,7 +15,7 @@ const router = express.Router();
  * 
  * Where ids has a list of integers of ids to output
  */
-router.get("/", async (req: Request, res: Response) => {
+router.post("/", async (req: Request, res: Response) => {
   try {
     const stuff = req.body;
     const ids: any[] = stuff.ids;
