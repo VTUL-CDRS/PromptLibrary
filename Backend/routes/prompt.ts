@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma";
+import { searchPrompts, searchPromptsTags } from "../controllers/prompts";
 import express, { Request, Response } from "express";
 
 // Create the router object
@@ -7,39 +8,47 @@ const router = express.Router();
 // Get Request
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const prompts = await prisma.prompt.findMany();
+    const prompts = await prisma.prompt.findMany({
+      include: {
+        hasTag: {
+          include: {
+            tag: true
+          }
+        }
+      }
+    });
+
     res.json(prompts);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
+  }
+});
+
+// Post Request
+router.post("/", async (req: Request, res: Response) => {
+  try {
+    const prompts = await prisma.prompt.create(req.body);
+    res.json(prompts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
 /**
- * Tag search. Filter by however many tags are inputted.
- * /prompt/tagsearch?tags=Cooking
+ * Update Request. Is ID specific
  */
-router.get("/tagsearch", async (req: Request, res: Response) => {
+router.patch("/:id", async (req: Request, res: Response) => {
   try {
-    const tags = req.query.tags;
-    //const { tags } = req.query;
-    console.log(tags);
-    if (typeof tags === "string") {
-      const tagArray = tags.split("+");
-      const prompts = await prisma.prompt.findMany({
-        where: {
-          hasTag: {
-            some: {
-              tagId: {
-                in: tagArray,
-              },
-            },
-          },
-        },
-      });
-      res.json(prompts);
-    } else {
-      throw new Error("Tags must be provided as a comma-separated list");
-    }
+    // Grab id from params
+    const promptId = req.params.id
+
+    const prompts = await prisma.prompt.update({
+      where: {
+        id: parseInt(promptId),
+      },
+      data: req.body
+    });
+    res.json(prompts);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
   }
@@ -56,6 +65,13 @@ router.get("/:id", async (req: Request, res: Response) => {
     //Normal stuff
     const tag = await prisma.prompt.findUnique({
       where: { id: parseInt(tagId) },
+      include: {
+        hasTag: {
+          include: {
+            tag: true
+          }
+        }
+      }
     });
 
     // Check if the tag exists
@@ -65,7 +81,7 @@ router.get("/:id", async (req: Request, res: Response) => {
       res.status(404).json({ error: "Tag not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch tags" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
 
@@ -89,9 +105,10 @@ router.delete("/:id", async (req: Request, res: Response) => {
       res.status(404).json({ error: "Tag not found" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch tags" });
+    res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });
+
 
 // Export Route
 module.exports = router;

@@ -54,6 +54,13 @@ var searchPrompts = function (req, res) { return __awaiter(void 0, void 0, void 
                         llmName: {
                             search: (_c = req.query.q) === null || _c === void 0 ? void 0 : _c.toString()
                         }
+                    },
+                    include: {
+                        hasTag: {
+                            include: {
+                                tag: true
+                            }
+                        }
                     }
                 })];
             case 1:
@@ -87,9 +94,16 @@ var searchPromptsTags = function (req, res) { return __awaiter(void 0, void 0, v
                             },
                             hasTag: {
                                 some: {
-                                    tagName: {
+                                    tagId: {
                                         in: tagArray
                                     }
+                                }
+                            }
+                        },
+                        include: {
+                            hasTag: {
+                                include: {
+                                    tag: true
                                 }
                             }
                         }

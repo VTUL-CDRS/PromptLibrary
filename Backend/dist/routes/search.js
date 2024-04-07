@@ -39,17 +39,63 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var prisma_1 = require("../lib/prisma");
 var prompts_1 = require("../controllers/prompts");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
 /**
+ * Tag search. Filter by however many tags are inputted.
+ * /prompt/tagsearch?tags=Cooking
+ */
+router.get("/tagSearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var tags, tagArray, prompts, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 4, , 5]);
+                tags = req.query.tags;
+                if (!(typeof tags === "string")) return [3 /*break*/, 2];
+                tagArray = tags.split("+");
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        where: {
+                            hasTag: {
+                                some: {
+                                    tagId: {
+                                        in: tagArray,
+                                    },
+                                },
+                            },
+                        },
+                        include: {
+                            hasTag: {
+                                include: {
+                                    tag: true
+                                }
+                            }
+                        }
+                    })];
+            case 1:
+                prompts = _a.sent();
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2: throw new Error("Tags must be provided as a plus separated list");
+            case 3: return [3 /*break*/, 5];
+            case 4:
+                error_1 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
+    });
+}); });
+/**
  * Get request. Executes searchPrompts controller function.
  * Prisma implemented Full Text Search
  * Takes query from /search?q=
  */
-router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var prompts, error_1;
+router.get("/textsearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prompts, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -60,8 +106,8 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 res.json(prompts);
                 return [3 /*break*/, 3];
             case 2:
-                error_1 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch users' });
+                error_2 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -71,9 +117,11 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
  * Tag Searching AND Full Text Search
  * Exact same req body requirements as tag searching.
  *  Must be an array of strings. Each tag is split by '+'
+ *
+ * http://localhost:8000/search/fullsearch?q=Steak&tags=Cooking
  */
-router.get('/tagSearch', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var prompts, error_2;
+router.get("/fullsearch", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prompts, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -84,8 +132,8 @@ router.get('/tagSearch', function (req, res) { return __awaiter(void 0, void 0, 
                 res.json(prompts);
                 return [3 /*break*/, 3];
             case 2:
-                error_2 = _a.sent();
-                res.status(500).json({ error: 'Failed to fetch users' });
+                error_3 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

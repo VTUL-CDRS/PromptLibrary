@@ -39,13 +39,52 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var prisma_1 = require("../lib/prisma");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
-// Search for and return a JSON object of prompts with the id
+/**
+ * Function to export a list of prompt ids.
+ *
+ * To use, just use the endpoint but include a body in the request:
+ *
+ * {
+ *  ids: [...]
+ * }
+ *
+ * Where ids has a list of integers of ids to output
+ */
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var stuff, ids, prompts, error_1;
     return __generator(this, function (_a) {
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                stuff = req.body;
+                ids = stuff.ids;
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        where: {
+                            id: {
+                                in: ids,
+                            },
+                        },
+                        select: {
+                            prompt: true,
+                            response: true,
+                            hasTag: true,
+                        }
+                    })];
+            case 1:
+                prompts = _a.sent();
+                // Return a JSON
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
     });
 }); });
 // Export Route

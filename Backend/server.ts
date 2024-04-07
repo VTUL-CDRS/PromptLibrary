@@ -1,20 +1,25 @@
 import express, { Express, Request, Response } from "express";
-const port = 8000;
+const port = 8080;
 
 // Make the express object
 const app: Express = express();
+
+// Allow json body requests
+// Adds middleware which parses the requests coming in
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 const tagRoute = require("./routes/tag");
 app.use('/tag', tagRoute);
 const accountRoute = require("./routes/account");
 app.use('/account', accountRoute);
-const searchRoute = require("./routes/search");
-app.use('/search', searchRoute);
 const promptRoute = require("./routes/prompt");
 app.use('/prompt', promptRoute);
 const llmRoute = require("./routes/llm");
 app.use('/llm', llmRoute);
+const searchRoute = require("./routes/search");
+app.use('/search', searchRoute);
 const exportRoute = require("./routes/export");
 app.use('/export', exportRoute);
 
