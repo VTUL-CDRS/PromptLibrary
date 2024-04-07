@@ -30,7 +30,7 @@
     <router-link to="/submit" style="">
       <button class="submit-button">Submit a prompt</button>
     </router-link>
-      <button class="export-button">Export selected prompts</button>
+      <button class="export-button" @click="exportPrompts()">Export selected as JSON</button>
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
       selectedTags: [],
       tags: ['Science', 'History', 'Technology'],
       filteredPrompts: [], // Filtered prompts go here
-      promptTags: [],
+      readyToExport: [],
     };
   },
   methods: {
@@ -63,6 +63,19 @@ export default {
         console.error(error);
       }
     },
+    async exportPrompts() {
+      try {
+        console.log("trying to export");
+        const response = await fetch("http://localhost:8080/export")
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompts to export');
+        }
+        window.open("http://localhost:8080/export") //Redirect to the json using url for now.
+        //TODO: use some kind of downloader
+      } catch (error) {
+        console.error(error);
+      }
+    }
   },
   mounted() {
     // Fetch initial data when component mounts

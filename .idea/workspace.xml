@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Merge, fixed footer.">
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Prompt card content, fixed databaseview clipping. Added export button TODO: Export functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712071904315</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Prompt card content, fixed databaseview clipping. Added export button TODO: Export functionality">
+      <created>1712512975859</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712512975859</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +207,7 @@
     <MESSAGE value="Moved dropdown buttons to make sense, installed vueuse and vueuse/component to make dropdown disappear on click outside box." />
     <MESSAGE value="Add global gitignore" />
     <MESSAGE value="Merge, fixed footer." />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge, fixed footer." />
+    <MESSAGE value="Prompt card content, fixed databaseview clipping. Added export button TODO: Export functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prompt card content, fixed databaseview clipping. Added export button TODO: Export functionality" />
   </component>
 </project>
