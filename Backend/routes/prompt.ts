@@ -6,9 +6,31 @@ import express, { Request, Response } from "express";
 const router = express.Router();
 
 // Get Request
+router.get("/all", async (req: Request, res: Response) => {
+  try {
+    const prompts = await prisma.prompt.findMany({
+      include: {
+        hasTag: {
+          include: {
+            tag: true
+          }
+        }
+      }
+    });
+
+    res.json(prompts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch prompts" });
+  }
+});
+
+// Get Request. But only approved
 router.get("/", async (req: Request, res: Response) => {
   try {
     const prompts = await prisma.prompt.findMany({
+      where: {
+        approved: true
+      },
       include: {
         hasTag: {
           include: {
