@@ -44,7 +44,7 @@ var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
 // Get Request
-router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.get("/all", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -71,14 +71,25 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); });
-// Post Request
-router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+// Get Request. But only approved
+router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma_1.prisma.prompt.create(req.body)];
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        where: {
+                            approved: true
+                        },
+                        include: {
+                            hasTag: {
+                                include: {
+                                    tag: true
+                                }
+                            }
+                        }
+                    })];
             case 1:
                 prompts = _a.sent();
                 res.json(prompts);
@@ -91,11 +102,31 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
         }
     });
 }); });
+// Post Request
+router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prompts, error_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, prisma_1.prisma.prompt.create(req.body)];
+            case 1:
+                prompts = _a.sent();
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2:
+                error_3 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 /**
  * Update Request. Is ID specific
  */
 router.patch("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var promptId, prompts, error_3;
+    var promptId, prompts, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -112,7 +143,7 @@ router.patch("/:id", function (req, res) { return __awaiter(void 0, void 0, void
                 res.json(prompts);
                 return [3 /*break*/, 3];
             case 2:
-                error_3 = _a.sent();
+                error_4 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -123,7 +154,7 @@ router.patch("/:id", function (req, res) { return __awaiter(void 0, void 0, void
  * Get function. Id specific
  */
 router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tagId, tag, error_4;
+    var tagId, tag, error_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -133,7 +164,7 @@ router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0
                         where: { id: parseInt(tagId) },
                         include: {
                             hasTag: {
-                                select: {
+                                include: {
                                     tag: true
                                 }
                             }
@@ -150,7 +181,7 @@ router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0
                 }
                 return [3 /*break*/, 3];
             case 2:
-                error_4 = _a.sent();
+                error_5 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -161,7 +192,7 @@ router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0
  * Delete function. Id specific
  */
 router.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tagId, tag, error_5;
+    var tagId, tag, error_6;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -181,7 +212,7 @@ router.delete("/:id", function (req, res) { return __awaiter(void 0, void 0, voi
                 }
                 return [3 /*break*/, 3];
             case 2:
-                error_5 = _a.sent();
+                error_6 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

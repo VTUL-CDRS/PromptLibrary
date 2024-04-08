@@ -23,6 +23,7 @@ model Prompt {
   approved  Boolean
   llmName   String
   createdAt DateTime @updatedAt
+  summary   String
   hasTag    HasTag[]
   llm       LLM      @relation(fields: [llmName], references: [llmName])
 }
