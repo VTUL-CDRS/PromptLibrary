@@ -24,6 +24,7 @@ model Prompt {
   llmName   String
   createdAt DateTime @updatedAt
   summary   String
+  title     String   @db.VarChar(50)
   hasTag    HasTag[]
   llm       LLM      @relation(fields: [llmName], references: [llmName])
 }
