@@ -15,11 +15,9 @@
     </div>
 
     <div class = "prompt-container">
-      Output prompts:
       <h1 v-for="item in readyToExport"> {{item.prompt}} </h1>
       <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
-
         <!-- currently does not persist OR actually submit-->
         <input type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
@@ -29,6 +27,13 @@
           <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
         </div>
         <div v-else>Tags: None</div>
+        <div>
+          <router-link :to="'/database/prompt/' + prompt.id">
+            <form>
+              <button>Details</button>
+            </form>
+          </router-link>
+        </div>
       </div>
     </div>
     <div>
@@ -89,7 +94,6 @@ export default {
     }
   },
   mounted() {
-    // Fetch initial data when component mounts
     this.fetchPrompts();
   },
 };

@@ -36,7 +36,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/prompt/:id',
+      path: '/database/prompt/:id',
       name: 'PromptDetail',
       component: PromptDetail,
     },
