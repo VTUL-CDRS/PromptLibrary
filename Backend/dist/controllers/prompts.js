@@ -40,9 +40,9 @@ exports.searchPromptsTags = exports.searchPrompts = void 0;
 var prisma_1 = require("../lib/prisma");
 var searchPrompts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts;
-    var _a, _b, _c;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
+    var _a, _b, _c, _d;
+    return __generator(this, function (_e) {
+        switch (_e.label) {
             case 0: return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
                     where: {
                         prompt: {
@@ -53,6 +53,9 @@ var searchPrompts = function (req, res) { return __awaiter(void 0, void 0, void 
                         },
                         llmName: {
                             search: (_c = req.query.q) === null || _c === void 0 ? void 0 : _c.toString()
+                        },
+                        summary: {
+                            search: (_d = req.query.q) === null || _d === void 0 ? void 0 : _d.toString()
                         }
                     },
                     include: {
@@ -64,7 +67,7 @@ var searchPrompts = function (req, res) { return __awaiter(void 0, void 0, void 
                     }
                 })];
             case 1:
-                prompts = _d.sent();
+                prompts = _e.sent();
                 res.json(prompts);
                 return [2 /*return*/];
         }
@@ -73,11 +76,11 @@ var searchPrompts = function (req, res) { return __awaiter(void 0, void 0, void 
 exports.searchPrompts = searchPrompts;
 var searchPromptsTags = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var tags, tagArray, prompts, error_1;
-    var _a, _b, _c;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
+    var _a, _b, _c, _d;
+    return __generator(this, function (_e) {
+        switch (_e.label) {
             case 0:
-                _d.trys.push([0, 4, , 5]);
+                _e.trys.push([0, 4, , 5]);
                 tags = req.query.tags;
                 if (!(typeof tags === 'string')) return [3 /*break*/, 2];
                 tagArray = tags.split('+');
@@ -91,6 +94,9 @@ var searchPromptsTags = function (req, res) { return __awaiter(void 0, void 0, v
                             },
                             llmName: {
                                 search: (_c = req.query.q) === null || _c === void 0 ? void 0 : _c.toString()
+                            },
+                            summary: {
+                                search: (_d = req.query.q) === null || _d === void 0 ? void 0 : _d.toString()
                             },
                             hasTag: {
                                 some: {
@@ -109,13 +115,13 @@ var searchPromptsTags = function (req, res) { return __awaiter(void 0, void 0, v
                         }
                     })];
             case 1:
-                prompts = _d.sent();
+                prompts = _e.sent();
                 res.json(prompts);
                 return [3 /*break*/, 3];
             case 2: throw new Error('Tags must be provided as a comma-separated list');
             case 3: return [3 /*break*/, 5];
             case 4:
-                error_1 = _d.sent();
+                error_1 = _e.sent();
                 res.status(500).json({ error: 'Failed to fetch prompts' });
                 return [3 /*break*/, 5];
             case 5: return [2 /*return*/];

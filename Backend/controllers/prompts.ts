@@ -12,6 +12,9 @@ export const searchPrompts = async (req: Request, res: Response) => {
             },
             llmName: {
                 search: req.query.q?.toString()
+            },
+            summary: {
+                search: req.query.q?.toString()
             }
         },
         include: {
@@ -41,6 +44,10 @@ export const searchPromptsTags = async (req: Request, res: Response) => {
                     llmName: {
                         search: req.query.q?.toString()
                     },
+                    summary: {
+                        search: req.query.q?.toString()
+                    },
+                    
                     hasTag: {
                         some: {
                         tagId: {
