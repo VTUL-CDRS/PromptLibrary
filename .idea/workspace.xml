@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Pushing to catch up">
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="DB on PC, finish connection with backend for DB view (broken)">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24,_11_31_AM_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24,_9_51_AM_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__11_31_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__11_31_AM__Changes_.xml" afterDir="false" />
@@ -124,7 +124,7 @@
       <workItem from="1712237603166" duration="48000" />
       <workItem from="1712237656251" duration="13000" />
       <workItem from="1712237674356" duration="4220000" />
-      <workItem from="1712695109538" duration="1085000" />
+      <workItem from="1712695109538" duration="1309000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
@@ -199,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712669419205</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="DB on PC, finish connection with backend for DB view (broken)">
+      <option name="closed" value="true" />
+      <created>1712696298165</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712696298165</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +249,7 @@
     <MESSAGE value="Prompt card content, fixed databaseview clipping. Added export button TODO: Export functionality" />
     <MESSAGE value="Export framework. TODO: figure out how to make the file itself download, figure out how to pass selected prompts" />
     <MESSAGE value="Pushing to catch up" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pushing to catch up" />
+    <MESSAGE value="DB on PC, finish connection with backend for DB view (broken)" />
+    <option name="LAST_COMMIT_MESSAGE" value="DB on PC, finish connection with backend for DB view (broken)" />
   </component>
 </project>
