@@ -86,6 +86,7 @@ export default {
         }
 
         console.log("trying to export");
+        console.log(bodyJSON);
         const response = await fetch("http://localhost:8080/export", requestOptions);
         if (!response.ok) {
           throw new Error('Failed to fetch prompts to export');
@@ -108,10 +109,10 @@ export default {
       toSearch,
        */
       try {
-        if (this.selectedTags == "" && this.toSearch == "") {
+        if (this.selectedTags === "" && this.toSearch === "") {
           await this.fetchPrompts();
         }
-        if (this.selectedTags != "" && this.toSearch != "") {
+        if (this.selectedTags !== "" && this.toSearch !== "") {
           const response = fetch("http://localhost:8080/search/fullsearch?q="
               + this.toSearch
               + "&tags=" + this.selectedTags);
@@ -119,10 +120,24 @@ export default {
             throw new Error("Failed to search");
           }
           this.filteredPrompts = response;
+        } else if (this.toSearch !== "") {
+          const response = fetch("http://localhost:8080/search/textsearch?q="
+              + this.toSearch);
+          if (!response.ok) {
+            throw new Error("Failed to search");
+          }
+          this.filteredPrompts = response;
+        } else {
+          const response = fetch("http://localhost:8080/search/tagSearch?q="
+              + "tags=" + this.selectedTags);
+          if (!response.ok) {
+            throw new Error("Failed to search");
+          }
+          this.filteredPrompts = response;
         }
       } catch (error) {
           console.error(error);
-      }
+    }
     },
 
       /*

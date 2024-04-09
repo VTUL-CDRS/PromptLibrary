@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Pushing to catch up">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24,_11_31_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24,_9_51_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__11_31_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__11_31_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__9_51_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__9_51_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_24__9_36_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_24__9_36_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_5_24__6_47_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_5_24__6_47_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_7_2024_10_39_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_7_2024_10_39_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/accountSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/llmSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/promptSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/tagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,23 +64,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;frontend-grind-flex&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "frontend-grind-flex",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "D:\\IntelliJ IDEA 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Code\PromptLibrary\node_modules\vite\dist\node\chunks" />
@@ -109,6 +124,7 @@
       <workItem from="1712237603166" duration="48000" />
       <workItem from="1712237656251" duration="13000" />
       <workItem from="1712237674356" duration="4220000" />
+      <workItem from="1712695109538" duration="1085000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
