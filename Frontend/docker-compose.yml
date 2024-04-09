@@ -4,17 +4,3 @@ services:
     build: .
     ports:
         - 80:8000
-
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: DanielDBPassword
-    ports:
-      - 5432:5432
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-  
-volumes:
-  pgdata:
-  
