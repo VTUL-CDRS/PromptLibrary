@@ -1,4 +1,6 @@
 import express, { Express, Request, Response } from "express";
+import cors from "cors";
+
 const port = 8080;
 
 // Make the express object
@@ -8,6 +10,8 @@ const app: Express = express();
 // Adds middleware which parses the requests coming in
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
 
 // Routes
 const tagRoute = require("./routes/tag");

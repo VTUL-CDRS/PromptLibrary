@@ -4,12 +4,9 @@ import "../assets/global.css";
 
 <style scoped>
 footer {
-  position: fixed;
-  flex-direction: row;
+  position: relative;
   padding: 1rem;
-  justify-content: space-between;
-  bottom: 0;
-  left: 0;
+  bottom: -90px;
   width: 100%;
   background-color: var(--footer-color);
 }

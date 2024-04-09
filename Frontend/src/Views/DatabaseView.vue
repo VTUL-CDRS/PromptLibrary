@@ -11,57 +11,97 @@
         example: +code +vue_js -real
       </form>
 
-      <!-- Filter Button -->
       <button @click="filterPrompts" class ="filter-button">Filter</button>
     </div>
 
-    <!-- List of Prompts will be rendered here -->
-    <div class = "prompt-container"> <!--v-for="prompt in filteredPrompts" :key="prompt.id"-->
-      <!-- Prompt details -->
-      <div class = "prompt-card">Sample card</div>
-      <div class = "prompt-card">Sample card</div>
-      <div class = "prompt-card">Sample card</div>
-      <div class = "prompt-card">Sample card</div>
+    <div class = "prompt-container">
+      <h1 v-for="item in readyToExport"> {{item.prompt}} </h1>
+      <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
+      <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
+        <!-- currently does not persist OR actually submit-->
+        <input type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
+
+        <p>Prompt: {{prompt.prompt}}</p> <!-- this is a placeholder for prompt summary-->
+        <p>Response: {{prompt.response}}</p>
+        <p>LLM: {{prompt.llmName}}</p>
+        <div v-if="prompt.hasTag.length != 0">Tags:
+          <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
+        </div>
+        <div v-else>Tags: None</div>
+        <div>
+          <router-link :to="'/database/prompt/' + prompt.id">
+            <form>
+              <button>Details</button>
+            </form>
+          </router-link>
+        </div>
+      </div>
     </div>
     <div>
+
     <router-link to="/submit" style="">
-      <button class="submit-button">Submit a prompt</button> <!-- v-if = "true"-->
+      <button class="submit-button">Submit a prompt</button>
     </router-link>
+      <button class="export-button" @click="exportPrompts()">Export selected as JSON</button>
     </div>
   </div>
 </template>
 
 <script>
-
+import { ref } from "vue";
 export default {
   data() {
+    const selectedPrompts = ref([]);
     return {
       ratingRange: {
         lower: 0,
         upper: 5
       },
       selectedTags: [],
-      tags: ['Science', 'History', 'Technology'], // These should come from your backend
+      tags: ['Science', 'History', 'Technology'],
       filteredPrompts: [], // Filtered prompts go here
+      readyToExport: [],
+      selectedPrompts,
     };
   },
   methods: {
-    filterPrompts() {
-      // Logic to filter prompts based on the selected rating range and tags
-      // In a real scenario, this would be an API call to your backend
-      this.filteredPrompts = this.getFilteredPrompts();
+    async fetchPrompts() {
+      try {
+        console.log("trying to fetch");
+        const response = await fetch('http://localhost:8080/prompt/all');
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompts');
+        }
+        const prompts = await response.json();
+        this.filteredPrompts = prompts;
+      } catch (error) {
+        console.error(error);
+      }
     },
-    getFilteredPrompts() {
-      // Replace this with actual filtering logic using the backend data
-      return [
-        // Example filtered prompts
-      ];
-    },
-    // Add other methods if needed
+    async exportPrompts() {
+      //https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
+      try {
+        const bodyJSON = {ids: this.selectedPrompts};
+        const requestOptions = {
+          method: "POST",
+          body: bodyJSON
+        }
+
+        console.log("trying to export");
+        const response = await fetch("http://localhost:8080/export", requestOptions);
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompts to export');
+        }
+        this.readyToExport = response;
+        console.log(response);
+        // window.open("http://localhost:8080/export") //Redirect to the json using url for now.
+      } catch (error) {
+        console.error(error);
+      }
+    }
   },
   mounted() {
-    // Fetch initial data when component mounts
-    this.filterPrompts();
+    this.fetchPrompts();
   },
 };
 </script>
@@ -72,7 +112,7 @@ export default {
   flex-direction: column;
   align-items: center; /* Centers the filters container */
   justify-content: center;
-  min-height: 70vh; /* Ensures the library takes full height of the viewport */
+  min-height: 75vh; /* Ensures the library takes full height of the viewport */
   padding: 20px;
   box-sizing: border-box; /* Ensures padding does not add to the width */
 }
@@ -100,11 +140,15 @@ export default {
   cursor: pointer;
 }
 
+.tagText {
+  display: inline;
+}
+
 .filters {
   position: absolute;
   left: 2%;
   top: 15%;
-  width: 25%; /* Adjust this as necessary to control the width of the filters area */
+  max-width: 25%; /* Adjust this as necessary to control the width of the filters area */
   min-height: 20%;
   margin: auto; /* Centers the filters area horizontally */
   padding: 20px;
@@ -115,9 +159,28 @@ export default {
 
 .submit-button {
   position: absolute;
-  left: 3%;
+  flex-shrink: 1;
+  /*font-size-adjust: ;*/
+  left: 4%;
+  bottom: 17%;
+  width: 20%; /* Adjust as needed */
+  height: 3rem;
+  padding: 0.5em;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.export-button {
+  position: absolute;
+  flex-shrink: 1;
+  /*font-size-adjust: ;*/
+  left: 4%;
   bottom: 10%;
-  width: 25rem; /* Adjust as needed */
+  width: 20%; /* Adjust as needed */
   height: 3rem;
   padding: 0.5em;
   font-size: 1.4rem;
@@ -130,12 +193,14 @@ export default {
 
 .prompt-container {
   position: absolute;
-  left: 28%;
+  display: table-row;
+  overflow: scroll;
+  left: 28.5%;
   top: 15%;
   width: 70%; /* Adjust this as necessary to control the width of the filters area */
-  min-height: 75%;
-  margin: auto; /* Centers the filters area horizontally */
+  height: 75%;
   padding: 20px;
+  margin:auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
   border-radius: 10px; /* Optional border radius for rounded corners */
   background-color: #fff; /* Optional background color */
@@ -144,10 +209,14 @@ export default {
 .prompt-card {
   position: relative;
   display: inline-block;
-  margin: 6px;
-  width: 24%; /* Adjust this as necessary to control the width of the filters area */
-  min-height: 170px;
-  padding: 20px;
+  overflow-wrap: break-word;
+  overflow: scroll;
+  float: left;
+  margin: 0.5%;
+  margin-bottom: 1%;
+  width: 32.33%; /* Adjust this as necessary to control the width of the filters area */
+  height: 30%;
+  padding: 1%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
   border-radius: 10px; /* Optional border radius for rounded corners */
   background-color: #ccc; /* Optional background color */

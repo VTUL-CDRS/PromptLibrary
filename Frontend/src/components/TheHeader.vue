@@ -40,6 +40,7 @@ const signInWithGoogle = () => {
 const signOutUser = () => {
   signOut(auth).then(() => {
     console.log("user signed out");
+    alert("You have been signed out.")
   }).catch((error) => {
     console.log("Error when signing out", error);
   });
@@ -67,7 +68,9 @@ const signOutUser = () => {
       </div>
     </div>
     <div v-else class="">
-      <h2 @click="toggleDropdown(); signOutUser()" class="sign-in-container">Log out</h2>
+      <router-link to="/" style="">
+      <h2 @click="signOutUser()" class="sign-in-container">Log out</h2>
+      </router-link>
     </div>
   </header>
 </template>

@@ -36,7 +36,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/prompt/:id',
+      path: '/database/prompt/:id',
       name: 'PromptDetail',
       component: PromptDetail,
     },
@@ -65,8 +65,7 @@ router.beforeEach(async (to, from, next) =>{
     if (await getCurrentUser()) {
       next();
     } else {
-      alert("Error: not logged in");
-      next("/");
+      alert("Error: Please sign in");
     }
   } else {
     next();

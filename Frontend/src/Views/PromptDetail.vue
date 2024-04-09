@@ -1,24 +1,44 @@
 <template>
-  <div class="prompt-detail">
-    <h1>{{ prompt.prompt }}</h1>
-    <p>{{ prompt.response }}</p>
-    <!-- Add more details here -->
+  <div>
+    <div v-if="prompt">
+      <h1>Prompt Detail</h1>
+      <p>Prompt ID: {{ promptId }}</p>
+      <p>Prompt: {{ prompt.prompt }}</p>
+      <!-- Other content of the PromptDetail component -->
+    </div>
+    <div v-else>
+      <p>Loading...</p>
+    </div>
   </div>
 </template>
 
 <script>
-// export default {
-//   props: ['id'],
-//   data() {
-//     return {
-//       prompt: null,
-//     };
-//   },
-//   async mounted() {
-//     // Fetch the prompt data based on the id
-//     // Here, just an example with a direct import
-//     const prompts = await import('/dummy_data.json');
-//     this.prompt = prompts.find((p) => p.id === this.id);
-//   },
-// };
+export default {
+  data() {
+    return {
+      promptId: null,
+      prompt: null
+    };
+  },
+  methods: {
+    async fetchPrompt() {
+      try {
+        console.log("Trying to fetch detailed prompt");
+        const promptId = this.$route.params.id;
+        const response = await fetch(`http://localhost:8080/prompt/${promptId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompt');
+        }
+        const prompt = await response.json();
+        this.prompt = prompt;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
+  mounted() {
+    this.promptId = this.$route.params.id;
+    this.fetchPrompt();
+  }
+};
 </script>
