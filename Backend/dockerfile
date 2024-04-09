@@ -14,5 +14,5 @@ ENV PORT=8080
 
 #EXPOSE 5432
 # Exposes that port so we can see it from browser and for sql
-CMD ["npm", "start"]
+CMD ["npm", "build", "start"]
 # This is what is executed when we run the image.
