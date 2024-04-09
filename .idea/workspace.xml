@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Fixing intellij with git">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__11_31_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__9_51_AM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Added fields to submit view, implemented (borked) submit connection to backend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +111,7 @@
       <workItem from="1712237674356" duration="4220000" />
       <workItem from="1712695109538" duration="1309000" />
       <workItem from="1712696430552" duration="149000" />
-      <workItem from="1712696638893" duration="4954000" />
+      <workItem from="1712696638893" duration="5346000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
@@ -205,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712696448247</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added fields to submit view, implemented (borked) submit connection to backend">
+      <option name="closed" value="true" />
+      <created>1712701617390</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712701617390</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +254,7 @@
     <MESSAGE value="Pushing to catch up" />
     <MESSAGE value="DB on PC, finish connection with backend for DB view (broken)" />
     <MESSAGE value="Fixing intellij with git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing intellij with git" />
+    <MESSAGE value="Added fields to submit view, implemented (borked) submit connection to backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added fields to submit view, implemented (borked) submit connection to backend" />
   </component>
 </project>

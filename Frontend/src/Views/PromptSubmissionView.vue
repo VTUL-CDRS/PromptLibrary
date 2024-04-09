@@ -32,9 +32,7 @@
             <label>Language Model:</label>
             <select v-model="subLlmName">
               <option disabled value="">Select a Language Model</option>
-              <option value="gpt-3">GPT-3</option>
-              <option value="gpt-3.5">GPT-3.5</option>
-              <option value="gpt-4">GPT-4</option>
+              <option value="gpt-3">ChatGPT</option>
               <!-- Add other models as needed -->
             </select>
           </div>
@@ -79,7 +77,10 @@ export default {
           llmName: this.subLlmName,
           summary: this.subSummary,
           title: this.subTitle,
-          tags: {tagsArray}
+          rating: 0,
+          image: null,
+          approved: false,
+          hasTag: {tagsArray}
         };
         const postOptions = {
           method: "POST",
