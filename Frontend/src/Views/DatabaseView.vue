@@ -79,10 +79,16 @@ export default {
       }
     },
     async exportPrompts() {
+      //https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
       try {
+        const bodyJSON = {ids: this.selectedPrompts};
+        const requestOptions = {
+          method: "POST",
+          body: bodyJSON
+        }
+
         console.log("trying to export");
-        const bodyJSON = {"ids":this.selectedPrompts};
-        const response = await fetch("http://localhost:8080/export", {body:bodyJSON});
+        const response = await fetch("http://localhost:8080/export", requestOptions);
         if (!response.ok) {
           throw new Error('Failed to fetch prompts to export');
         }
