@@ -17,6 +17,28 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 /**
+ * Get function. Id specific
+ */
+router.get('/:id', async (req: Request, res: Response) => {
+  try {
+    // Grab the id from the params
+    const id = req.params.id
+
+    const llm = await prisma.lLM.findUnique({
+      where: {llmName: id}
+    });
+
+    if (llm) {
+      res.json(llm);
+    } else {
+      res.status(404).json({ error: 'Tag not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch llms' });
+  }
+});
+
+/**
  * Post function. Just pushes a tag name
  * 
  * The tag specics are: just the string name.
