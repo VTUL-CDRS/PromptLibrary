@@ -5,7 +5,9 @@ import express, { Request, Response } from "express";
 // Create the router object
 const router = express.Router();
 
-// Get Request
+/**
+ * General Get Request. Returns all prompts including unapproved prompts.
+ */
 router.get("/all", async (req: Request, res: Response) => {
   try {
     const prompts = await prisma.prompt.findMany({
@@ -24,7 +26,9 @@ router.get("/all", async (req: Request, res: Response) => {
   }
 });
 
-// Get Request. But only approved
+/**
+ * General Get Request. Returns all prompts excluding unapproved prompts.
+ */
 router.get("/", async (req: Request, res: Response) => {
   try {
     const prompts = await prisma.prompt.findMany({
@@ -46,7 +50,9 @@ router.get("/", async (req: Request, res: Response) => {
   }
 });
 
-// Post Request
+/**
+ * Post request. Requires a req body.
+ */
 router.post("/", async (req: Request, res: Response) => {
   try {
     const prompts = await prisma.prompt.create(req.body);
@@ -70,7 +76,13 @@ router.patch("/:id", async (req: Request, res: Response) => {
       },
       data: req.body
     });
-    res.json(prompts);
+
+    // Check if the Prompt exists
+    if (prompts) {
+      res.json(prompts);
+    } else {
+      res.status(404).json({ error: "Prompt not found" });
+    }
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
   }
