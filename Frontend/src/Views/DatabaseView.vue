@@ -23,6 +23,7 @@
 
         <p>Prompt: {{prompt.prompt}}</p> <!-- this is a placeholder for prompt summary-->
         <p>Response: {{prompt.response}}</p>
+        <p>LLM: {{prompt.llmName}}</p>
         <div v-if="prompt.hasTag.length != 0">Tags:
           <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
         </div>
@@ -80,8 +81,8 @@ export default {
     async exportPrompts() {
       try {
         console.log("trying to export");
-        const body = this.selectedPrompts;
-        const response = await fetch("http://localhost:8080/export", body);
+        const bodyJSON = {"ids":this.selectedPrompts};
+        const response = await fetch("http://localhost:8080/export", {body:bodyJSON});
         if (!response.ok) {
           throw new Error('Failed to fetch prompts to export');
         }
