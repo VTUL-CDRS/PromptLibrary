@@ -56,8 +56,9 @@ router.get("/", async (req: Request, res: Response) => {
 router.post("/", async (req: Request, res: Response) => {
   try {
     const { prompt, response, image, rating, approved, llmName, summary, title, tags } = req.body;
-    // const prompts = await prisma.prompt.create( {data : req.body} );
-    const prompts = await prisma.prompt.create({
+
+    // Create the Prompt
+    const createdPrompt = await prisma.prompt.create({
       data: {
         prompt,
         response,
@@ -68,18 +69,24 @@ router.post("/", async (req: Request, res: Response) => {
         summary,
         title,
         hasTag: {
-          create: tags.map(tag => ({
+          create: tags.map((tag: {tagName: String}) => ({
             tag: {
-              create: {
-                name: tag.name
+              connectOrCreate: {
+                where: {
+                  name: tag.tagName
+                },
+                create: {
+                  name: tag.tagName
+                }
               }
             }
           }))
-        }
-      }
-    })
+        },
+      }})
     res.status(200);
+    res.json(createdPrompt);
   } catch (error) {
+    console.error("Prisma error:", error);
     res.status(500).json({ error: "Failed to fetch prompts" });
   }
 });

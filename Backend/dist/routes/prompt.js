@@ -43,7 +43,9 @@ var prisma_1 = require("../lib/prisma");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
-// Get Request
+/**
+ * General Get Request. Returns all prompts including unapproved prompts.
+ */
 router.get("/all", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts, error_1;
     return __generator(this, function (_a) {
@@ -71,7 +73,9 @@ router.get("/all", function (req, res) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); });
-// Get Request. But only approved
+/**
+ * General Get Request. Returns all prompts excluding unapproved prompts.
+ */
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var prompts, error_2;
     return __generator(this, function (_a) {
@@ -102,20 +106,54 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); });
-// Post Request
+/**
+ * Post request. Requires a req body.
+ */
 router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var prompts, error_3;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a, prompt, response, image, rating, approved, llmName, summary, title, tags, createdPrompt, error_3;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma_1.prisma.prompt.create(req.body)];
+                _b.trys.push([0, 2, , 3]);
+                _a = req.body, prompt = _a.prompt, response = _a.response, image = _a.image, rating = _a.rating, approved = _a.approved, llmName = _a.llmName, summary = _a.summary, title = _a.title, tags = _a.tags;
+                // const prompts = await prisma.prompt.create( {data : req.body} );
+                // Create the Prompt
+                console.log(tags);
+                return [4 /*yield*/, prisma_1.prisma.prompt.create({
+                        data: {
+                            prompt: prompt,
+                            response: response,
+                            image: image,
+                            rating: rating,
+                            approved: approved,
+                            llmName: llmName,
+                            summary: summary,
+                            title: title,
+                            hasTag: {
+                                create: tags.map(function (tag) { return ({
+                                    tag: {
+                                        connectOrCreate: {
+                                            where: {
+                                                name: tag.tagName
+                                            },
+                                            create: {
+                                                name: tag.tagName
+                                            }
+                                        }
+                                    }
+                                }); })
+                            },
+                        }
+                    })];
             case 1:
-                prompts = _a.sent();
-                res.json(prompts);
+                createdPrompt = _b.sent();
+                console.log('here');
+                res.status(200);
+                res.json(createdPrompt);
                 return [3 /*break*/, 3];
             case 2:
-                error_3 = _a.sent();
+                error_3 = _b.sent();
+                console.error("Prisma error:", error_3);
                 res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -140,7 +178,13 @@ router.patch("/:id", function (req, res) { return __awaiter(void 0, void 0, void
                     })];
             case 1:
                 prompts = _a.sent();
-                res.json(prompts);
+                // Check if the Prompt exists
+                if (prompts) {
+                    res.json(prompts);
+                }
+                else {
+                    res.status(404).json({ error: "Prompt not found" });
+                }
                 return [3 /*break*/, 3];
             case 2:
                 error_4 = _a.sent();

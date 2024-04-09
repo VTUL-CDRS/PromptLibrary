@@ -66,12 +66,42 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
     });
 }); });
 /**
+ * Get function. Id specific
+ */
+router.get('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, llm, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                id = req.params.id;
+                return [4 /*yield*/, prisma_1.prisma.lLM.findUnique({
+                        where: { llmName: id }
+                    })];
+            case 1:
+                llm = _a.sent();
+                if (llm) {
+                    res.json(llm);
+                }
+                else {
+                    res.status(404).json({ error: 'Tag not found' });
+                }
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                res.status(500).json({ error: 'Failed to fetch llms' });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+/**
  * Post function. Just pushes a tag name
  *
  * The tag specics are: just the string name.
  */
 router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var newTag, error_2;
+    var newTag, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -82,7 +112,7 @@ router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, 
                 res.json(newTag);
                 return [3 /*break*/, 3];
             case 2:
-                error_2 = _a.sent();
+                error_3 = _a.sent();
                 res.status(500).json({ error: 'Failed to post llms' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -93,7 +123,7 @@ router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, 
  * Delete function. Id specific
  */
 router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tagId, tag, error_3;
+    var tagId, tag, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -113,7 +143,7 @@ router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, voi
                 }
                 return [3 /*break*/, 3];
             case 2:
-                error_3 = _a.sent();
+                error_4 = _a.sent();
                 res.status(500).json({ error: 'Failed to fetch tags' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

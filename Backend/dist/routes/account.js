@@ -43,7 +43,10 @@ var prisma_1 = require("../lib/prisma");
 var express_1 = __importDefault(require("express"));
 // Create the router object
 var router = express_1.default.Router();
-// Get Request
+/**
+ * Get request for the accounts.
+ * Theoretically there is only 1 account stored for a moderator account.
+ */
 router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var accounts, error_1;
     return __generator(this, function (_a) {
