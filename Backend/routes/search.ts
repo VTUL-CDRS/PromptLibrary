@@ -66,6 +66,7 @@ router.get("/textsearch", async (req: Request, res: Response) => {
 router.get("/fullsearch", async (req: Request, res: Response) => {
   try {
     const prompts = await searchPromptsTags(req, res);
+    res.status(200);
     res.json(prompts);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
