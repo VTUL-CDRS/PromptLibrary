@@ -18,7 +18,6 @@
       <h1 v-for="item in readyToExport"> {{item.prompt}} </h1>
       <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
-        <!-- currently does not persist OR actually submit-->
         <input type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
         <p>Prompt: {{prompt.prompt}}</p> <!-- this is a placeholder for prompt summary-->
@@ -64,6 +63,19 @@ export default {
   },
   methods: {
     async fetchPrompts() {
+      try {
+        console.log("trying to fetch");
+        const response = await fetch('http://localhost:8080/prompt/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompts');
+        }
+        const prompts = await response.json();
+        this.filteredPrompts = prompts;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async fetchPromptsApproved() {
       try {
         console.log("trying to fetch");
         const response = await fetch('http://localhost:8080/prompt/all');
@@ -115,7 +127,7 @@ export default {
         if (this.selectedTags !== "" && this.toSearch !== "") {
           const response = fetch("http://localhost:8080/search/fullsearch?q="
               + this.toSearch
-              + "&tags=" + this.selectedTags);
+              + "&tags=" + this.selectedTags.toLowerCase());
           if (!response.ok) {
             throw new Error("Failed to search");
           }
@@ -272,25 +284,12 @@ export default {
   cursor: pointer;
 }
 
-.rating-range-container,
-.tag-selector-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.rating-range-container select,
-.tag-selector-container select,
 .filters button {
   padding: 10px;
   margin: 5px 0; /* Adds margin to the top and bottom for spacing */
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: white;
-}
-
-.tag-selector-container select {
-  width: 100%; /* Ensures the tag selector takes up the full width */
 }
 
 .filters button {
@@ -310,8 +309,6 @@ export default {
     width: 95%; /* Allows for a small margin on small screens */
   }
 
-  .rating-range-container select,
-  .tag-selector-container select,
   .filters button {
     width: auto; /* Allows the elements to fit the content on small screens */
   }

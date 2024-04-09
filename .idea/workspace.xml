@@ -4,25 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="DB on PC, finish connection with backend for DB view (broken)">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24,_11_31_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24,_9_51_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__11_31_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__11_31_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__9_51_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__9_51_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_24__9_36_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_24__9_36_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_5_24__6_47_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_5_24__6_47_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_7_2024_10_39_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_7_2024_10_39_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Fixing intellij with git">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__11_31_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_2_24__9_51_AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/accountSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/llmSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/promptSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/tagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +58,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "frontend-grind-flex",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -125,6 +113,8 @@
       <workItem from="1712237656251" duration="13000" />
       <workItem from="1712237674356" duration="4220000" />
       <workItem from="1712695109538" duration="1309000" />
+      <workItem from="1712696430552" duration="149000" />
+      <workItem from="1712696638893" duration="4954000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
@@ -207,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712696298165</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixing intellij with git">
+      <option name="closed" value="true" />
+      <created>1712696448247</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712696448247</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,6 +248,7 @@
     <MESSAGE value="Export framework. TODO: figure out how to make the file itself download, figure out how to pass selected prompts" />
     <MESSAGE value="Pushing to catch up" />
     <MESSAGE value="DB on PC, finish connection with backend for DB view (broken)" />
-    <option name="LAST_COMMIT_MESSAGE" value="DB on PC, finish connection with backend for DB view (broken)" />
+    <MESSAGE value="Fixing intellij with git" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing intellij with git" />
   </component>
 </project>

@@ -4,25 +4,33 @@
       <div class="prompt">
         <h1 class="header-text">Submit a Prompt</h1>
         <h3>Fill in the details for the prompt below.</h3>
-        <form class="database-form" @submit.prevent="submitPrompt">
-          <div class="input_box">
-            <label for="prompt">Prompt:</label>
-            <input id="prompt" type="text" placeholder="Enter the prompt" v-model="newPrompt.prompt" />
+        <form class="database-form">
+          <div>
+            <label>Title:</label>
+            <input type="text" placeholder="Enter a one to three word title for the prompt" v-model="subTitle" />
+          </div>
+          <div>
+            <label>Summary:</label>
+            <input type="text" placeholder="Enter a short one to three sentence summary of the prompt" v-model="subSummary" />
+          </div>
+          <div>
+            <label>Prompt:</label>
+            <input type="text" placeholder="Enter prompt" v-model="subPrompt" />
           </div>
 
-          <div class="input_box">
-            <label for="response">Response:</label>
-            <textarea id="response" placeholder="Enter the expected response" v-model="newPrompt.response"></textarea>
+          <div>
+            <label>Response:</label>
+            <input type="text" placeholder="Enter sample response" v-model="subResponse"/>
           </div>
 
-          <div class="input_box">
-            <label for="tags">Tags:</label>
-            <input id="tags" type="text" placeholder="Include tags as comma separated values" v-model="newPrompt.tags" />
+          <div>
+            <label>Tags:</label>
+            <input type="text" placeholder="Include tags as comma separated values with no spaces between tags" v-model="subTags" />
           </div>
 
-          <div class="input_box">
-            <label for="llmName">Language Model:</label>
-            <select id="llmName" v-model="newPrompt.llmName">
+          <div>
+            <label>Language Model:</label>
+            <select v-model="subLlmName">
               <option disabled value="">Select a Language Model</option>
               <option value="gpt-3">GPT-3</option>
               <option value="gpt-3.5">GPT-3.5</option>
@@ -31,7 +39,7 @@
             </select>
           </div>
 
-          <input class="submit-button" type="submit" value="Submit" />
+          <button class="submit-button" type="button" @click="submitPrompt()">Submit</button>
         </form>
       </div>
     </section>
@@ -41,34 +49,58 @@
 <script>
 import { ref } from 'vue';
 
-// const bodyJSON = {ids: this.selectedPrompts};
-// const requestOptions = {
-//   method: "POST",
-//   body: {bodyJSON}
-// }
-
-
-// Form data
-const newPrompt = ref({
-  prompt: '',
-  response: '',
-  tags: '', // Will need to be processed into an array before submission
-  llmName: ''
-});
-
-// Dummy function to handle form submission
-const submitPrompt = () => {
-  // Process tags into an array
-  const tagsArray = newPrompt.value.tags.split(',').map(tag => tag.trim());
-
-  // Construct the form submission object
-  const submission = {
-    ...newPrompt.value,
-    tags: tagsArray
-  };
-
-  console.log('Submitting:', submission);
-  // Here you would send 'submission' to your backend API
+export default {
+  data() {
+    const subPrompt = ref("");
+    const subResponse = ref("");
+    const subTags = ref("");
+    const subLlmName = ref("");
+    const subSummary = ref("");
+    const subTitle = ref("");
+    return {
+      subPrompt,
+      subResponse,
+      subTags,
+      subLlmName,
+      subSummary,
+      subTitle
+    };
+  },
+  methods: {
+    async submitPrompt() {
+      try {
+        console.log("Attempting submit");
+        // Process tags into an array
+        const tagsArray = this.subTags.split(',').map(tag => tag.trim());
+        //const prompts: {id: number, prompt: string, response: string, image: string, rating: number, approved: boolean, llmName: string, createdAt: Date, summary: string, title: string}
+        const bodyJSON = {
+          prompt: this.subPrompt,
+          response: this.subResponse,
+          llmName: this.subLlmName,
+          summary: this.subSummary,
+          title: this.subTitle,
+          tags: {tagsArray}
+        };
+        const postOptions = {
+          method: "POST",
+          body: {bodyJSON}
+        }
+        const response = await fetch("http://localhost:8080/prompt/", postOptions);
+        // console.log(this.subPrompt);
+        // console.log(this.subResponse);
+        // console.log(this.subLlmName);
+        // console.log(this.subSummary);
+        // console.log(this.subTitle);
+        // console.log(tagsArray);
+        console.log(response);
+        if (!response.ok) {
+          throw new Error("Failed to submit");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  }
 };
 
 </script>
@@ -85,7 +117,7 @@ const submitPrompt = () => {
 
 .prompts-container {
   width: 100%; /* Use the full container width */
-  max-width: 600px; /* Maximum width for the form */
+  max-width: 75%; /* Maximum width for the form */
   margin: 0 auto; /* Center the form in the available space */
 }
 
@@ -104,11 +136,12 @@ const submitPrompt = () => {
 }
 
 .database-form input[type="text"],
-.database-form select,
-.database-form textarea {
+.database-form select {
   width: 100%; /* Make the input take the full width of its parent */
-  padding: 1rem;
+  overflow: scroll;
+  padding: 0.5rem;
   border: 2px solid #aaa;
+  font-size: 15px;
   border-radius: 8px; /* More pronounced rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -133,12 +166,6 @@ const submitPrompt = () => {
 .header-text, .database-form h3 {
   text-align: center; /* Center the titles and headers */
   color: var(--header-color);
-}
-
-/* If you have a fixed header, you need to account for its height with padding-top */
-/* This is an example variable, adjust as needed for your project */
-:root {
-  --header-height: 60px;
 }
 
 </style>
