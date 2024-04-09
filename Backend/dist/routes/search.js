@@ -129,6 +129,7 @@ router.get("/fullsearch", function (req, res) { return __awaiter(void 0, void 0,
                 return [4 /*yield*/, (0, prompts_1.searchPromptsTags)(req, res)];
             case 1:
                 prompts = _a.sent();
+                res.status(200);
                 res.json(prompts);
                 return [3 /*break*/, 3];
             case 2:

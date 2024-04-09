@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tags = void 0;
 exports.tags = [
-    { name: "Technology" },
-    { name: "Science" },
-    { name: "History" },
-    { name: "Art" },
-    { name: "Literature" }
+    { name: "technology" },
+    { name: "science" },
+    { name: "history" },
+    { name: "art" },
+    { name: "literature" }
 ];
 //# sourceMappingURL=tagSeed.js.map
