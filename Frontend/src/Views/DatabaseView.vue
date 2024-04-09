@@ -3,15 +3,15 @@
     <div class="filters">
       Search:
       <form class="search-bar">
-        <input type="text" placeholder="Enter key words to search"/>
+        <input type="text" placeholder="Enter key words to search" v-model.trim="toSearch"/>
       </form>
       Tags:
       <form class="search-bar">
-        <input type="text" placeholder="Enter tags to search"/>
-        example: +code +vue_js -real
+        <input type="text" placeholder="Enter tags to search" v-model.trim="selectedTags"/>
+        example: code+vue_js+real
       </form>
 
-      <button @click="filterPrompts" class ="filter-button">Filter</button>
+      <button @click="filter()" class ="filter-button">Filter</button>
     </div>
 
     <div class = "prompt-container">
@@ -52,16 +52,14 @@ import { ref } from "vue";
 export default {
   data() {
     const selectedPrompts = ref([]);
+    const toSearch = ref("");
+    const selectedTags = ref([]);
     return {
-      ratingRange: {
-        lower: 0,
-        upper: 5
-      },
-      selectedTags: [],
-      tags: ['Science', 'History', 'Technology'],
-      filteredPrompts: [], // Filtered prompts go here
+      filteredPrompts: [],
       readyToExport: [],
       selectedPrompts,
+      selectedTags,
+      toSearch,
     };
   },
   methods: {
@@ -92,13 +90,49 @@ export default {
         if (!response.ok) {
           throw new Error('Failed to fetch prompts to export');
         }
-        this.readyToExport = response;
-        console.log(response);
-        // window.open("http://localhost:8080/export") //Redirect to the json using url for now.
+
+        //Actual downloading
+
+
+
+
+
+        // TODO: need to download file
       } catch (error) {
         console.error(error);
       }
-    }
+    },
+    async filter() {
+      /*
+      selectedTags,
+      toSearch,
+       */
+      try {
+        if (this.selectedTags == "" && this.toSearch == "") {
+          await this.fetchPrompts();
+        }
+        if (this.selectedTags != "" && this.toSearch != "") {
+          const response = fetch("http://localhost:8080/search/fullsearch?q="
+              + this.toSearch
+              + "&tags=" + this.selectedTags);
+          if (!response.ok) {
+            throw new Error("Failed to search");
+          }
+          this.filteredPrompts = response;
+        }
+      } catch (error) {
+          console.error(error);
+      }
+    },
+
+      /*
+      if only search,
+      use search
+      if only tag,
+      use tag
+      if both
+      use both
+       */
   },
   mounted() {
     this.fetchPrompts();

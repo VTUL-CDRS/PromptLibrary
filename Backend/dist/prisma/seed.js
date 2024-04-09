@@ -54,7 +54,7 @@ function main() {
                     if (!(_i < accounts_1.length)) return [3 /*break*/, 4];
                     account = accounts_1[_i];
                     return [4 /*yield*/, prisma_1.prisma.account.create({
-                            data: account
+                            data: account,
                         })];
                 case 2:
                     _e.sent();
@@ -69,7 +69,7 @@ function main() {
                     if (!(_a < llms_1.length)) return [3 /*break*/, 8];
                     llm = llms_1[_a];
                     return [4 /*yield*/, prisma_1.prisma.lLM.create({
-                            data: llm
+                            data: llm,
                         })];
                 case 6:
                     _e.sent();
@@ -84,7 +84,7 @@ function main() {
                     if (!(_b < tags_1.length)) return [3 /*break*/, 12];
                     tag = tags_1[_b];
                     return [4 /*yield*/, prisma_1.prisma.tag.create({
-                            data: tag
+                            data: tag,
                         })];
                 case 10:
                     _e.sent();
@@ -99,7 +99,7 @@ function main() {
                     if (!(_c < prompts_1.length)) return [3 /*break*/, 16];
                     prompt = prompts_1[_c];
                     return [4 /*yield*/, prisma_1.prisma.prompt.create({
-                            data: prompt
+                            data: prompt,
                         })];
                 case 14:
                     _e.sent();
@@ -114,7 +114,7 @@ function main() {
                     if (!(_d < hasTags_1.length)) return [3 /*break*/, 20];
                     hasTag = hasTags_1[_d];
                     return [4 /*yield*/, prisma_1.prisma.hasTag.create({
-                            data: hasTag
+                            data: hasTag,
                         })];
                 case 18:
                     _e.sent();
@@ -127,10 +127,12 @@ function main() {
         });
     });
 }
-main().catch(function (e) {
+main()
+    .catch(function (e) {
     console.log(e);
     process.exit(1);
-}).finally(function () {
+})
+    .finally(function () {
     prisma_1.prisma.$disconnect();
 });
 //# sourceMappingURL=seed.js.map

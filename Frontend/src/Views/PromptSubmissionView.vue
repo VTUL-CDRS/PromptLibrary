@@ -41,11 +41,11 @@
 <script>
 import { ref } from 'vue';
 
-const bodyJSON = {ids: this.selectedPrompts};
-const requestOptions = {
-  method: "POST",
-  body: {bodyJSON}
-}
+// const bodyJSON = {ids: this.selectedPrompts};
+// const requestOptions = {
+//   method: "POST",
+//   body: {bodyJSON}
+// }
 
 
 // Form data
