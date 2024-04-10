@@ -93,8 +93,10 @@ export default {
       try {
         const bodyJSON = {ids: this.selectedPrompts};
         const requestOptions = {
-          method: "POST",
-          body: bodyJSON
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(bodyJSON)
         }
 
         console.log("trying to export");
@@ -116,16 +118,12 @@ export default {
       }
     },
     async filter() {
-      /*
-      selectedTags,
-      toSearch,
-       */
       try {
         if (this.selectedTags === "" && this.toSearch === "") {
           await this.fetchPrompts();
         }
         if (this.selectedTags !== "" && this.toSearch !== "") {
-          const response = fetch("http://localhost:8080/search/fullsearch?q="
+          const response = await fetch("http://localhost:8080/search/fullsearch?q="
               + this.toSearch
               + "&tags=" + this.selectedTags.toLowerCase());
           if (!response.ok) {
@@ -133,14 +131,14 @@ export default {
           }
           this.filteredPrompts = response;
         } else if (this.toSearch !== "") {
-          const response = fetch("http://localhost:8080/search/textsearch?q="
+          const response = await fetch("http://localhost:8080/search/textsearch?q="
               + this.toSearch);
           if (!response.ok) {
             throw new Error("Failed to search");
           }
           this.filteredPrompts = response;
         } else {
-          const response = fetch("http://localhost:8080/search/tagSearch?q="
+          const response = await fetch("http://localhost:8080/search/tagSearch?q="
               + "tags=" + this.selectedTags);
           if (!response.ok) {
             throw new Error("Failed to search");
