@@ -32,7 +32,7 @@
             <label>Language Model:</label>
             <select v-model="subLlmName">
               <option disabled value="">Select a Language Model</option>
-              <option value="gpt-3">ChatGPT</option>
+              <option value="ChatGPT">ChatGPT</option>
               <!-- Add other models as needed -->
             </select>
           </div>
@@ -85,7 +85,10 @@ export default {
         };
         const postOptions = {
           method: "POST",
-          body: {bodyJSON}
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(bodyJSON)
         }
         const response = await fetch("http://localhost:8080/prompt/", postOptions);
         // console.log(this.subPrompt);
