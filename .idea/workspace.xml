@@ -5,22 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Added fields to submit view, implemented (borked) submit connection to backend">
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseWrapperView.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/store/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_9_2024_8_53_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_9_2024_8_53_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/accountSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/promptSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/promptSeed.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/routes/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/routes/llm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/llm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/tag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/tagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/LoginView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
