@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import "../assets/global.css";
-import {ref, onMounted} from "vue";
+import {ref, onMounted, computed} from "vue";
 import { vOnClickOutside } from "@vueuse/components"
 import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut} from "firebase/auth";
+import { store} from '../store/store.ts';
 import {useRouter} from 'vue-router';
 
 // const router = useRouter();
@@ -38,6 +39,7 @@ const signInWithGoogle = () => {
 }
 
 const signOutUser = () => {
+  store.isAdminLoggedIn = false;
   signOut(auth).then(() => {
     console.log("user signed out");
     alert("You have been signed out.")
@@ -46,6 +48,7 @@ const signOutUser = () => {
   });
 };
 
+const isAdmin = computed(() => store.isAdminLoggedIn);
 </script>
 
 <template>
@@ -55,7 +58,7 @@ const signOutUser = () => {
         <h2 class="header-text">PromptLibrary</h2>
       </router-link>
     </div>
-    <div v-if="!userState" class="">
+    <div v-if="!userState & !isAdmin" class="">
       <h2 @click="toggleDropdown()" class="sign-in-container">Sign in</h2>
       <div v-if="dropdown" v-on-click-outside="closeDropdown" class="sign-in-dropdown">
 

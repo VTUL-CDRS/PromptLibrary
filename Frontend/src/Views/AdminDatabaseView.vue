@@ -15,19 +15,18 @@
     </div>
 
     <div class = "prompt-container">
-      <h1>ADMIN</h1>
       <h1 v-for="item in readyToExport"> {{item.prompt}} </h1>
       <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
         <input type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
-        <p>Title: {{prompt.title}}</p> <!-- this is a placeholder for prompt summary-->
-        <p>Summary: {{prompt.summary}}</p>
+        <p>Prompt: {{prompt.prompt}}</p> <!-- this is a placeholder for prompt summary-->
+        <p>Response: {{prompt.response}}</p>
         <p>LLM: {{prompt.llmName}}</p>
         <div v-if="prompt.hasTag.length != 0">Tags:
           <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
         </div>
-        <div v-else>Tags: none</div>
+        <div v-else>Tags: None</div>
         <div>
           <router-link :to="'/database/prompt/' + prompt.id">
             <form>
@@ -39,9 +38,9 @@
     </div>
     <div>
 
-    <router-link to="/submit" style="">
-      <button class="submit-button">Submit a prompt</button>
-    </router-link>
+      <router-link to="/submit" style="">
+        <button class="submit-button">Submit a prompt</button>
+      </router-link>
       <button class="export-button" @click="exportPrompts()">Export selected as JSON</button>
     </div>
   </div>
@@ -94,10 +93,8 @@ export default {
       try {
         const bodyJSON = {ids: this.selectedPrompts};
         const requestOptions = {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(bodyJSON)
+          method: "POST",
+          body: bodyJSON
         }
 
         console.log("trying to export");
@@ -119,12 +116,16 @@ export default {
       }
     },
     async filter() {
+      /*
+      selectedTags,
+      toSearch,
+       */
       try {
         if (this.selectedTags === "" && this.toSearch === "") {
           await this.fetchPrompts();
         }
         if (this.selectedTags !== "" && this.toSearch !== "") {
-          const response = await fetch("http://localhost:8080/search/fullsearch?q="
+          const response = fetch("http://localhost:8080/search/fullsearch?q="
               + this.toSearch
               + "&tags=" + this.selectedTags.toLowerCase());
           if (!response.ok) {
@@ -132,14 +133,14 @@ export default {
           }
           this.filteredPrompts = response;
         } else if (this.toSearch !== "") {
-          const response = await fetch("http://localhost:8080/search/textsearch?q="
+          const response = fetch("http://localhost:8080/search/textsearch?q="
               + this.toSearch);
           if (!response.ok) {
             throw new Error("Failed to search");
           }
           this.filteredPrompts = response;
         } else {
-          const response = await fetch("http://localhost:8080/search/tagSearch?q="
+          const response = fetch("http://localhost:8080/search/tagSearch?q="
               + "tags=" + this.selectedTags);
           if (!response.ok) {
             throw new Error("Failed to search");
@@ -147,9 +148,18 @@ export default {
           this.filteredPrompts = response;
         }
       } catch (error) {
-          console.error(error);
-    }
+        console.error(error);
+      }
     },
+
+    /*
+    if only search,
+    use search
+    if only tag,
+    use tag
+    if both
+    use both
+     */
   },
   mounted() {
     this.fetchPrompts();

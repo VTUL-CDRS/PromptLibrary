@@ -1,17 +1,71 @@
 <template>
   <div class="login-page-container">
     <h1 class="header-text">Sign In</h1>
-    <form class="login-form">
-      <input type="text" placeholder="Username"/>
-      <input type="password" placeholder="Password"/>
-      <input class="input-button-login" type="submit" value="Login" />
+    <form class="login-form" @submit.prevent="handleLogin">
+      <input type="text" placeholder="Username" v-model="credentials.username" />
+      <input type="password" placeholder="Password" v-model="credentials.password" />
+      <button class="input-button-login" type="submit">Login</button>
     </form>
-    <button class="input-button-google" @click="signInWithGoogle">Log on with Gmail</button>
   </div>
 </template>
 
-<script setup>
-
+<script>
+import {store} from '../store/store.ts';
+import router from '../router/index.ts';
+export default {
+  data() {
+    return {
+      accounts: [],
+      credentials: {
+        username: '',
+        password: ''
+      },
+    };
+  },
+  computed: {
+    moderators() {
+      return this.accounts.filter(account => account.isModerator);
+    }
+  },
+  methods: {
+    async fetchAccount() {
+      try {
+        console.log("trying to fetch accounts");
+        const response = await fetch('http://localhost:8080/account/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch account');
+        }
+        this.accounts = await response.json();
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    handleLogin() {
+      console.log('Login attempted with:', this.credentials);
+      const userAccount = this.accounts.find(account =>
+          account.username === this.credentials.username &&
+          account.password === this.credentials.password);
+      if (userAccount) {
+        if (userAccount.isModerator) {
+          store.isAdminLoggedIn = true; // Set the global boolean
+          console.log('Logged in as a moderator');
+        } else {
+          store.isAdminLoggedIn = false;
+          console.log('Logged in as a regular user');
+        }
+      } else {
+        store.isAdminLoggedIn = false; // Set the global boolean
+        console.error('Invalid credentials');
+      }
+      this.credentials.username = '';
+      this.credentials.password = '';
+      router.push("/");
+    },
+  },
+  mounted() {
+    this.fetchAccount();
+  },
+};
 </script>
 
 <style scoped>
