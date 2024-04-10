@@ -79,8 +79,9 @@ router.get("/tagSearch", function (req, res) { return __awaiter(void 0, void 0, 
                     })];
             case 1:
                 prompts = _a.sent();
+                res.status(200);
                 res.json(prompts);
-                return [3 /*break*/, 3];
+                return [2 /*return*/];
             case 2: throw new Error("Tags must be provided as a plus separated list");
             case 3: return [3 /*break*/, 5];
             case 4:
@@ -105,8 +106,9 @@ router.get("/textsearch", function (req, res) { return __awaiter(void 0, void 0,
                 return [4 /*yield*/, (0, prompts_1.searchPrompts)(req, res)];
             case 1:
                 prompts = _a.sent();
+                res.status(200);
                 res.json(prompts);
-                return [3 /*break*/, 3];
+                return [2 /*return*/];
             case 2:
                 error_2 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });
@@ -133,7 +135,7 @@ router.get("/fullsearch", function (req, res) { return __awaiter(void 0, void 0,
                 prompts = _a.sent();
                 res.status(200);
                 res.json(prompts);
-                return [3 /*break*/, 3];
+                return [2 /*return*/];
             case 2:
                 error_3 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });

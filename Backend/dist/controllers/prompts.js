@@ -83,7 +83,7 @@ var searchPromptsTags = function (req, res) { return __awaiter(void 0, void 0, v
                 _e.trys.push([0, 4, , 5]);
                 tags = req.query.tags;
                 if (!(typeof tags === 'string')) return [3 /*break*/, 2];
-                tagArray = tags.split('+');
+                tagArray = tags.split(' ');
                 return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
                         where: {
                             prompt: {
@@ -98,13 +98,15 @@ var searchPromptsTags = function (req, res) { return __awaiter(void 0, void 0, v
                             summary: {
                                 search: (_d = req.query.q) === null || _d === void 0 ? void 0 : _d.toString()
                             },
-                            hasTag: {
-                                some: {
-                                    tagId: {
-                                        in: tagArray
+                            AND: tagArray.map(function (id) { return ({
+                                hasTag: {
+                                    some: {
+                                        tagId: {
+                                            equals: id
+                                        }
                                     }
                                 }
-                            }
+                            }); })
                         },
                         include: {
                             hasTag: {

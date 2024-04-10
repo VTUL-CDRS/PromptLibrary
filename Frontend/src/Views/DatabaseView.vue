@@ -15,8 +15,6 @@
     </div>
 
     <div class = "prompt-container">
-      <h1>ADMIN</h1>
-      <h1 v-for="item in readyToExport"> {{item.prompt}} </h1>
       <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
         <input type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
@@ -53,7 +51,7 @@ export default {
   data() {
     const selectedPrompts = ref([]);
     const toSearch = ref("");
-    const selectedTags = ref([]);
+    const selectedTags = ref("");
     return {
       filteredPrompts: [],
       readyToExport: [],
@@ -94,6 +92,7 @@ export default {
       try {
         const bodyJSON = {ids: this.selectedPrompts};
         const requestOptions = {
+          method: "POST",
           headers: {
             'Content-Type': 'application/json'
           },
@@ -120,27 +119,34 @@ export default {
     },
     async filter() {
       try {
+        //Empty
         if (this.selectedTags === "" && this.toSearch === "") {
-          await this.fetchPrompts();
+
         }
-        if (this.selectedTags !== "" && this.toSearch !== "") {
+        //Full
+        else if (this.selectedTags !== "" && this.toSearch !== "") {
           const response = await fetch("http://localhost:8080/search/fullsearch?q="
               + this.toSearch
-              + "&tags=" + this.selectedTags.toLowerCase());
+              + "&tags="
+              + this.selectedTags.toLowerCase());
           if (!response.ok) {
             throw new Error("Failed to search");
           }
           this.filteredPrompts = response;
-        } else if (this.toSearch !== "") {
+        }
+        //Text only
+        else if (this.toSearch !== "") {
           const response = await fetch("http://localhost:8080/search/textsearch?q="
               + this.toSearch);
           if (!response.ok) {
             throw new Error("Failed to search");
           }
           this.filteredPrompts = response;
-        } else {
-          const response = await fetch("http://localhost:8080/search/tagSearch?q="
-              + "tags=" + this.selectedTags);
+        }
+        // Tag only
+        else {
+          const response = await fetch("http://localhost:8080/search/tagSearch?tags="
+              + this.selectedTags.toLowerCase());
           if (!response.ok) {
             throw new Error("Failed to search");
           }
@@ -148,7 +154,7 @@ export default {
         }
       } catch (error) {
           console.error(error);
-    }
+      }
     },
   },
   mounted() {
