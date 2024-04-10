@@ -35,6 +35,7 @@ router.get("/tagSearch", async (req: Request, res: Response) => {
         }
       });
       res.json(prompts);
+      return;
     } else {
       throw new Error("Tags must be provided as a plus separated list");
     }
@@ -52,6 +53,7 @@ router.get("/textsearch", async (req: Request, res: Response) => {
   try {
     const prompts = await searchPrompts(req, res);
     res.json(prompts);
+    return;
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
   }
@@ -69,6 +71,7 @@ router.get("/fullsearch", async (req: Request, res: Response) => {
     const prompts = await searchPromptsTags(req, res);
     res.status(200);
     res.json(prompts);
+    return;
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
   }

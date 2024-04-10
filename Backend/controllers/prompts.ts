@@ -32,7 +32,7 @@ export const searchPromptsTags = async (req: Request, res: Response) => {
     try {
         const { tags } = req.query; 
         if (typeof tags === 'string') {
-            const tagArray = tags.split('+');
+            const tagArray = tags.split(' ');
             const prompts = await prisma.prompt.findMany({
                 where: {
                     prompt: {
@@ -47,14 +47,16 @@ export const searchPromptsTags = async (req: Request, res: Response) => {
                     summary: {
                         search: req.query.q?.toString()
                     },
-                    
-                    hasTag: {
-                        some: {
-                        tagId: {
-                            in: tagArray
+
+                    AND: tagArray.map((id) => ({
+                        hasTag: {
+                          some: {
+                            tagId: {
+                              equals: id
+                            }
+                          }
                         }
-                        }
-                    }
+                    }))
                 },
                 include: {
                     hasTag: {
