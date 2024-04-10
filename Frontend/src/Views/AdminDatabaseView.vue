@@ -15,7 +15,6 @@
     </div>
 
     <div class = "prompt-container">
-      <h1>ADMIN</h1>
       <h1 v-for="item in readyToExport"> {{item.prompt}} </h1>
       <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
@@ -39,9 +38,9 @@
     </div>
     <div>
 
-    <router-link to="/submit" style="">
-      <button class="submit-button">Submit a prompt</button>
-    </router-link>
+      <router-link to="/submit" style="">
+        <button class="submit-button">Submit a prompt</button>
+      </router-link>
       <button class="export-button" @click="exportPrompts()">Export selected as JSON</button>
     </div>
   </div>
@@ -149,18 +148,18 @@ export default {
           this.filteredPrompts = response;
         }
       } catch (error) {
-          console.error(error);
-    }
+        console.error(error);
+      }
     },
 
-      /*
-      if only search,
-      use search
-      if only tag,
-      use tag
-      if both
-      use both
-       */
+    /*
+    if only search,
+    use search
+    if only tag,
+    use tag
+    if both
+    use both
+     */
   },
   mounted() {
     this.fetchPrompts();
