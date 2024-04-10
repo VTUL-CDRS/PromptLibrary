@@ -56,16 +56,18 @@ router.get("/tagSearch", function (req, res) { return __awaiter(void 0, void 0, 
                 _a.trys.push([0, 4, , 5]);
                 tags = req.query.tags;
                 if (!(typeof tags === "string")) return [3 /*break*/, 2];
-                tagArray = tags.split("+");
+                tagArray = tags.split(" ");
                 return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
                         where: {
-                            hasTag: {
-                                some: {
-                                    tagId: {
-                                        in: tagArray,
-                                    },
-                                },
-                            },
+                            AND: tagArray.map(function (id) { return ({
+                                hasTag: {
+                                    some: {
+                                        tagId: {
+                                            equals: id
+                                        }
+                                    }
+                                }
+                            }); })
                         },
                         include: {
                             hasTag: {

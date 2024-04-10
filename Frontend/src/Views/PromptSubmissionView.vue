@@ -69,18 +69,19 @@ export default {
       try {
         console.log("Attempting submit");
         // Process tags into an array
-        const tagsArray = this.subTags.split(',').map(tag => tag.trim());
+        const tagsArray = this.subTags.split(',').map(tag => ({tagName: tag.trim()}));
+        console.log(tagsArray);
         //const prompts: {id: number, prompt: string, response: string, image: string, rating: number, approved: boolean, llmName: string, createdAt: Date, summary: string, title: string}
         const bodyJSON = {
           prompt: this.subPrompt,
           response: this.subResponse,
+          image: "",
+          rating: 0,
+          approved: false,
           llmName: this.subLlmName,
           summary: this.subSummary,
           title: this.subTitle,
-          rating: 0,
-          image: null,
-          approved: false,
-          hasTag: {tagsArray}
+          tags: tagsArray
         };
         const postOptions = {
           method: "POST",

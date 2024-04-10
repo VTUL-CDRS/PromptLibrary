@@ -116,9 +116,6 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
             case 0:
                 _b.trys.push([0, 2, , 3]);
                 _a = req.body, prompt = _a.prompt, response = _a.response, image = _a.image, rating = _a.rating, approved = _a.approved, llmName = _a.llmName, summary = _a.summary, title = _a.title, tags = _a.tags;
-                // const prompts = await prisma.prompt.create( {data : req.body} );
-                // Create the Prompt
-                console.log(tags);
                 return [4 /*yield*/, prisma_1.prisma.prompt.create({
                         data: {
                             prompt: prompt,
@@ -147,7 +144,6 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
                     })];
             case 1:
                 createdPrompt = _b.sent();
-                console.log('here');
                 res.status(200);
                 res.json(createdPrompt);
                 return [3 /*break*/, 3];
