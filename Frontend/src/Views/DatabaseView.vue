@@ -20,13 +20,13 @@
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
         <input type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
-        <p>Prompt: {{prompt.prompt}}</p> <!-- this is a placeholder for prompt summary-->
-        <p>Response: {{prompt.response}}</p>
+        <p>Title: {{prompt.title}}</p> <!-- this is a placeholder for prompt summary-->
+        <p>Summary: {{prompt.summary}}</p>
         <p>LLM: {{prompt.llmName}}</p>
         <div v-if="prompt.hasTag.length != 0">Tags:
           <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
         </div>
-        <div v-else>Tags: None</div>
+        <div v-else>Tags: none</div>
         <div>
           <router-link :to="'/database/prompt/' + prompt.id">
             <form>
@@ -151,15 +151,6 @@ export default {
           console.error(error);
     }
     },
-
-      /*
-      if only search,
-      use search
-      if only tag,
-      use tag
-      if both
-      use both
-       */
   },
   mounted() {
     this.fetchPrompts();
