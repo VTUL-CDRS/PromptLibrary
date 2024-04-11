@@ -34,7 +34,6 @@ router.get("/tagSearch", async (req: Request, res: Response) => {
           }
         }
       });
-      res.status(200);
       res.json(prompts);
       return;
     } else {
@@ -53,8 +52,7 @@ router.get("/tagSearch", async (req: Request, res: Response) => {
 router.get("/textsearch", async (req: Request, res: Response) => {
   try {
     const prompts = await searchPrompts(req, res);
-    res.status(200);
-    res.json(prompts);
+    //res.json(prompts);
     return;
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
@@ -71,8 +69,8 @@ router.get("/textsearch", async (req: Request, res: Response) => {
 router.get("/fullsearch", async (req: Request, res: Response) => {
   try {
     const prompts = await searchPromptsTags(req, res);
-    res.status(200);
-    res.json(prompts);
+    //res.status(200);
+    //res.json(prompts);
     return;
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
