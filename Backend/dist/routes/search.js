@@ -79,7 +79,6 @@ router.get("/tagSearch", function (req, res) { return __awaiter(void 0, void 0, 
                     })];
             case 1:
                 prompts = _a.sent();
-                res.status(200);
                 res.json(prompts);
                 return [2 /*return*/];
             case 2: throw new Error("Tags must be provided as a plus separated list");
@@ -106,8 +105,7 @@ router.get("/textsearch", function (req, res) { return __awaiter(void 0, void 0,
                 return [4 /*yield*/, (0, prompts_1.searchPrompts)(req, res)];
             case 1:
                 prompts = _a.sent();
-                res.status(200);
-                res.json(prompts);
+                //res.json(prompts);
                 return [2 /*return*/];
             case 2:
                 error_2 = _a.sent();
@@ -133,8 +131,8 @@ router.get("/fullsearch", function (req, res) { return __awaiter(void 0, void 0,
                 return [4 /*yield*/, (0, prompts_1.searchPromptsTags)(req, res)];
             case 1:
                 prompts = _a.sent();
-                res.status(200);
-                res.json(prompts);
+                //res.status(200);
+                //res.json(prompts);
                 return [2 /*return*/];
             case 2:
                 error_3 = _a.sent();

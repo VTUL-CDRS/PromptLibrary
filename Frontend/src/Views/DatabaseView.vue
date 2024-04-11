@@ -128,7 +128,7 @@ export default {
           if (!response.ok) {
             throw new Error("Failed to search");
           }
-          this.filteredPrompts = response;
+          this.filteredPrompts = await response.json();
         }
         //Text only
         else if (this.toSearch !== "") {
@@ -137,7 +137,7 @@ export default {
           if (!response.ok) {
             throw new Error("Failed to search");
           }
-          this.filteredPrompts = response;
+          this.filteredPrompts = await response.json();
         }
         // Tag only
         else {
@@ -146,7 +146,7 @@ export default {
           if (!response.ok) {
             throw new Error("Failed to search");
           }
-          this.filteredPrompts = response;
+          this.filteredPrompts = await response.json();
         }
       } catch (error) {
           console.error(error);
