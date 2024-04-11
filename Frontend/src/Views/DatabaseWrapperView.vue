@@ -11,6 +11,6 @@ import DatabaseView from './DatabaseView.vue';
 import { store } from '../store/store.ts';
 
 const selectedComponent = computed(() => {
-  return store.isAdminLoggedIn ? DatabaseView : AdminDatabaseView;
+  return store.isAdminLoggedIn ? AdminDatabaseView : DatabaseView;
 });
 </script>

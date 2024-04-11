@@ -1,0 +1,8 @@
+{
+  "name": "PromptLibrary",
+  "version": "1.0.0",
+  "dependencies": {
+    "downloadjs": "^1.4.7",
+    "vue": "^3.4.21"
+  }
+}

@@ -4,20 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Added fields to submit view, implemented (borked) submit connection to backend">
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Send 200 after searches, more fixes for database and admin datbase">
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/routes/search.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/routes/search.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseWrapperView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseWrapperView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -216,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712701617390</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Send 200 after searches, more fixes for database and admin datbase">
+      <created>1712776076075</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712776076075</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +275,7 @@
     <MESSAGE value="DB on PC, finish connection with backend for DB view (broken)" />
     <MESSAGE value="Fixing intellij with git" />
     <MESSAGE value="Added fields to submit view, implemented (borked) submit connection to backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added fields to submit view, implemented (borked) submit connection to backend" />
+    <MESSAGE value="Send 200 after searches, more fixes for database and admin datbase" />
+    <option name="LAST_COMMIT_MESSAGE" value="Send 200 after searches, more fixes for database and admin datbase" />
   </component>
 </project>

@@ -47,6 +47,7 @@
 
 <script>
 import { ref } from "vue";
+import downloadjs from "downloadjs";
 export default {
   data() {
     const selectedPrompts = ref([]);
@@ -100,19 +101,14 @@ export default {
         }
 
         console.log("trying to export");
-        console.log(bodyJSON);
         const response = await fetch("http://localhost:8080/export", requestOptions);
+        this.readyToExport = await response.json();
         if (!response.ok) {
           throw new Error('Failed to fetch prompts to export');
         }
-
-        //Actual downloading
-
-
-
-
-
-        // TODO: need to download file
+        else {
+          downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+        }
       } catch (error) {
         console.error(error);
       }
@@ -121,7 +117,7 @@ export default {
       try {
         //Empty
         if (this.selectedTags === "" && this.toSearch === "") {
-
+          alert("Both search fields cannot be empty!")
         }
         //Full
         else if (this.selectedTags !== "" && this.toSearch !== "") {
