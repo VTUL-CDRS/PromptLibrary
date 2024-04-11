@@ -1,11 +1,13 @@
 services:
   frontend:
-    build: .
+    build: 
+      context: ./Frontend
     ports:
         - 80:8000
 
   backend:
-    build: .
+    build:
+      context: ./Backend
     ports:
         - 8080:8080
 
