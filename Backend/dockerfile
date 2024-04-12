@@ -10,9 +10,12 @@ RUN npm install
 COPY . /app
 # Copies over everything
 ENV PORT=8080
-# Sets a port for the build. We do 8080 since frontend is 8000
 
+EXPOSE 8080
+
+# Sets a port for the build. We do 8080 since frontend is 8000
+#RUN npm run build
 #EXPOSE 5432
 # Exposes that port so we can see it from browser and for sql
-CMD ["npm", "build", "start"]
+CMD npm run build ; npm run start
 # This is what is executed when we run the image.
