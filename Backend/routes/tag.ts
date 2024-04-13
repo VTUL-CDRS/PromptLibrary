@@ -55,29 +55,36 @@ router.get('/:id', async (req: Request, res: Response) => {
   }
 });
 
-/**
- * Delete function. Id specific
- */
+
+/** 
 router.delete('/:id', async (req: Request, res: Response) => {
   try {
     // Grab the id from the params
     const tagId = req.params.id
+
+    // Retrieve the prompt from the database and check existance
+    const prompt = await prisma.tag.findUnique({
+      where: { name: tagId },
+    });
+    if (!prompt) {
+      return res.status(404).json({ error: "Tag not found" });
+    }
+
+    // Delete the has tag first since it foreign keys the tag
+    await prisma.hasTag.deleteMany({
+      where: { tagId: tagId }
+    });
 
     //Normal stuff
     const tag = await prisma.tag.delete({
       where: {name: tagId}
     });
 
-    // Check if the tag exists
-    if (tag) {
-      res.json(tag);
-    } else {
-      res.status(404).json({ error: 'Tag not found' });
-    }
+    res.json(tag)
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch tags' });
   }
-});
+});*/
 
 // Export Route
 module.exports = router;
