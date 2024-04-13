@@ -34,6 +34,10 @@
             </form>
           </router-link>
         </div>
+        <div>
+          <button @click="deletePrompt(prompt.id)">Delete</button>
+          <button v-if="!prompt.approved" @click="approvePrompt(prompt.id)">Approve</button>
+        </div>
       </div>
     </div>
     <div>
@@ -65,19 +69,6 @@ export default {
   },
   methods: {
     async fetchPrompts() {
-      try {
-        console.log("trying to fetch");
-        const response = await fetch('http://localhost:8080/prompt/');
-        if (!response.ok) {
-          throw new Error('Failed to fetch prompts');
-        }
-        const prompts = await response.json();
-        this.filteredPrompts = prompts;
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async fetchPromptsApproved() {
       try {
         console.log("trying to fetch");
         const response = await fetch('http://localhost:8080/prompt/all');
@@ -152,6 +143,39 @@ export default {
         }
       } catch (error) {
           console.error(error);
+      }
+    },
+    async deletePrompt(promptId) {
+      try {
+        const response = await fetch(`http://localhost:8080/prompt/${promptId}`, {
+          method: 'DELETE',
+        });
+        if (response.ok) {
+          this.filteredPrompts = this.filteredPrompts.filter(p => p.id !== promptId);
+        } else {
+          throw new Error('Failed to delete the prompt');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async approvePrompt(promptId) {
+      try {
+        const response = await fetch(`http://localhost:8080/prompt/${promptId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ approved: true })
+        });
+        if (response.ok) {
+          const prompt = this.filteredPrompts.find(p => p.id === promptId);
+          if (prompt) prompt.approved = true;
+        } else {
+          throw new Error('Failed to approve the prompt');
+        }
+      } catch (error) {
+        console.error(error);
       }
     },
   },
