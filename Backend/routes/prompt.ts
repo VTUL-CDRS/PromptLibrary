@@ -157,6 +157,10 @@ router.delete("/:id", async (req: Request, res: Response) => {
     const tagId = req.params.id;
 
     //Normal stuff
+    await prisma.prompt.deleteMany({
+      where: { id: parseInt(tagId) }
+    });
+    
     const tag = await prisma.prompt.delete({
       where: { id: parseInt(tagId) },
     });
