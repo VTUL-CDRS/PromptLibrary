@@ -3,8 +3,7 @@ import "../assets/global.css";
 import {ref, onMounted, computed} from "vue";
 import { vOnClickOutside } from "@vueuse/components"
 import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut} from "firebase/auth";
-import { store} from '../store/store.ts';
-import {useRouter} from 'vue-router';
+import { store } from '../store/store.ts';
 
 // const router = useRouter();
 const auth = getAuth();
@@ -58,7 +57,7 @@ const isAdmin = computed(() => store.isAdminLoggedIn);
         <h2 class="header-text">PromptLibrary</h2>
       </router-link>
     </div>
-    <div v-if="!userState & !isAdmin" class="">
+    <div v-if="!userState && !isAdmin" class="">
       <h2 @click="toggleDropdown()" class="sign-in-container">Sign in</h2>
       <div v-if="dropdown" v-on-click-outside="closeDropdown" class="sign-in-dropdown">
 

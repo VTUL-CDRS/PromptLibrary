@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../Views/HomeView.vue";
 import LoginView from "../Views/LoginView.vue";
-import DatabaseView from "../Views/DatabaseView.vue";
 import DatabaseWrapperView from "../Views/DatabaseWrapperView.vue";
 import PromptSubmissionView from "../Views/PromptSubmissionView.vue";
 import PromptDetail from "../Views/PromptDetail.vue";
@@ -62,7 +61,7 @@ const getCurrentUser = () => {
     );
   });
 };
-router.beforeEach(async (to, from, next) =>{
+router.beforeEach(async (to, _from, next) =>{
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   const currentUser = await getCurrentUser();
 
