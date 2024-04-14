@@ -1,9 +1,8 @@
 services:
   frontend:
-    build: 
-      context: ./Frontend
+    build: ./Frontend
     ports:
-        - 80:8000
+        - 8000:80
 
   db:
       image: postgres
