@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Export function works. Used downloadjs.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_4_24__9_36_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_5_24,_6_47_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_5_24__6_47_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

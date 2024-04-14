@@ -2,12 +2,11 @@
 import "../assets/global.css";
 import {ref, onMounted, computed} from "vue";
 import { vOnClickOutside } from "@vueuse/components"
-import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut} from "firebase/auth";
+import {getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, User} from "firebase/auth";
 import { store } from '../store/store.ts';
 
-// const router = useRouter();
 const auth = getAuth();
-const userState = ref(null);  // Use a ref to reactively store the user's state
+const userState = ref<User | null>(null);
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     userState.value = user ? user : null;
