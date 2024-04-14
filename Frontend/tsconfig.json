@@ -3,6 +3,8 @@
     /* For using TypeScript with Node.js and Express.js */
     "outDir": "./dist",
 
+    "allowJs": true,
+    
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -12,10 +14,10 @@
 
     /* Bundler mode */
     "moduleResolution": "node",
-    "allowImportingTsExtensions": false, // Changed to false for express
+    "allowImportingTsExtensions": true, // Changed to false for express
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false, // Changed to false for express
+    "noEmit": true, // Changed to false for express
     "jsx": "preserve",
 
     /* Linting */
