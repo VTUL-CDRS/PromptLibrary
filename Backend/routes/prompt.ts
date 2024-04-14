@@ -27,6 +27,24 @@ router.get("/all", async (req: Request, res: Response) => {
 });
 
 /**
+ * Get all unapproved prompts
+ */
+router.get("/unapproved", async (req: Request, res: Response) => {
+  try {
+    const prompts = await prisma.prompt.findMany({
+      where: {
+        approved: false
+      }
+    });
+
+    res.json(prompts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch prompts" });
+  }
+});
+
+
+/**
  * General Get Request. Returns all prompts excluding unapproved prompts.
  */
 router.get("/", async (req: Request, res: Response) => {
