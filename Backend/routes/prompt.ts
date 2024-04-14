@@ -154,19 +154,25 @@ router.get("/:id", async (req: Request, res: Response) => {
 router.delete("/:id", async (req: Request, res: Response) => {
   try {
     // Grab the id from the params
-    const tagId = req.params.id;
+    const promptId = parseInt(req.params.id);
 
-    //Normal stuff
-    const tag = await prisma.prompt.delete({
-      where: { id: parseInt(tagId) },
+    // Retrieve the prompt from the database and check existance
+    const prompt = await prisma.prompt.findUnique({
+      where: { id: promptId },
+    });
+    if (!prompt) {
+      return res.status(404).json({ error: "Prompt not found" });
+    }
+
+    // Delete the has tag first since it foreign keys the prompt id
+    await prisma.hasTag.deleteMany({
+      where: { promptId: promptId }
+    });
+    const deleteRes = await prisma.prompt.delete({
+      where: { id: promptId },
     });
 
-    // Check if the tag exists
-    if (tag) {
-      res.json(tag);
-    } else {
-      res.status(404).json({ error: "Tag not found" });
-    }
+    res.json(deleteRes)
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch prompts" });
   }
