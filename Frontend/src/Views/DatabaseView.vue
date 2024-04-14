@@ -62,23 +62,10 @@ export default {
     };
   },
   methods: {
-    async fetchPrompts() {
-      try {
-        console.log("trying to fetch");
-        const response = await fetch('http://localhost:8080/prompt/');
-        if (!response.ok) {
-          throw new Error('Failed to fetch prompts');
-        }
-        const prompts = await response.json();
-        this.filteredPrompts = prompts;
-      } catch (error) {
-        console.error(error);
-      }
-    },
     async fetchPromptsApproved() {
       try {
         console.log("trying to fetch");
-        const response = await fetch('http://localhost:8080/prompt/all');
+        const response = await fetch('http://localhost:8080/prompt/');
         if (!response.ok) {
           throw new Error('Failed to fetch prompts');
         }
@@ -154,7 +141,7 @@ export default {
     },
   },
   mounted() {
-    this.fetchPrompts();
+    this.fetchPromptsApproved();
   },
 };
 </script>
