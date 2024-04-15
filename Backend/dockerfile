@@ -8,6 +8,9 @@ COPY ./package-lock.json ./package-lock.json
 RUN npm install
 # Installs everything
 COPY . /app
+COPY prisma ./prisma
+
+RUN npx prisma generate
 # Copies over everything
 ENV PORT=8080
 
