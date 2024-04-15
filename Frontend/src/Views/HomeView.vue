@@ -1,4 +1,20 @@
-<script setup lang="ts">
+<script>
+import { ref } from "vue"
+
+export default {
+  data() {
+    const searchInput = ref("");
+    return {
+      searchInput
+    }
+
+  },
+  methods: {
+    search() {
+
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -73,7 +89,7 @@ form {
     <div>
       <router-link to="/database">
         <form class="search-button">
-          <input class="input-button-search" type="submit" value="Search" />
+          <input class="input-button-search" type="submit" value="searchInput" />
         </form>
       </router-link>
       <router-link to="/database">
