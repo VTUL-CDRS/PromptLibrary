@@ -1,35 +1,41 @@
 <template>
+  <div>
+  <router-link to="/database" style="">
+    <button class="back-button">Back to Library</button>
+  </router-link>
+  </div>
   <div class="database-view-container">
     <section class="prompts-container">
       <div class="prompt">
         <h1 class="header-text">Submit a Prompt</h1>
         <h3>Fill in the details for the prompt below.</h3>
+        <h4>Fields with "*" are required.</h4>
         <form class="database-form">
           <div>
-            <label>Title:</label>
+            <label>Title*</label>
             <input type="text" placeholder="Enter a one to three word title for the prompt" v-model="subTitle" />
           </div>
           <div>
-            <label>Summary:</label>
+            <label>Summary*</label>
             <input type="text" placeholder="Enter a short one to three sentence summary of the prompt" v-model="subSummary" />
           </div>
           <div>
-            <label>Prompt:</label>
+            <label>Prompt*</label>
             <input type="text" placeholder="Enter prompt" v-model="subPrompt" />
           </div>
 
           <div>
-            <label>Response:</label>
+            <label>Response*</label>
             <input type="text" placeholder="Enter sample response" v-model="subResponse"/>
           </div>
 
           <div>
-            <label>Tags:</label>
+            <label>Tags</label>
             <input type="text" placeholder="Include tags as comma separated values with no spaces between tags" v-model="subTags" />
           </div>
 
           <div>
-            <label>Language Model:</label>
+            <label>Language Model*</label>
             <select v-model="subLlmName">
               <option disabled value="">Select a Language Model</option>
               <option value="ChatGPT">ChatGPT</option>
@@ -101,9 +107,20 @@ export default {
         if (!response.ok) {
           throw new Error("Failed to submit");
         }
+        alert("Prompt has been submitted. Please wait for Admin approval.")
+        this.clearFields()
       } catch (error) {
+        alert("Something went wrong, or at least one required field is empty.")
         console.error(error);
       }
+    },
+    clearFields() {
+      this.subPrompt = ""
+      this.subResponse = ""
+      this.subTags = ""
+      this.subLlmName = ""
+      this.subSummary = ""
+      this.subTitle = ""
     },
   }
 };
@@ -116,7 +133,7 @@ export default {
   flex-direction: column;
   align-items: center; /* Center children horizontally */
   justify-content: center; /* Center children vertically */
-  height: 80vh; /* Take full viewport height */
+  min-height: calc(100vh - 215px);
   padding-top: var(--header-height); /* Add padding to account for fixed header, if present */
 }
 
@@ -160,6 +177,18 @@ export default {
   color: var(--white-text);
   border: none;
   border-radius: 8px; /* Match input border-radius */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.back-button {
+  padding: 1rem;
+  width: 100%; /* Full width button */
+  font-size: 1rem;
+  margin-top: 1rem;
+  background-color: var(--button-color);
+  color: var(--white-text);
+  border: none;
   cursor: pointer;
   transition: background 0.3s ease;
 }

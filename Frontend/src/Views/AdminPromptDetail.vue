@@ -8,6 +8,10 @@
     <section class="prompts-container">
       <div class="prompt">
         <div v-if="prompt">
+
+          <button class="delete-button" @click="deletePrompt(prompt.id)">Delete</button>
+          <button class="approve-button" @click="approvePrompt(prompt.id)">Approve</button>
+
           <h1 class="title-text">{{ prompt.title }} : ID {{ prompt.id }}</h1>
           <p>Summary: {{prompt.summary}}</p>
           <hr class="dividing-line"/>
@@ -29,6 +33,35 @@
 </template>
 
 <style>
+
+.approve-button {
+  position: relative;
+  display: inline;
+  margin: 10px;
+  left: 84%;
+  bottom: 13.5%;
+  width: 7%; /* Adjust as needed */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #000000;
+  cursor: pointer;
+}
+.delete-button {
+  position: relative;
+  display: inline;
+  margin: 10px;
+  left: 84%;
+  bottom: 13.5%;
+  width: 7%; /* Adjust as needed */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #000000;
+  cursor: pointer;
+}
 
 .tagText {
   display: inline;
@@ -100,6 +133,36 @@ export default {
         }
         const prompt = await response.json();
         this.prompt = prompt;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async approvePrompt(promptId) {
+      try {
+        const response = await fetch(`http://localhost:8080/prompt/${promptId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ approved: true })
+        });
+        if (response.ok) {
+          if (prompt) prompt.approved = true;
+        } else {
+          throw new Error('Failed to approve the prompt');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async deletePrompt(promptId) {
+      try {
+        const response = await fetch(`http://localhost:8080/prompt/${promptId}`, {
+          method: 'DELETE',
+        });
+        if (!response.ok) {
+          throw new Error('Failed to delete the prompt');
+        }
       } catch (error) {
         console.error(error);
       }
