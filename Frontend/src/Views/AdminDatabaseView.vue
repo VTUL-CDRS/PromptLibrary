@@ -258,6 +258,7 @@ export default {
 
 .selection-box {
   position: relative;
+  cursor: pointer;
 }
 
 .interaction-buttons-container {

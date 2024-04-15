@@ -36,9 +36,11 @@
 
           <div>
             <label>Language Model*</label>
-            <select v-model="subLlmName">
+            <select class="dropdown" v-model="subLlmName">
               <option disabled value="">Select a Language Model</option>
               <option value="ChatGPT">ChatGPT</option>
+              <option value="Bard">Bard</option>
+              <option value="CoPilot">CoPilot</option>
               <!-- Add other models as needed -->
             </select>
           </div>
@@ -141,6 +143,10 @@ export default {
   width: 100%; /* Use the full container width */
   max-width: 75%; /* Maximum width for the form */
   margin: 0 auto; /* Center the form in the available space */
+}
+
+.dropdown {
+  cursor: pointer;
 }
 
 .prompt {

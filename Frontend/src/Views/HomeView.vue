@@ -1,6 +1,6 @@
 <script>
-import { ref } from "vue"
-
+import { ref } from "vue";
+import router from '../router/index.ts';
 export default {
   data() {
     const searchInput = ref("");
@@ -11,6 +11,7 @@ export default {
   },
   methods: {
     search() {
+      router.push("/database")
 
     }
   }
@@ -45,6 +46,7 @@ form {
   border-radius: 4px; /* Optional: Rounds the corners of the input fields */
   background-color: var(--button-color);
   color: var(--white-text);
+  cursor: pointer;
 }
 
 .input-button-explore {
@@ -57,6 +59,7 @@ form {
   border-radius: 4px; /* Optional: Rounds the corners of the input fields */
   background-color: var(--second-button-color);
   color: var(--white-text);
+  cursor: pointer;
 }
 
 .search-bar input[type="text"] {
@@ -89,7 +92,7 @@ form {
     <div>
       <router-link to="/database">
         <form class="search-button">
-          <input class="input-button-search" type="submit" value="searchInput" />
+          <input class="input-button-search" type="submit" value="Search"/>
         </form>
       </router-link>
       <router-link to="/database">
