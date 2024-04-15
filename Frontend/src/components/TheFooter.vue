@@ -7,6 +7,7 @@ footer {
   position: absolute;
   height: 20px;
   width: 100%;
+  bottom: 0px;
   background-color: var(--footer-color);
 }
 </style>

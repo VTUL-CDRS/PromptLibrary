@@ -53,13 +53,15 @@ export default {
           store.isAdminLoggedIn = false;
           console.log('Logged in as a regular user');
         }
+        router.push("/");
       } else {
         store.isAdminLoggedIn = false; // Set the global boolean
         console.error('Invalid credentials');
+        alert("Username or password is incorrect.")
       }
       this.credentials.username = '';
       this.credentials.password = '';
-      router.push("/");
+
     },
   },
   mounted() {
@@ -74,7 +76,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 75vh;
+  min-height: calc(100vh - 133px);
 }
 
 .login-form {
