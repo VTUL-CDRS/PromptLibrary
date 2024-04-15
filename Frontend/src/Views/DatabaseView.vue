@@ -12,12 +12,13 @@
       </form>
 
       <button @click="filter()" class ="filter-button">Filter</button>
+      <button @click="clearFilters()" class ="clear-button">Clear</button>
     </div>
 
     <div class = "prompt-container">
       <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
-        <input type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
+        <input class="selection-box" type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
         <p>Title: {{prompt.title}}</p> <!-- this is a placeholder for prompt summary-->
         <p>Summary: {{prompt.summary}}</p>
@@ -29,18 +30,17 @@
         <div>
           <router-link :to="'/database/prompt/' + prompt.id">
             <form>
-              <button>Details</button>
+              <button class="details-button">Details</button>
             </form>
           </router-link>
         </div>
       </div>
     </div>
-    <div>
-
+    <div class="interaction-buttons-container">
     <router-link to="/submit" style="">
       <button class="submit-button">Submit a prompt</button>
     </router-link>
-      <button class="export-button" @click="exportPrompts()">Export selected as JSON</button>
+      <button class="export-button" @click="exportPrompts()">Export selected</button>
     </div>
   </div>
 </template>
@@ -100,11 +100,19 @@ export default {
         console.error(error);
       }
     },
+    async clearFilters() {
+      try {
+        await this.fetchPromptsApproved()
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async filter() {
       try {
         //Empty
         if (this.selectedTags === "" && this.toSearch === "") {
           alert("Both search fields cannot be empty!")
+          await this.fetchPromptsApproved()
         }
         //Full
         else if (this.selectedTags !== "" && this.toSearch !== "") {
@@ -152,7 +160,7 @@ export default {
   flex-direction: column;
   align-items: center; /* Centers the filters container */
   justify-content: center;
-  min-height: 75vh; /* Ensures the library takes full height of the viewport */
+  min-height: calc(100vh - 133px); /* Ensures the library takes full height of the viewport */
   padding: 20px;
   box-sizing: border-box; /* Ensures padding does not add to the width */
 }
@@ -171,7 +179,19 @@ export default {
 }
 
 .filter-button {
-  width: 160px; /* Adjust as needed */
+  width: 120px; /* Adjust as needed */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: var(--black-text);
+  cursor: pointer;
+}
+
+.clear-button {
+  position: relative;
+  left: 1%;
+  width: 120px; /* Adjust as needed */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -188,7 +208,7 @@ export default {
   position: absolute;
   left: 2%;
   top: 15%;
-  max-width: 25%; /* Adjust this as necessary to control the width of the filters area */
+  min-width: 25%; /* Adjust this as necessary to control the width of the filters area */
   min-height: 20%;
   margin: auto; /* Centers the filters area horizontally */
   padding: 20px;
@@ -197,13 +217,42 @@ export default {
   background-color: #fff; /* Optional background color */
 }
 
-.submit-button {
+.selection-box {
+  position: relative;
+}
+
+.interaction-buttons-container {
   position: absolute;
-  flex-shrink: 1;
-  /*font-size-adjust: ;*/
-  left: 4%;
+  left: 2%;
+  bottom: 5%;
+  width: 25%; /* Adjust this as necessary to control the width of the filters area */
+  min-height: 20%;
+  margin: auto; /* Centers the filters area horizontally */
+  padding: 20px;
+}
+
+.details-button {
+  position: absolute;
+  margin: 10px;
+  left: 75%;
+  bottom: 5%;
+  width: 18%; /* Adjust as needed */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #000000;
+  cursor: pointer;
+
+}
+
+.submit-button {
+  position: relative;
+  overflow: clip;
+  margin: 10px;
+  left: 10%;
   bottom: 17%;
-  width: 20%; /* Adjust as needed */
+  width: 75%; /* Adjust as needed */
   height: 3rem;
   padding: 0.5em;
   font-size: 1.4rem;
@@ -215,12 +264,12 @@ export default {
 }
 
 .export-button {
-  position: absolute;
-  flex-shrink: 1;
-  /*font-size-adjust: ;*/
-  left: 4%;
+  position: relative;
+  overflow: clip;
+  margin: 10px;
+  left: 10%;
   bottom: 10%;
-  width: 20%; /* Adjust as needed */
+  width: 75%; /* Adjust as needed */
   height: 3rem;
   padding: 0.5em;
   font-size: 1.4rem;
@@ -234,7 +283,7 @@ export default {
 .prompt-container {
   position: absolute;
   display: table-row;
-  overflow: scroll;
+  overflow: auto;
   left: 28.5%;
   top: 15%;
   width: 70%; /* Adjust this as necessary to control the width of the filters area */
@@ -250,17 +299,16 @@ export default {
   position: relative;
   display: inline-block;
   overflow-wrap: break-word;
-  overflow: scroll;
   float: left;
   margin: 0.5%;
   margin-bottom: 1%;
   width: 32.33%; /* Adjust this as necessary to control the width of the filters area */
-  height: 30%;
+  height: 40%;
   padding: 1%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
   border-radius: 10px; /* Optional border radius for rounded corners */
   background-color: #ccc; /* Optional background color */
-  cursor: pointer;
+  overflow: auto;
 }
 
 .filters button {

@@ -4,9 +4,8 @@ import "../assets/global.css";
 
 <style scoped>
 footer {
-  position: relative;
-  padding: 1rem;
-  bottom: -90px;
+  position: absolute;
+  height: 20px;
   width: 100%;
   background-color: var(--footer-color);
 }
