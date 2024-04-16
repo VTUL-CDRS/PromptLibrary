@@ -188,8 +188,9 @@ export default {
 }
 
 .back-button {
+  position: absolute;
   padding: 1rem;
-  width: 100%; /* Full width button */
+  width: 15%; /* Full width button */
   font-size: 1rem;
   margin-top: 1rem;
   background-color: var(--button-color);
@@ -197,6 +198,8 @@ export default {
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
+  bottom: 8%;
+  left: 42.5%;
 }
 
 .submit-button:hover {

@@ -87,7 +87,7 @@ form {
       <h1 class="header-text">PromptLibrary</h1>
     </div>
     <form class="search-bar">
-      <input type="text" placeholder="Enter a prompt to search"/>
+      <input type="text" placeholder="Enter search terms"/>
     </form>
     <div>
       <router-link to="/database">
