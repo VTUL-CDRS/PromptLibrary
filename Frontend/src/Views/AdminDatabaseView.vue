@@ -13,6 +13,7 @@
 
       <button @click="filter()" class ="filter-button">Filter</button>
       <button @click="clearFilters()" class ="clear-button">Clear</button>
+      <button @click="filterUnapproved()" class="filter-button">Show Unapproved Prompts</button>
     </div>
 
     <div class = "prompt-container">
@@ -79,6 +80,19 @@ export default {
         this.filteredPrompts = prompts;
       } catch (error) {
         console.error(error);
+      }
+    },
+    async filterUnapproved() {
+      try {
+        console.log("trying to fetch unapproved");
+        const response = await fetch('http://localhost:8080/prompt/unapproved');
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompts');
+        }
+        const prompt = await response.json();
+        this.filteredPrompts = prompt;
+      } catch (e) {
+        console.error(e);
       }
     },
     async exportPrompts() {
