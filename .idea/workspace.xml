@@ -4,38 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Export function works. Used downloadjs.">
-      <change afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/lib/prisma.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/llm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/llm.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/tag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/tag.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/server.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js.map" afterDir="false" />
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Stub for homeview search">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="frontend-grind-script" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="0a5ff4fe-0271-4bf4-a366-bf1602172138" />
+        <option name="accountId" value="654e0e46-1f15-4b48-bef1-59e146a7372e" />
         <option name="url" value="https://github.com/narwhalle/PromptLibrary.git" />
       </UrlAndAccount>
     </option>
@@ -93,16 +68,20 @@
     &quot;git-widget-placeholder&quot;: &quot;frontend-grind-flex&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/PromptLibrary/Frontend/src/Views&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\IntelliJ IDEA 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\PromptLibrary\Frontend\src\Views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Code\PromptLibrary\node_modules\vite\dist\node\chunks" />
     </key>
@@ -148,9 +127,8 @@
       <workItem from="1712695109538" duration="1309000" />
       <workItem from="1712696430552" duration="149000" />
       <workItem from="1712696638893" duration="5346000" />
-      <workItem from="1712970678768" duration="2739000" />
-      <workItem from="1712974403761" duration="1127000" />
-      <workItem from="1712975936669" duration="110000" />
+      <workItem from="1712970678768" duration="2260000" />
+      <workItem from="1713182608339" duration="735000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
@@ -256,7 +234,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712776076075</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Styling done. TODO: Remove underline from routing, search from home view.">
+      <option name="closed" value="true" />
+      <created>1713152824363</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713152824363</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Fixed footer for real this time, wrapper for detail view, admin login alerts.">
+      <option name="closed" value="true" />
+      <created>1713154178130</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713154178130</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +296,8 @@
     <MESSAGE value="Fixing intellij with git" />
     <MESSAGE value="Added fields to submit view, implemented (borked) submit connection to backend" />
     <MESSAGE value="Send 200 after searches, more fixes for database and admin datbase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Send 200 after searches, more fixes for database and admin datbase" />
+    <MESSAGE value="Styling done. TODO: Remove underline from routing, search from home view." />
+    <MESSAGE value="Fixed footer for real this time, wrapper for detail view, admin login alerts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed footer for real this time, wrapper for detail view, admin login alerts." />
   </component>
 </project>

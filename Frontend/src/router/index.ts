@@ -3,7 +3,7 @@ import HomeView from "../Views/HomeView.vue";
 import LoginView from "../Views/LoginView.vue";
 import DatabaseWrapperView from "../Views/DatabaseWrapperView.vue";
 import PromptSubmissionView from "../Views/PromptSubmissionView.vue";
-import PromptDetail from "../Views/PromptDetail.vue";
+import DetailWrapperView from "../Views/DetailWrapperView.vue";
 import NotFoundView from "../Views/NotFoundView.vue";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import { store } from '../store/store.ts';
@@ -39,7 +39,7 @@ const router = createRouter({
     {
       path: '/database/prompt/:id',
       name: 'PromptDetail',
-      component: PromptDetail,
+      component: DetailWrapperView,
     },
     {
       path: '/:pathMatch(.*)*',

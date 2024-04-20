@@ -1,4 +1,21 @@
-<script setup lang="ts">
+<script>
+import { ref } from "vue";
+import router from '../router/index.ts';
+export default {
+  data() {
+    const searchInput = ref("");
+    return {
+      searchInput
+    }
+
+  },
+  methods: {
+    search() {
+      router.push("/database")
+
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -8,7 +25,7 @@
   flex-direction: column;
   align-items: center; /* this will vertically center your items */
   justify-content: center; /* this will horizontally center your items */
-  min-height: 75vh; /* this makes the container take full viewport height */
+  min-height: calc(100vh - 133px); /* this makes the container take full viewport height */
   gap: 0.5rem; /* this adds space between your child elements */
 }
 
@@ -29,6 +46,7 @@ form {
   border-radius: 4px; /* Optional: Rounds the corners of the input fields */
   background-color: var(--button-color);
   color: var(--white-text);
+  cursor: pointer;
 }
 
 .input-button-explore {
@@ -41,6 +59,7 @@ form {
   border-radius: 4px; /* Optional: Rounds the corners of the input fields */
   background-color: var(--second-button-color);
   color: var(--white-text);
+  cursor: pointer;
 }
 
 .search-bar input[type="text"] {
@@ -73,7 +92,7 @@ form {
     <div>
       <router-link to="/database">
         <form class="search-button">
-          <input class="input-button-search" type="submit" value="Search" />
+          <input class="input-button-search" type="submit" value="Search"/>
         </form>
       </router-link>
       <router-link to="/database">
