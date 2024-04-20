@@ -72,7 +72,7 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
                             prompt: true,
                             response: true,
                             hasTag: true,
-                        }
+                        },
                     })];
             case 1:
                 prompts = _a.sent();
@@ -81,6 +81,35 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
+                res.status(500).json({ error: "Failed to fetch prompts" });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+/**
+ * Export all prompts
+ */
+router.get("/all", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prompts, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        select: {
+                            prompt: true,
+                            response: true,
+                            hasTag: true,
+                        },
+                    })];
+            case 1:
+                prompts = _a.sent();
+                // Return a JSON
+                res.json(prompts);
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
                 res.status(500).json({ error: "Failed to fetch prompts" });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
