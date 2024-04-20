@@ -1,9 +1,4 @@
 <template>
-  <div>
-  <router-link to="/database" style="">
-    <button class="back-button">Back to Library</button>
-  </router-link>
-  </div>
   <div class="database-view-container">
     <section class="prompts-container">
       <div class="prompt">
@@ -49,6 +44,11 @@
         </form>
       </div>
     </section>
+    <div>
+      <router-link to="/database" style="">
+        <button class="back-button">Back to Library</button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -189,10 +189,10 @@ export default {
 
 .back-button {
   padding: 1rem;
-  width: 100%; /* Full width button */
+  width: auto; /* Full width button */
   font-size: 1rem;
   margin-top: 1rem;
-  background-color: var(--button-color);
+  background-color: gray;
   color: var(--white-text);
   border: none;
   cursor: pointer;

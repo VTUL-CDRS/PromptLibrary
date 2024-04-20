@@ -10,9 +10,10 @@
         <input type="text" placeholder="Enter tags to search" v-model.trim="selectedTags"/>
         example: code+vue_js+real
       </form>
-
-      <button @click="filter()" class ="filter-button">Filter</button>
-      <button @click="clearFilters()" class ="clear-button">Clear</button>
+      <div class="button-container">
+        <button @click="filter()" class ="filter-button">Filter</button>
+        <button @click="clearFilters()" class ="clear-button">Clear</button>
+      </div>
     </div>
 
     <div class = "prompt-container">
@@ -179,24 +180,21 @@ export default {
 }
 
 .filter-button {
-  width: 120px; /* Adjust as needed */
+  width: 200px; /* Adjust as needed */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
-  color: var(--black-text);
+  background-color: var(--button-color);
   cursor: pointer;
 }
 
 .clear-button {
-  position: relative;
   left: 1%;
-  width: 120px; /* Adjust as needed */
+  width: 200px; /* Adjust as needed */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
-  color: var(--black-text);
+  background-color: gray;
   cursor: pointer;
 }
 
@@ -214,7 +212,14 @@ export default {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
   border-radius: 10px; /* Optional border radius for rounded corners */
-  background-color: #fff; /* Optional background color */
+  background-color: white;
+}
+
+.button-container {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  gap: 10px; /* Add space between elements */
 }
 
 .selection-box {
@@ -313,15 +318,14 @@ export default {
 }
 
 .filters button {
-  padding: 10px;
-  margin: 5px 0; /* Adds margin to the top and bottom for spacing */
+  padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.filters button {
-  background-color: var(--button-color);
+  border-radius: 4px;
+  color: var(--black-text);
+  cursor: pointer;
+  display: inline-block; /* Aligns buttons in a line */
+  margin: 5px; /* Consistent margin for all buttons */
+  box-sizing: border-box; /* Border and padding included in the width */
   color: var(--white-text);
   border: none;
   cursor: pointer;
