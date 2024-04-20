@@ -5,8 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Export function works. Used downloadjs.">
+      <change afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/lib/prisma.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/llm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/llm.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/tag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/routes/tag.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/server.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +148,9 @@
       <workItem from="1712695109538" duration="1309000" />
       <workItem from="1712696430552" duration="149000" />
       <workItem from="1712696638893" duration="5346000" />
-      <workItem from="1712970678768" duration="2260000" />
+      <workItem from="1712970678768" duration="2739000" />
+      <workItem from="1712974403761" duration="1127000" />
+      <workItem from="1712975936669" duration="110000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
