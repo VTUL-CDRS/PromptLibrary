@@ -100,7 +100,7 @@ export default {
       try {
         if (this.selectedPrompts.length === 0){
           console.log("trying to export all");
-          const response = await fetch("http://localhost:8080/export/all");
+          const response = await fetch("http://localhost:8080/export/all/admin");
           this.readyToExport = await response.json();
           if (!response.ok) {
             throw new Error('Failed to fetch prompts to export');

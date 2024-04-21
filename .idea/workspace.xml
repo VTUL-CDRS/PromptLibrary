@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Export all by default, button color consistency">
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="bookmark">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/dist/routes/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/export.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +133,7 @@
       <workItem from="1713627705460" duration="436000" />
       <workItem from="1713630462999" duration="149000" />
       <workItem from="1713657312866" duration="17000" />
-      <workItem from="1713661989792" duration="2409000" />
+      <workItem from="1713661989792" duration="3152000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
@@ -269,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713663762947</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="bookmark">
+      <option name="closed" value="true" />
+      <created>1713664422414</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1713664422414</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +330,7 @@
     <MESSAGE value="Fixed some fine details" />
     <MESSAGE value="Back button moved" />
     <MESSAGE value="Export all by default, button color consistency" />
-    <option name="LAST_COMMIT_MESSAGE" value="Export all by default, button color consistency" />
+    <MESSAGE value="bookmark" />
+    <option name="LAST_COMMIT_MESSAGE" value="bookmark" />
   </component>
 </project>
