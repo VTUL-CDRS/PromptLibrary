@@ -68,11 +68,13 @@ router.get("/all/notadmin", async (req: Request, res: Response) => {
   try {
     // Find all approved prompts
     const prompts = await prisma.prompt.findMany({
+      where: {
+        approved: true
+      },
       select: {
         prompt: true,
         response: true,
         hasTag: true,
-        approved: true
       },
     });
 
