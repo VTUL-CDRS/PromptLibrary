@@ -31,7 +31,7 @@ router.post("/", async (req: Request, res: Response) => {
             if (!valid) {
                 res.status(500).json({ error: "Failed to fetch users" });
             } else {
-                res.json(account);
+                res.json({ username: inUser, password: inPassword });
             }
         }
     } catch (error) {
