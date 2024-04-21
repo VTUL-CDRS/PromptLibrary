@@ -51,6 +51,7 @@
 import { ref } from "vue";
 import downloadjs from "downloadjs";
 export default {
+  props:["searchInput"],
   data() {
     const selectedPrompts = ref([]);
     const toSearch = ref("");
@@ -66,16 +67,22 @@ export default {
   methods: {
     async fetchPromptsApproved() {
       try {
-        console.log("trying to fetch");
-        const response = await fetch('http://localhost:8080/prompt/');
-        if (!response.ok) {
-          throw new Error('Failed to fetch prompts');
+        if (this.searchInput.length !== 0) {
+          console.log("trying to fetch");
+          const response = await fetch('http://localhost:8080/prompt/');
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts');
+          }
+          this.filteredPrompts = await response.json();
+        } else { //TODO: This is BROKEN
+          console.log("trying to fetch from query");
+          this.toSearch = this.searchInput;
+          await this.filter()
         }
-        const prompts = await response.json();
-        this.filteredPrompts = prompts;
       } catch (error) {
         console.error(error);
       }
+
     },
     async exportPrompts() {
       try {

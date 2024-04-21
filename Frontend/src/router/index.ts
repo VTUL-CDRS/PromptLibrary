@@ -40,6 +40,7 @@ const router = createRouter({
       path: '/database/prompt/:id',
       name: 'PromptDetail',
       component: DetailWrapperView,
+      props:true
     },
     {
       path: '/:pathMatch(.*)*',

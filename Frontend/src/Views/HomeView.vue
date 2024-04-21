@@ -1,18 +1,16 @@
 <script>
-import { defineModel } from "vue";
+import { ref } from "vue";
 import router from '../router/index.ts';
 export default {
   data() {
-    const searchInput = defineModel();
+    const searchInput = ref("");
     return {
       searchInput
     }
-
   },
   methods: {
     search() {
-      router.push("/database")
-
+        router.push({name: "database", query: { searchInput: this.searchInput}}) //TODO: this doesn't work, probably because of the wrapper
     }
   }
 }
@@ -92,7 +90,7 @@ form {
     <div>
       <router-link to="/database">
         <form class="search-button">
-          <input class="input-button-search" type="submit" value="Search"/>
+          <button class="input-button-search" type="submit" onClick="search()">Search</button>
         </form>
       </router-link>
       <router-link to="/database">

@@ -126,11 +126,13 @@ router.get("/all/notadmin", function (req, res) { return __awaiter(void 0, void 
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
+                        where: {
+                            approved: true
+                        },
                         select: {
                             prompt: true,
                             response: true,
                             hasTag: true,
-                            approved: true
                         },
                     })];
             case 1:
