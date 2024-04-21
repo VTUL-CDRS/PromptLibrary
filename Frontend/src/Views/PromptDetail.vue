@@ -10,6 +10,8 @@
           <hr class="dividing-line"/>
           <p>Response: {{ prompt.response }}</p>
           <hr class="dividing-line"/>
+          <p>LLM: {{ prompt.llmName }}</p>
+          <hr class="dividing-line"/>
           Tags:
           <div class="tagText" v-if="prompt.hasTag.length != 0" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
           <p v-else>Tags: None</p>

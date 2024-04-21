@@ -20,14 +20,14 @@
 
     <div class = "prompt-container">
       <h1>ADMIN</h1>
-      <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
+      <h2 v-if="filteredPrompts.length === 0">There doesn't seem to be anything here...</h2>
       <div v-else :class="{ 'prompt-card': true, 'unapproved-prompt': !prompt.approved }" v-for="prompt in filteredPrompts" :key="prompt.id">
         <input class="selection-box" type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
         <p>Title: {{prompt.title}}</p> <!-- this is a placeholder for prompt summary-->
         <p>Summary: {{prompt.summary}}</p>
         <p>LLM: {{prompt.llmName}}</p>
-        <div v-if="prompt.hasTag.length != 0">Tags:
+        <div v-if="prompt.hasTag.length !== 0">Tags:
           <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
         </div>
         <div v-else>Tags: none</div>
@@ -48,7 +48,8 @@
       <router-link to="/submit" style="">
         <button class="submit-button">Submit a prompt</button>
       </router-link>
-      <button class="export-button" @click="exportPrompts()">Export selected</button>
+      <button v-if="selectedPrompts.length === 0" class="export-button" @click="exportPrompts()">Export all</button>
+      <button v-else class="export-button" @click="exportPrompts()">Export selected</button>
     </div>
   </div>
 </template>
@@ -78,8 +79,7 @@ export default {
         if (!response.ok) {
           throw new Error('Failed to fetch prompts');
         }
-        const prompts = await response.json();
-        this.filteredPrompts = prompts;
+        this.filteredPrompts = await response.json();
       } catch (error) {
         console.error(error);
       }
@@ -91,32 +91,41 @@ export default {
         if (!response.ok) {
           throw new Error('Failed to fetch prompts');
         }
-        const prompt = await response.json();
-        this.filteredPrompts = prompt;
+        this.filteredPrompts = await response.json();
       } catch (e) {
         console.error(e);
       }
     },
     async exportPrompts() {
-      //https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
       try {
-        const bodyJSON = {ids: this.selectedPrompts};
-        const requestOptions = {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(bodyJSON)
-        }
-
-        console.log("trying to export");
-        const response = await fetch("http://localhost:8080/export", requestOptions);
-        this.readyToExport = await response.json();
-        if (!response.ok) {
-          throw new Error('Failed to fetch prompts to export');
+        if (this.selectedPrompts.length === 0){
+          console.log("trying to export all");
+          const response = await fetch("http://localhost:8080/export/all");
+          this.readyToExport = await response.json();
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts to export');
+          } else {
+            downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          }
         }
         else {
-          downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          const bodyJSON = {ids: this.selectedPrompts};
+          const requestOptions = {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyJSON)
+          }
+
+          console.log("trying to export");
+          const response = await fetch("http://localhost:8080/export", requestOptions);
+          this.readyToExport = await response.json();
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts to export');
+          } else {
+            downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          }
         }
       } catch (error) {
         console.error(error);

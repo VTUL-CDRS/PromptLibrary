@@ -17,14 +17,14 @@
     </div>
 
     <div class = "prompt-container">
-      <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
+      <h2 v-if="filteredPrompts.length === 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
         <input class="selection-box" type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
         <p>Title: {{prompt.title}}</p> <!-- this is a placeholder for prompt summary-->
         <p>Summary: {{prompt.summary}}</p>
         <p>LLM: {{prompt.llmName}}</p>
-        <div v-if="prompt.hasTag.length != 0">Tags:
+        <div v-if="prompt.hasTag.length !== 0">Tags:
           <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
         </div>
         <div v-else>Tags: none</div>
@@ -41,7 +41,8 @@
     <router-link to="/submit" style="">
       <button class="submit-button">Submit a prompt</button>
     </router-link>
-      <button class="export-button" @click="exportPrompts()">Export selected</button>
+      <button v-if="selectedPrompts.length === 0" class="export-button" @click="exportPrompts()">Export all</button>
+      <button v-else class="export-button" @click="exportPrompts()">Export selected</button>
     </div>
   </div>
 </template>
@@ -77,25 +78,35 @@ export default {
       }
     },
     async exportPrompts() {
-      //https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
       try {
-        const bodyJSON = {ids: this.selectedPrompts};
-        const requestOptions = {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(bodyJSON)
-        }
-
-        console.log("trying to export");
-        const response = await fetch("http://localhost:8080/export", requestOptions);
-        this.readyToExport = await response.json();
-        if (!response.ok) {
-          throw new Error('Failed to fetch prompts to export');
+        if (this.selectedPrompts.length === 0){
+          console.log("trying to export all");
+          const response = await fetch("http://localhost:8080/export/all");
+          this.readyToExport = await response.json();
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts to export');
+          } else {
+            downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          }
         }
         else {
-          downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          const bodyJSON = {ids: this.selectedPrompts};
+          const requestOptions = {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyJSON)
+          }
+
+          console.log("trying to export");
+          const response = await fetch("http://localhost:8080/export", requestOptions);
+          this.readyToExport = await response.json();
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts to export');
+          } else {
+            downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          }
         }
       } catch (error) {
         console.error(error);
@@ -246,10 +257,9 @@ export default {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
-  color: #000000;
+  background-color: var(--button-color);
+  color: white;
   cursor: pointer;
-
 }
 
 .submit-button {

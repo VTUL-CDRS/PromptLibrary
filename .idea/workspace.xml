@@ -4,23 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Fixed some fine details">
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Back button moved">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_4_20_2024_11_18_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_4_20_2024_11_18_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_10_23_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_10_23_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_10_39_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_10_39_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_11_15_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_11_15_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_9_2024_8_53_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_9_2024_8_53_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/accountSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/llmSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/promptSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/llm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/llm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/tag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/tagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminPromptDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminPromptDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptDetail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" afterDir="false" />
     </list>
@@ -141,7 +138,12 @@
       <workItem from="1712696638893" duration="5346000" />
       <workItem from="1712970678768" duration="2260000" />
       <workItem from="1713182608339" duration="735000" />
-      <workItem from="1713231065710" duration="1862000" />
+      <workItem from="1713231065710" duration="2229000" />
+      <workItem from="1713234157793" duration="54000" />
+      <workItem from="1713627705460" duration="436000" />
+      <workItem from="1713630462999" duration="149000" />
+      <workItem from="1713657312866" duration="17000" />
+      <workItem from="1713661989792" duration="1742000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
@@ -263,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713154178130</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Back button moved">
+      <option name="closed" value="true" />
+      <created>1713233500076</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1713233500076</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +322,7 @@
     <MESSAGE value="Styling done. TODO: Remove underline from routing, search from home view." />
     <MESSAGE value="Fixed footer for real this time, wrapper for detail view, admin login alerts." />
     <MESSAGE value="Fixed some fine details" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some fine details" />
+    <MESSAGE value="Back button moved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Back button moved" />
   </component>
 </project>
