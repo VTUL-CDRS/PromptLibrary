@@ -31,7 +31,15 @@ export default {
     async fetchAccount() {
       try {
         console.log("trying to fetch accounts");
-        const response = await fetch('http://localhost:8080/account/');
+        const bodyJSON = {username: this.credentials.username, password: this.credentials.password};
+        const requestOptions = {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(bodyJSON)
+        }
+        const response = await fetch('http://localhost:8080/account/', requestOptions);
         if (!response.ok) {
           throw new Error('Failed to fetch account');
         }
