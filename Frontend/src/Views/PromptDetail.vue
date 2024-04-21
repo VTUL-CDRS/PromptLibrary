@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <router-link to="/database" style="">
-      <button class="back-button">Back to Library</button>
-    </router-link>
-  </div>
   <div class="database-view-container">
     <section class="prompts-container">
       <div class="prompt">
         <div v-if="prompt">
-          <h1 class="title-text">{{ prompt.title }} : ID {{ prompt.id }}</h1>
+          <h1 class="title-text">{{ prompt.title }}</h1>
           <p>Summary: {{prompt.summary}}</p>
           <hr class="dividing-line"/>
           <p>Prompt: {{ prompt.prompt }}</p>
           <hr class="dividing-line"/>
           <p>Response: {{ prompt.response }}</p>
+          <hr class="dividing-line"/>
+          <p>LLM: {{ prompt.llmName }}</p>
           <hr class="dividing-line"/>
           Tags:
           <div class="tagText" v-if="prompt.hasTag.length != 0" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
@@ -25,6 +22,11 @@
         </div>
       </div>
     </section>
+    <div>
+      <router-link to="/database" style="">
+        <button class="back-button">Back to Library</button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -69,9 +71,8 @@
 }
 
 .back-button {
-  position: absolute;
   padding: 1rem;
-  width: 15%; /* Full width button */
+  width: auto;
   font-size: 1rem;
   margin-top: 1rem;
   background-color: var(--button-color);
@@ -79,8 +80,6 @@
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  bottom: 8%;
-  left: 42.5%;
 }
 </style>
 

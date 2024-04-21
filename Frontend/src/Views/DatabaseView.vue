@@ -10,20 +10,21 @@
         <input type="text" placeholder="Enter tags to search" v-model.trim="selectedTags"/>
         example: code+vue_js+real
       </form>
-
-      <button @click="filter()" class ="filter-button">Filter</button>
-      <button @click="clearFilters()" class ="clear-button">Clear</button>
+      <div class="button-container">
+        <button @click="filter()" class ="filter-button">Filter</button>
+        <button @click="clearFilters()" class ="clear-button">Clear</button>
+      </div>
     </div>
 
     <div class = "prompt-container">
-      <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
+      <h2 v-if="filteredPrompts.length === 0">There doesn't seem to be anything here...</h2>
       <div v-else class="prompt-card" v-for="prompt in filteredPrompts" :key="prompt.id">
         <input class="selection-box" type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
         <p>Title: {{prompt.title}}</p> <!-- this is a placeholder for prompt summary-->
         <p>Summary: {{prompt.summary}}</p>
         <p>LLM: {{prompt.llmName}}</p>
-        <div v-if="prompt.hasTag.length != 0">Tags:
+        <div v-if="prompt.hasTag.length !== 0">Tags:
           <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
         </div>
         <div v-else>Tags: none</div>
@@ -40,7 +41,8 @@
     <router-link to="/submit" style="">
       <button class="submit-button">Submit a prompt</button>
     </router-link>
-      <button class="export-button" @click="exportPrompts()">Export selected</button>
+      <button v-if="selectedPrompts.length === 0" class="export-button" @click="exportPrompts()">Export all</button>
+      <button v-else class="export-button" @click="exportPrompts()">Export selected</button>
     </div>
   </div>
 </template>
@@ -123,37 +125,53 @@ export default {
   methods: {
     async fetchPromptsApproved() {
       try {
-        console.log("trying to fetch");
-        const response = await fetch('http://localhost:8080/prompt/');
-        if (!response.ok) {
-          throw new Error('Failed to fetch prompts');
+        if (this.searchInput.length !== 0) {
+          console.log("trying to fetch");
+          const response = await fetch('http://localhost:8080/prompt/');
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts');
+          }
+          this.filteredPrompts = await response.json();
+        } else { //TODO: This is BROKEN
+          console.log("trying to fetch from query");
+          this.toSearch = this.searchInput;
+          await this.filter()
         }
-        const prompts = await response.json();
-        this.filteredPrompts = prompts;
       } catch (error) {
         console.error(error);
       }
+
     },
     async exportPrompts() {
-      //https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
       try {
-        const bodyJSON = {ids: this.selectedPrompts};
-        const requestOptions = {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(bodyJSON)
-        }
-
-        console.log("trying to export");
-        const response = await fetch("http://localhost:8080/export", requestOptions);
-        this.readyToExport = await response.json();
-        if (!response.ok) {
-          throw new Error('Failed to fetch prompts to export');
+        if (this.selectedPrompts.length === 0){
+          console.log("trying to export all");
+          const response = await fetch("http://localhost:8080/export/all/notadmin");
+          this.readyToExport = await response.json();
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts to export');
+          } else {
+            downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          }
         }
         else {
-          downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          const bodyJSON = {ids: this.selectedPrompts};
+          const requestOptions = {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyJSON)
+          }
+
+          console.log("trying to export");
+          const response = await fetch("http://localhost:8080/export", requestOptions);
+          this.readyToExport = await response.json();
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts to export');
+          } else {
+            downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          }
         }
       } catch (error) {
         console.error(error);
@@ -207,6 +225,9 @@ export default {
       }
     },
   },
+  mounted() {
+    this.fetchPromptsApproved();
+  },
 };
 </script>
 
@@ -235,24 +256,21 @@ export default {
 }
 
 .filter-button {
-  width: 120px; /* Adjust as needed */
+  width: 200px; /* Adjust as needed */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
-  color: var(--black-text);
+  background-color: var(--button-color);
   cursor: pointer;
 }
 
 .clear-button {
-  position: relative;
   left: 1%;
-  width: 120px; /* Adjust as needed */
+  width: 200px; /* Adjust as needed */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
-  color: var(--black-text);
+  background-color: gray;
   cursor: pointer;
 }
 
@@ -270,7 +288,14 @@ export default {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for some depth */
   border-radius: 10px; /* Optional border radius for rounded corners */
-  background-color: #fff; /* Optional background color */
+  background-color: white;
+}
+
+.button-container {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  gap: 10px; /* Add space between elements */
 }
 
 .selection-box {
@@ -297,10 +322,9 @@ export default {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
-  color: #000000;
+  background-color: var(--button-color);
+  color: white;
   cursor: pointer;
-
 }
 
 .submit-button {
@@ -369,15 +393,14 @@ export default {
 }
 
 .filters button {
-  padding: 10px;
-  margin: 5px 0; /* Adds margin to the top and bottom for spacing */
+  padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.filters button {
-  background-color: var(--button-color);
+  border-radius: 4px;
+  color: var(--black-text);
+  cursor: pointer;
+  display: inline-block; /* Aligns buttons in a line */
+  margin: 5px; /* Consistent margin for all buttons */
+  box-sizing: border-box; /* Border and padding included in the width */
   color: var(--white-text);
   border: none;
   cursor: pointer;

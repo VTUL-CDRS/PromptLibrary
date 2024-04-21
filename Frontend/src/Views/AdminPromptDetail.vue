@@ -1,23 +1,20 @@
 <template>
-  <div>
-    <router-link to="/database" style="">
-      <button class="back-button">Back to Library</button>
-    </router-link>
-  </div>
   <div class="database-view-container">
     <section class="prompts-container">
       <div class="prompt">
         <div v-if="prompt">
 
           <button class="delete-button" @click="deletePrompt(prompt.id)">Delete</button>
-          <button class="approve-button" @click="approvePrompt(prompt.id)">Approve</button>
+          <button v-if="!prompt.approved" class="approve-button" @click="approvePrompt(prompt.id)">Approve</button>
 
-          <h1 class="title-text">{{ prompt.title }} : ID {{ prompt.id }}</h1>
+          <h1 class="title-text">{{ prompt.title }}</h1>
           <p>Summary: {{prompt.summary}}</p>
           <hr class="dividing-line"/>
           <p>Prompt: {{ prompt.prompt }}</p>
           <hr class="dividing-line"/>
           <p>Response: {{ prompt.response }}</p>
+          <hr class="dividing-line"/>
+          <p>LLM: {{ prompt.llmName }}</p>
           <hr class="dividing-line"/>
           Tags:
           <div class="tagText" v-if="prompt.hasTag.length != 0" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
@@ -29,6 +26,11 @@
         </div>
       </div>
     </section>
+    <div>
+      <router-link to="/database" style="">
+        <button class="back-button">Back to Library</button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -44,7 +46,7 @@
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
+  background-color: #95ff8a;
   color: #000000;
   cursor: pointer;
 }
@@ -103,7 +105,7 @@
 
 .back-button {
   padding: 1rem;
-  width: 100%; /* Full width button */
+  width: 50%; /* Full width button */
   font-size: 1rem;
   margin-top: 1rem;
   background-color: var(--button-color);

@@ -85,6 +85,13 @@ router.get("/unapproved", function (req, res) { return __awaiter(void 0, void 0,
                 return [4 /*yield*/, prisma_1.prisma.prompt.findMany({
                         where: {
                             approved: false
+                        },
+                        include: {
+                            hasTag: {
+                                include: {
+                                    tag: true
+                                }
+                            }
                         }
                     })];
             case 1:

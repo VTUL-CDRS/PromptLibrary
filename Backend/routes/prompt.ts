@@ -34,6 +34,13 @@ router.get("/unapproved", async (req: Request, res: Response) => {
     const prompts = await prisma.prompt.findMany({
       where: {
         approved: false
+      },
+      include: {
+        hasTag:{
+          include: {
+            tag: true
+          }
+        }
       }
     });
 
