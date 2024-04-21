@@ -1,19 +1,20 @@
 <script>
 import { ref } from "vue";
 import router from '../router/index.ts';
+
 export default {
-  data() {
+  setup() {
     const searchInput = ref("");
+
+    function search() {
+      // Use the router to navigate to the 'database' route with the search query as a parameter
+      router.push({ name: "database", query: { search: searchInput.value } });
+    }
+
     return {
-      searchInput
-    }
-
-  },
-  methods: {
-    search() {
-      router.push("/database")
-
-    }
+      searchInput,
+      search
+    };
   }
 }
 </script>
@@ -82,25 +83,20 @@ form {
 
 
 <template>
-  <div class = "main-page-container">
-    <div class = "">
-      <h1 class="header-text">PromptLibrary</h1>
-    </div>
-    <form class="search-bar">
-      <input type="text" placeholder="Enter search terms"/>
+  <div class="main-page-container">
+    <h1 class="header-text">PromptLibrary</h1>
+    <form class="search-bar" @submit.prevent="search">
+      <input
+          type="text"
+          v-model="searchInput"
+          placeholder="Enter search terms"
+          class="search-input"
+      />
+      <button class="input-button-search" type="submit">Search</button>
     </form>
-    <div>
-      <router-link to="/database">
-        <form class="search-button">
-          <input class="input-button-search" type="submit" value="Search"/>
-        </form>
-      </router-link>
-      <router-link to="/database">
-        <form class="explore-button">
-          <input class="input-button-explore" type="submit" value="Explore" />
-        </form>
-      </router-link>
-    </div>
+    <router-link to="/database">
+      <button class="input-button-explore">Explore</button>
+    </router-link>
   </div>
 </template>
 

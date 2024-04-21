@@ -46,19 +46,78 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch, onMounted } from "vue";
 import downloadjs from "downloadjs";
+import { useRoute } from 'vue-router';
+
 export default {
-  data() {
+  setup() {
     const selectedPrompts = ref([]);
+
+    const filteredPrompts = ref([]);
+    const route = useRoute();
+    const searchQuery = ref(route.query.search || '');
     const toSearch = ref("");
     const selectedTags = ref("");
+
+    watch(() => route.query.search, async (newSearchQuery) => {
+      searchQuery.value = newSearchQuery || '';
+      await filter(); // Call the filter method to filter prompts based on the new search query
+    });
+
+    onMounted(async () => {
+      if (searchQuery.value || selectedTags.value) {
+        await filter();
+      } else {
+        await fetchPromptsApproved();
+      }
+    });
+
+    const fetchPromptsApproved = async () => {
+      try {
+        console.log("trying to fetch");
+        const response = await fetch('http://localhost:8080/prompt/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompts');
+        }
+        const prompts = await response.json();
+        filteredPrompts.value = prompts;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const filter = async () => {
+      try {
+        if (selectedTags.value === "" && searchQuery.value === "") {
+          alert("Both search fields cannot be empty!");
+          await fetchPromptsApproved();
+        } else if (selectedTags.value !== "" && searchQuery.value !== "") {
+          const response = await fetch(`http://localhost:8080/search/fullsearch?q=${encodeURIComponent(searchQuery.value)}&tags=${encodeURIComponent(selectedTags.value.toLowerCase())}`);
+          if (!response.ok) throw new Error("Failed to search");
+          filteredPrompts.value = await response.json();
+        } else if (searchQuery.value !== "") {
+          const response = await fetch(`http://localhost:8080/search/textsearch?q=${encodeURIComponent(searchQuery.value)}`);
+          if (!response.ok) throw new Error("Failed to search");
+          filteredPrompts.value = await response.json();
+        } else {
+          const response = await fetch(`http://localhost:8080/search/tagSearch?tags=${encodeURIComponent(selectedTags.value.toLowerCase())}`);
+          if (!response.ok) throw new Error("Failed to search");
+          filteredPrompts.value = await response.json();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     return {
-      filteredPrompts: [],
+      filteredPrompts,
       readyToExport: [],
       selectedPrompts,
       selectedTags,
       toSearch,
+      filter,
+      fetchPromptsApproved,
     };
   },
   methods: {
@@ -147,9 +206,6 @@ export default {
           console.error(error);
       }
     },
-  },
-  mounted() {
-    this.fetchPromptsApproved();
   },
 };
 </script>
