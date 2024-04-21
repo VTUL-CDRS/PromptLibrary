@@ -62,7 +62,7 @@ const isAdmin = computed(() => store.isAdminLoggedIn);
 
         <button @click="signInWithGoogle(); toggleDropdown(); " class="google-button">Sign in with Gmail</button>
 
-        <router-link to="/login" style="">
+        <router-link to="/signin" style="">
           <button class="button-not-google" @click="toggleDropdown()">Sign in as Administrator</button>
         </router-link>
 

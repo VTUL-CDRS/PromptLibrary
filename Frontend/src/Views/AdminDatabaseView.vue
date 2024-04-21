@@ -20,14 +20,14 @@
 
     <div class = "prompt-container">
       <h1>ADMIN</h1>
-      <h2 v-if="filteredPrompts.length == 0">There doesn't seem to be anything here...</h2>
+      <h2 v-if="filteredPrompts.length === 0">There doesn't seem to be anything here...</h2>
       <div v-else :class="{ 'prompt-card': true, 'unapproved-prompt': !prompt.approved }" v-for="prompt in filteredPrompts" :key="prompt.id">
         <input class="selection-box" type="checkbox" :id="prompt.id" :value="prompt.id" v-model="selectedPrompts"/>
 
         <p>Title: {{prompt.title}}</p> <!-- this is a placeholder for prompt summary-->
         <p>Summary: {{prompt.summary}}</p>
         <p>LLM: {{prompt.llmName}}</p>
-        <div v-if="prompt.hasTag.length != 0">Tags:
+        <div v-if="prompt.hasTag.length !== 0">Tags:
           <div class="tagText" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
         </div>
         <div v-else>Tags: none</div>
@@ -48,26 +48,84 @@
       <router-link to="/submit" style="">
         <button class="submit-button">Submit a prompt</button>
       </router-link>
-      <button class="export-button" @click="exportPrompts()">Export selected</button>
+      <button v-if="selectedPrompts.length === 0" class="export-button" @click="exportPrompts()">Export all</button>
+      <button v-else class="export-button" @click="exportPrompts()">Export selected</button>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch, onMounted } from "vue";
 import downloadjs from "downloadjs";
+import { useRoute } from 'vue-router';
 export default {
-  data() {
+  setup() {
     const selectedPrompts = ref([]);
+
+    const filteredPrompts = ref([]);
+    const route = useRoute();
+    const searchQuery = ref(route.query.search || '');
     const toSearch = ref("");
     const selectedTags = ref("");
-    const filteredPrompts = ref([]);
+
+    watch(() => route.query.search, async (newSearchQuery) => {
+      searchQuery.value = newSearchQuery || '';
+      await filter(); // Call the filter method to filter prompts based on the new search query
+    });
+
+    onMounted(async () => {
+      if (searchQuery.value || selectedTags.value) {
+        await filter();
+      } else {
+        await fetchPromptsApproved();
+      }
+    });
+
+    const fetchPromptsApproved = async () => {
+      try {
+        console.log("trying to fetch");
+        const response = await fetch('http://localhost:8080/prompt/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch prompts');
+        }
+        const prompts = await response.json();
+        filteredPrompts.value = prompts;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const filter = async () => {
+      try {
+        if (selectedTags.value === "" && searchQuery.value === "") {
+          alert("Both search fields cannot be empty!");
+          await fetchPromptsApproved();
+        } else if (selectedTags.value !== "" && searchQuery.value !== "") {
+          const response = await fetch(`http://localhost:8080/search/fullsearch?q=${encodeURIComponent(searchQuery.value)}&tags=${encodeURIComponent(selectedTags.value.toLowerCase())}`);
+          if (!response.ok) throw new Error("Failed to search");
+          filteredPrompts.value = await response.json();
+        } else if (searchQuery.value !== "") {
+          const response = await fetch(`http://localhost:8080/search/textsearch?q=${encodeURIComponent(searchQuery.value)}`);
+          if (!response.ok) throw new Error("Failed to search");
+          filteredPrompts.value = await response.json();
+        } else {
+          const response = await fetch(`http://localhost:8080/search/tagSearch?tags=${encodeURIComponent(selectedTags.value.toLowerCase())}`);
+          if (!response.ok) throw new Error("Failed to search");
+          filteredPrompts.value = await response.json();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     return {
       filteredPrompts,
       readyToExport: [],
       selectedPrompts,
       selectedTags,
       toSearch,
+      filter,
+      fetchPromptsApproved,
     };
   },
   methods: {
@@ -78,8 +136,7 @@ export default {
         if (!response.ok) {
           throw new Error('Failed to fetch prompts');
         }
-        const prompts = await response.json();
-        this.filteredPrompts = prompts;
+        this.filteredPrompts = await response.json();
       } catch (error) {
         console.error(error);
       }
@@ -91,32 +148,41 @@ export default {
         if (!response.ok) {
           throw new Error('Failed to fetch prompts');
         }
-        const prompt = await response.json();
-        this.filteredPrompts = prompt;
+        this.filteredPrompts = await response.json();
       } catch (e) {
         console.error(e);
       }
     },
     async exportPrompts() {
-      //https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
       try {
-        const bodyJSON = {ids: this.selectedPrompts};
-        const requestOptions = {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(bodyJSON)
-        }
-
-        console.log("trying to export");
-        const response = await fetch("http://localhost:8080/export", requestOptions);
-        this.readyToExport = await response.json();
-        if (!response.ok) {
-          throw new Error('Failed to fetch prompts to export');
+        if (this.selectedPrompts.length === 0){
+          console.log("trying to export all");
+          const response = await fetch("http://localhost:8080/export/all/admin");
+          this.readyToExport = await response.json();
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts to export');
+          } else {
+            downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          }
         }
         else {
-          downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          const bodyJSON = {ids: this.selectedPrompts};
+          const requestOptions = {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyJSON)
+          }
+
+          console.log("trying to export");
+          const response = await fetch("http://localhost:8080/export", requestOptions);
+          this.readyToExport = await response.json();
+          if (!response.ok) {
+            throw new Error('Failed to fetch prompts to export');
+          } else {
+            downloadjs(JSON.stringify(this.readyToExport), "Exported_Prompts_JSON", "application/json");
+          }
         }
       } catch (error) {
         console.error(error);
@@ -202,9 +268,6 @@ export default {
         console.error(error);
       }
     },
-  },
-  mounted() {
-    this.fetchPrompts();
   },
 };
 </script>

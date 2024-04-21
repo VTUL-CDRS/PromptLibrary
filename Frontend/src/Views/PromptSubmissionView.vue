@@ -192,7 +192,7 @@ export default {
   width: auto; /* Full width button */
   font-size: 1rem;
   margin-top: 1rem;
-  background-color: gray;
+  background-color: var(--button-color);
   color: var(--white-text);
   border: none;
   cursor: pointer;

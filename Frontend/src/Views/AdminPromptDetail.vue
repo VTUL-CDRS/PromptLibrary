@@ -14,6 +14,8 @@
           <hr class="dividing-line"/>
           <p>Response: {{ prompt.response }}</p>
           <hr class="dividing-line"/>
+          <p>LLM: {{ prompt.llmName }}</p>
+          <hr class="dividing-line"/>
           Tags:
           <div class="tagText" v-if="prompt.hasTag.length != 0" v-for="tag in prompt.hasTag" :key="tagId">{{tag.tag.name}}&nbsp;</div>
           <p v-else>Tags: None</p>
@@ -44,7 +46,7 @@
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: white;
+  background-color: #95ff8a;
   color: #000000;
   cursor: pointer;
 }

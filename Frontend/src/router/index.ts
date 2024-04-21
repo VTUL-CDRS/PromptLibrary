@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../Views/HomeView.vue";
-import LoginView from "../Views/LoginView.vue";
+import SigninView from "../Views/SigninView.vue";
 import DatabaseWrapperView from "../Views/DatabaseWrapperView.vue";
 import PromptSubmissionView from "../Views/PromptSubmissionView.vue";
 import DetailWrapperView from "../Views/DetailWrapperView.vue";
@@ -18,10 +18,10 @@ const router = createRouter({
       alias: ["/home", "/index.html"],
     },
     {
-      path: "/login",
-      name: "login",
-      component: LoginView,
-      alias: ["/login", "/login.html", "/Login"],
+      path: "/signin",
+      name: "signin",
+      component: SigninView,
+      alias: ["/signin", "/signin.html", "/Signin"],
     },
     {
       path: "/database",
@@ -40,6 +40,7 @@ const router = createRouter({
       path: '/database/prompt/:id',
       name: 'PromptDetail',
       component: DetailWrapperView,
+      props:true
     },
     {
       path: '/:pathMatch(.*)*',
