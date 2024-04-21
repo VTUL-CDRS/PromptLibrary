@@ -25,6 +25,7 @@ router.post("/", async (req: Request, res: Response) => {
         id: {
           in: ids,
         },
+        approved: true
       },
       select: {
         prompt: true,
