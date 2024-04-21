@@ -24,8 +24,7 @@ router.post("/", async (req: Request, res: Response) => {
       where: {
         id: {
           in: ids,
-        },
-        approved: true
+        }
       },
       select: {
         prompt: true,
@@ -44,7 +43,7 @@ router.post("/", async (req: Request, res: Response) => {
 /**
  * Export all prompts
  */
-router.get("/all", async (req: Request, res: Response) => {
+router.get("/all/admin", async (req: Request, res: Response) => {
   try {
     // Find all approved prompts
     const prompts = await prisma.prompt.findMany({
@@ -52,6 +51,28 @@ router.get("/all", async (req: Request, res: Response) => {
         prompt: true,
         response: true,
         hasTag: true,
+      },
+    });
+
+    // Return a JSON
+    res.json(prompts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch prompts" });
+  }
+});
+
+/**
+ * Export all prompts
+ */
+router.get("/all/notadmin", async (req: Request, res: Response) => {
+  try {
+    // Find all approved prompts
+    const prompts = await prisma.prompt.findMany({
+      select: {
+        prompt: true,
+        response: true,
+        hasTag: true,
+        approved: true
       },
     });
 
