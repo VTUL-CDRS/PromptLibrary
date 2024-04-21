@@ -1,9 +1,9 @@
 <script>
-import { ref } from "vue";
+import { defineModel } from "vue";
 import router from '../router/index.ts';
 export default {
   data() {
-    const searchInput = ref("");
+    const searchInput = defineModel();
     return {
       searchInput
     }
@@ -87,7 +87,7 @@ form {
       <h1 class="header-text">PromptLibrary</h1>
     </div>
     <form class="search-bar">
-      <input type="text" placeholder="Enter search terms"/>
+      <input type="text" placeholder="Enter search terms" v-model="searchInput"/>
     </form>
     <div>
       <router-link to="/database">
