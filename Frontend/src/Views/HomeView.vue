@@ -38,7 +38,7 @@ form {
 }
 
 .input-button-search {
-  width: 15rem;
+  width: 10rem;
   height: 3rem;
   padding: 0.5em;
   font-size: 1.4rem;
@@ -64,7 +64,7 @@ form {
 }
 
 .search-bar input[type="text"] {
-  width: 50%; /* Adjust the width as needed */
+  width: 40%; /* Adjust the width as needed */
   height: 5%;
   padding: 1em; /* Makes the input taller and the text inside it larger */
   font-size: 1.2em; /* Increase the font size for better readability */
@@ -73,6 +73,7 @@ form {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   transition: border-color 0.3s, box-shadow 0.3s; /* Transition for effects on focus */
   text-align: center;
+  margin-right: 5px;
 }
 
 .header-text {
