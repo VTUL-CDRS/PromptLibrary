@@ -16,7 +16,7 @@ router.post("/", async (req: Request, res: Response) => {
         const inPassword = userSubmitted.password;
 
         // Grab the account
-        const account = await prisma.account.findFirst({
+        const account = await prisma.account.findUnique({
             where: {
                 username: inUser,
             },
@@ -32,12 +32,14 @@ router.post("/", async (req: Request, res: Response) => {
                 res.status(500).json({ error: "Failed to fetch users" });
             } else {
                 console.log("hello");
-                res.json({
-                    id: account.id,
-                    username: inUser,
-                    password: inPassword,
-                    isModerator: true,
-                });
+                res.json([
+                    {
+                        id: account.id,
+                        username: inUser,
+                        password: inPassword,
+                        isModerator: true,
+                    },
+                ]);
             }
         }
     } catch (error) {
