@@ -81,7 +81,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 133px);
+  min-height: calc(100vh - 150px - 2px);
+
 }
 
 .login-form {

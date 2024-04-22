@@ -135,7 +135,7 @@ export default {
   flex-direction: column;
   align-items: center; /* Center children horizontally */
   justify-content: center; /* Center children vertically */
-  min-height: calc(100vh - 215px);
+  min-height: calc(100vh - 150px);
   padding-top: var(--header-height); /* Add padding to account for fixed header, if present */
 }
 
@@ -191,7 +191,7 @@ export default {
   padding: 1rem;
   width: auto; /* Full width button */
   font-size: 1rem;
-  margin-top: 1rem;
+  margin-top: 0rem;
   background-color: var(--button-color);
   color: var(--white-text);
   border: none;

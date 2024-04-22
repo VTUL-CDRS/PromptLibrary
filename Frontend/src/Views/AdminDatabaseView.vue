@@ -278,8 +278,7 @@ export default {
   flex-direction: column;
   align-items: center; /* Centers the filters container */
   justify-content: center;
-  min-height: calc(100vh - 133px); /* Ensures the library takes full height of the viewport */
-  padding: 20px;
+  min-height: calc(100vh - 150px);/* Ensures the library takes full height of the viewport */
   box-sizing: border-box; /* Ensures padding does not add to the width */
 }
 

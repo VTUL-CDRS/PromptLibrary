@@ -6,24 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Stub for homeview search">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/accountSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/llmSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/promptSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/account.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/llm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/llm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/tag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/dist/tagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/routes/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/routes/account.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminPromptDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminPromptDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/NotFoundView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/NotFoundView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/SigninView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/SigninView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheFooter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="3f5b66c1d0bc61245ec1772a7cd070898b14832d" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -264,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713154178130</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fix for real this time part 3">
+      <option name="closed" value="true" />
+      <created>1713748554747</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1713748554747</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
