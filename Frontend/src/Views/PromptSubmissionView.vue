@@ -16,12 +16,12 @@
           </div>
           <div>
             <label>Prompt*</label>
-            <input type="text" placeholder="Enter prompt" v-model="subPrompt" />
+            <textarea placeholder="Enter prompt" v-model="subPrompt" />
           </div>
 
           <div>
             <label>Response*</label>
-            <input type="text" placeholder="Enter sample response" v-model="subResponse"/>
+            <textarea placeholder="Enter sample response" v-model="subResponse"/>
           </div>
 
           <div>
@@ -34,8 +34,9 @@
             <select class="dropdown" v-model="subLlmName">
               <option disabled value="">Select a Language Model</option>
               <option value="ChatGPT">ChatGPT</option>
-              <option value="Bard">Bard</option>
+              <option value="Gemini">Gemini</option>
               <option value="CoPilot">CoPilot</option>
+              <option value="Claude">Claude</option>
               <!-- Add other models as needed -->
             </select>
           </div>
@@ -130,6 +131,20 @@ export default {
 </script>
 
 <style scoped>
+
+textarea {
+  resize: none;
+  width: 100%; /* Make the input take the full width of its parent */
+  height: 8rem;
+  overflow: auto;
+  padding: 0.5rem;
+  border: 2px solid #aaa;
+  font-size: 15px;
+  border-radius: 8px; /* More pronounced rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, serif;
+}
+
 .database-view-container {
   display: flex;
   flex-direction: column;

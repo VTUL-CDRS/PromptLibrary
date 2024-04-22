@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Stub for homeview search">
+    <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Google branding compliance, FOOTER">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_4_20_2024_11_18_AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminDatabaseView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/AdminPromptDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/AdminPromptDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/DatabaseView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/HomeView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/NotFoundView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/NotFoundView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptDetail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/PromptSubmissionView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Views/SigninView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/SigninView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheFooter.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/TheHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +128,7 @@
       <workItem from="1712970678768" duration="2260000" />
       <workItem from="1713182608339" duration="735000" />
       <workItem from="1713711384440" duration="3050000" />
+      <workItem from="1713789371215" duration="2738000" />
     </task>
     <task id="LOCAL-00001" summary="clear up files and get node working again">
       <created>1710608479458</created>
@@ -264,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713748554747</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Google branding compliance, FOOTER">
+      <option name="closed" value="true" />
+      <created>1713751347191</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1713751347191</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +316,8 @@
     <MESSAGE value="Fixed footer for real this time, wrapper for detail view, admin login alerts." />
     <MESSAGE value="refactor some names" />
     <MESSAGE value="refactor some names change button size" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor some names change button size" />
+    <MESSAGE value="Google compliance, FOOTER" />
+    <MESSAGE value="Google branding compliance, FOOTER" />
+    <option name="LAST_COMMIT_MESSAGE" value="Google branding compliance, FOOTER" />
   </component>
 </project>

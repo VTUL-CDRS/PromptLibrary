@@ -77,7 +77,7 @@ export default {
       if (searchQuery.value || selectedTags.value) {
         await filter();
       } else {
-        await fetchPromptsApproved();
+        await this.fetchPrompts();
       }
     });
 
@@ -278,7 +278,7 @@ export default {
   flex-direction: column;
   align-items: center; /* Centers the filters container */
   justify-content: center;
-  min-height: calc(100vh - 150px);/* Ensures the library takes full height of the viewport */
+  min-height: calc(100vh - 150px - 2px);/* Ensures the library takes full height of the viewport */
   box-sizing: border-box; /* Ensures padding does not add to the width */
 }
 
