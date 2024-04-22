@@ -31,7 +31,6 @@ router.post("/", async (req: Request, res: Response) => {
             if (!valid) {
                 res.status(500).json({ error: "Failed to fetch users" });
             } else {
-                console.log("hello");
                 res.json([
                     {
                         id: account.id,
