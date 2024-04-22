@@ -12,11 +12,11 @@ router.post("/", async (req: Request, res: Response) => {
     try {
         // Parse Request
         const userSubmitted = req.body;
-        const inUser = userSubmitted.password;
+        const inUser = userSubmitted.inUser;
         const inPassword = userSubmitted.password;
 
         // Grab the account
-        const account = await prisma.account.findUnique({
+        const account = await prisma.account.findFirst({
             where: {
                 username: inUser,
             },

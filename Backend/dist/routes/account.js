@@ -80,7 +80,7 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
                 userSubmitted = req.body;
                 inUser = userSubmitted.password;
                 inPassword = userSubmitted.password;
-                return [4 /*yield*/, prisma_1.prisma.account.findFirst({
+                return [4 /*yield*/, prisma_1.prisma.account.findUnique({
                         where: {
                             username: inUser,
                         },
@@ -97,7 +97,14 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
                     res.status(500).json({ error: "Failed to fetch users" });
                 }
                 else {
-                    res.json(account);
+                    res.json([
+                        {
+                            id: account.id,
+                            username: inUser,
+                            password: inPassword,
+                            isModerator: true,
+                        },
+                    ]);
                 }
                 _a.label = 4;
             case 4: return [3 /*break*/, 6];
