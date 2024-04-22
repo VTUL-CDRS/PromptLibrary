@@ -15,7 +15,7 @@ import router from '../router/index.ts';
 export default {
   data() {
     return {
-      accounts: [],
+      accounts: {},
       credentials: {
         username: '',
         password: ''
@@ -48,11 +48,10 @@ export default {
         console.error(error);
       }
     },
-    handleLogin() {
-      console.log('Login attempted with:', this.credentials);
-      const userAccount = this.accounts.find(account =>
-          account.username === this.credentials.username &&
-          account.password === this.credentials.password);
+    async handleLogin() {
+      await this.fetchAccount();
+      const userAccount = this.accounts;
+      console.log(this.accounts)
       if (userAccount) {
         if (userAccount.isModerator) {
           store.isAdminLoggedIn = true; // Set the global boolean
@@ -61,19 +60,17 @@ export default {
           store.isAdminLoggedIn = false;
           console.log('Logged in as a regular user');
         }
-        router.push("/");
+        await router.push("/");
       } else {
         store.isAdminLoggedIn = false; // Set the global boolean
         console.error('Invalid credentials');
         alert("Username or password is incorrect.")
+        console.log(this.accounts[0]);
+
       }
       this.credentials.username = '';
       this.credentials.password = '';
-
     },
-  },
-  mounted() {
-    this.fetchAccount();
   },
 };
 </script>

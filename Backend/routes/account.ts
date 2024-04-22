@@ -12,7 +12,7 @@ router.post("/", async (req: Request, res: Response) => {
     try {
         // Parse Request
         const userSubmitted = req.body;
-        const inUser = userSubmitted.inUser;
+        const inUser = userSubmitted.username;
         const inPassword = userSubmitted.password;
 
         // Grab the account
@@ -31,14 +31,13 @@ router.post("/", async (req: Request, res: Response) => {
             if (!valid) {
                 res.status(500).json({ error: "Failed to fetch users" });
             } else {
-                res.json([
+                res.json(
                     {
-                        id: account.id,
                         username: inUser,
                         password: inPassword,
-                        isModerator: true,
+                        isModerator: account.isModerator,
                     },
-                ]);
+                );
             }
         }
     } catch (error) {
@@ -54,7 +53,7 @@ router.post("/register", async (req: Request, res: Response) => {
     try {
         // Parse Request
         const userSubmitted = req.body;
-        const inUser = userSubmitted.password;
+        const inUser = userSubmitted.username;
         const inPassword = await argon2.hash(userSubmitted.password);
         // Grab the account
         const account = await prisma.account.create({

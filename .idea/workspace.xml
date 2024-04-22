@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a85ccec1-3010-4e4e-9b57-87e742df97d1" name="Changes" comment="Stub for homeview search">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_21_2024_10_57_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_21_2024_10_57_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/accountSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/accountSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/controllers/prompts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/hasTagSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/lib/prisma.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/llmSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/llmSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/prisma/seed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/promptSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/promptSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/account.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/account.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/export.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/export.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/llm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/llm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/prompt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/routes/tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/routes/tag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/dist/tagSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/dist/tagSeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/routes/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/routes/account.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/Views/SigninView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Views/SigninView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="3f5b66c1d0bc61245ec1772a7cd070898b14832d" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

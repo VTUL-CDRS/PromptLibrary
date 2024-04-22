@@ -78,9 +78,9 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
             case 0:
                 _a.trys.push([0, 5, , 6]);
                 userSubmitted = req.body;
-                inUser = userSubmitted.password;
+                inUser = userSubmitted.username;
                 inPassword = userSubmitted.password;
-                return [4 /*yield*/, prisma_1.prisma.account.findUnique({
+                return [4 /*yield*/, prisma_1.prisma.account.findFirst({
                         where: {
                             username: inUser,
                         },
@@ -97,14 +97,11 @@ router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, 
                     res.status(500).json({ error: "Failed to fetch users" });
                 }
                 else {
-                    res.json([
-                        {
-                            id: account.id,
-                            username: inUser,
-                            password: inPassword,
-                            isModerator: true,
-                        },
-                    ]);
+                    res.json({
+                        username: inUser,
+                        password: inPassword,
+                        isModerator: account.isModerator,
+                    });
                 }
                 _a.label = 4;
             case 4: return [3 /*break*/, 6];
@@ -127,7 +124,7 @@ router.post("/register", function (req, res) { return __awaiter(void 0, void 0, 
             case 0:
                 _a.trys.push([0, 3, , 4]);
                 userSubmitted = req.body;
-                inUser = userSubmitted.password;
+                inUser = userSubmitted.username;
                 return [4 /*yield*/, argon2.hash(userSubmitted.password)];
             case 1:
                 inPassword = _a.sent();
