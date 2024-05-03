@@ -7,7 +7,7 @@ Database Dump
         2. Add PostgreSQL/{version}/lib to PATH
         3. Open Windows PowerShell
         4. cd into a directory you want the database to export to
-        5. Run the command "pg_dump -U postgres PromptLibrary > database.txt" without quotation marks
+        5. Run the command "pg_dump -U {username} PromptLibrary > {filename}.txt" without quotation marks, replacing {username} and {filename} with your username and filename
         6. Type your password for the server
 
     To load the database from a dump
