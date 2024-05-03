@@ -1,4 +1,5 @@
 Database Dump
+
     We assume that you already have the PostgreSQL server set up.
     On Windows
         0. Make sure PostgreSQL is running
