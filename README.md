@@ -1,3 +1,11 @@
+# Setup
+## Backend
+0. Change into the backend directory
+1. Run `npm install`
+2. If changes are made run 
+
+## Frontend
+
 # Database Setup and Management
 ## Dumping
 We assume that you already have the PostgreSQL server set up.
