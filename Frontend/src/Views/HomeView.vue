@@ -26,7 +26,7 @@ export default {
   flex-direction: column;
   align-items: center; /* this will vertically center your items */
   justify-content: center; /* this will horizontally center your items */
-  min-height: calc(100vh - 150px - 2px); /* this makes the container take full viewport height */
+  min-height: calc(100vh - 170px); /* this makes the container take full viewport height */
   gap: 0.5rem; /* this adds space between your child elements */
 }
 

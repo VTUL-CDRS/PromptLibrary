@@ -67,7 +67,7 @@
   margin-top: 1em;
   align-items: center; /* Center children horizontally */
   justify-content: normal; /* Center children vertically */
-  min-height: calc(100vh - 150px - 1rem - 2px); /* Take full viewport height */
+  min-height: calc(100vh - 170px); /* Take full viewport height */
 }
 
 .back-button {

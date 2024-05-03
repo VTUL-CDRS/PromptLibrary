@@ -5,19 +5,23 @@ import "../assets/global.css";
 <style scoped>
 footer {
   position: relative;
-  height: 30px;
+  height: 50px;
   width: 100%;
   background-color: var(--footer-color);
+}
+.footer-text {
+  display: flex;
+  position: absolute;
+  left: 42%;
+  top: 1%;
+
 }
 </style>
 
 <template>
   <footer class="container">
     <div class="">
-      <!--      <router-link to="/" style=""><h2 class="header-text">PromptLibrary</h2></router-link>-->
-    </div>
-    <div class="">
-      <!--      <router-link to="/login" style=""><h2 class="header-text">Login</h2></router-link>-->
+      <h5 class="footer-text"> © 2024 Brandon Hoang, Daniel Shin, Gabriel Shin, Ryan Wang </h5>
     </div>
   </footer>
 </template>
