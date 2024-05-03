@@ -2,9 +2,13 @@
 ## Backend
 0. Change into the backend directory
 1. Run `npm install`
-2. If changes are made run 
+2. If changes are made run `npm run build` to build with those changes
+4. To run the backend locally, execute `npm run start`
 
 ## Frontend
+0. Change into the frontend directory
+1. Run `npm install`
+2. To run the frontend locally, execute `npm run dev`
 
 # Database Setup and Management
 ## Dumping
@@ -15,7 +19,7 @@ On Windows
     2. Add PostgreSQL/{version}/lib to PATH
     3. Open Windows PowerShell
     4. cd into a directory you want the database to export to
-    5. Run the command "pg_dump -U {username} PromptLibrary > {filename}.txt" without quotation marks, replacing {username} and {filename} with your username and filename
+    5. Run the command `pg_dump -U {username} PromptLibrary > {filename}.txt`, replacing {username} and {filename} with your username and filename
     6. Type your password for the server
 ## Restoring a dump
 To load the database from a dump
