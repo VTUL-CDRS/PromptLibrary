@@ -18,12 +18,25 @@
 ## Dumping
 
 We assume that you already have the PostgreSQL server set up.
-On Windows 0. Make sure PostgreSQL is running 1. Add PostgreSQL/{version}/bin to PATH 2. Add PostgreSQL/{version}/lib to PATH 3. Open Windows PowerShell 4. cd into a directory you want the database to export to 5. Run the command `pg_dump -U {username} PromptLibrary > {filename}.txt`, replacing {username} and {filename} with your username and filename 6. Type your password for the server
+On Windows:
+
+0. Make sure PostgreSQL is running
+1. Add PostgreSQL/{version}/bin to PATH
+2. Add PostgreSQL/{version}/lib to PATH
+3. Open Windows PowerShell
+4. cd into a directory you want the database to export to
+5. Run the command `pg_dump -U {username} -E=UTF-8 -d PromptLibrary -f {filename}.txt`, replacing {username} and {filename} with your username and filename
+6. Type your password for the server
 
 ## Restoring a dump
 
 To load the database from a dump
-On Windows 0. Delete your current database if you have one 1. Remake a new one with the name PromptLibrary 2. Open Windows PowerShell 3. cd into the directory with the db dump 4. Run the command "cat dump.txt | psql PromptLibrary postgres"
+On Windows 
+0. Delete your current database if you have one
+1. Remake a new one with the name PromptLibrary
+2. Open Windows PowerShell
+3. cd into the directory with the db dump
+4. Run the command "cat dump.txt | psql PromptLibrary postgres"
 
 # Deploying/Serving with Docker
 
@@ -36,7 +49,9 @@ If the user desires, the same command can be ran within the Frontend or Backend 
 
 ## First Build
 
-On the first build of the docker container, the user will also need to run the following: 1. `docker exec -it web npx prisma db push` 2. `docker exec -it web npx prisma db seed`
+On the first build of the docker container, the user will also need to run the following: 
+1. `docker exec -it web npx prisma db push`
+2. `docker exec -it web npx prisma db seed`
 This must be done in order to sync the PostgreSQL database with the Prisma file while also seeding the database.
 
 ## Important Information
