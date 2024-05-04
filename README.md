@@ -30,8 +30,8 @@ On Windows:
 
 ## Restoring a dump
 
-To load the database from a dump
-On Windows 
+To load the database from a dump on Windows 
+
 0. Delete your current database if you have one
 1. Remake a new one with the name PromptLibrary
 2. Open Windows PowerShell
